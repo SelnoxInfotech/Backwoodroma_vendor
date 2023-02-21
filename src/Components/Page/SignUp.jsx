@@ -5,12 +5,21 @@ import { AiOutlineMail } from "react-icons/ai"
 import { AiFillEye } from "react-icons/ai"
 import { FaBirthdayCake } from "react-icons/fa"
 import { useForm } from "react-hook-form";
-import { TextField } from '@material-ui/core';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from "@material-ui/core/styles";
 
+
+
+const useStyles = makeStyles((theme) => ({
+    inputField: {
+        width: "100%",
+        margin: theme.spacing(1, 0),
+    },
+}));
 
 export default function SignUp() {
-
-    const { register, handleSubmit, errors } = useForm();
+    const classes = useStyles();
+    const { register, handleSubmit, control, errors } = useForm();
 
     const onSubmit = (data) => {
         console.log(data, errors)
@@ -20,6 +29,9 @@ export default function SignUp() {
 
     return (
         <div className='container Border'>
+
+
+
             <div className='row   '>
                 <div className='col-12 '>
                     <div className='col-6  signup_margin'>
@@ -28,36 +40,32 @@ export default function SignUp() {
                     <div className="col-10  signup_field"   >
                         <div className="container">
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className="row gap">
+                                <div className=" gap">
                                     <div className='col-12 signup_Display'>
                                         <div className="col-xs-12 col-sm-6    ">
                                             <span><FaUser></FaUser></span>
                                             <span>Name</span>
                                         </div>
-                                        <div className="col-xs-10 col-sm-6   ">
-                                            <TextField
-                                                name='fullname'
-                                                id='fullname'
-                                                type="text"
-                                                size='small'
-                                                variant="filled"
-                                                // className={classes.inputfield}
-                                                // className="input-field"
-                                                ref={register({ required: true })}
-                                            // error={Boolean(errors.fullname)}
-                                            // helperText={errors?.firstname.message}
-                                            />
-                                            {/* <small className='form-text text-danger'> */}
-                                                {/* {errors.fullname?.type === "required" && "this field is required"} */}
-                                                { errors.fullname && (
-                                                    <span className="error-message">This is required field</span>
-                                                )}
-                                            {/* </small> */}
+                                        {/* <div className="  "> */}
+                                        <TextField
+
+                                            label="FirstName"
+                                            id="filled"
+                                            variant="filled"
+                                            type="text"
+                                            size='small'
+                                            className={classes.inputField}
+                                            name="firstName"
+                                            inputRef={register({
+                                                required: "First Name is required.",
+                                                minLength: 5
+                                            })}
+                                            helperText={errors.firstName?.message}
+                                            error={Boolean(errors?.firstName)}
+                                        />
 
 
-                                            <input name="lastname" ref={register({ required: true })} />
-      {errors?.lastname && 'Last name is required.'}
-                                        </div>
+                                        {/* </div> */}
                                     </div>
                                     <div className='col-12 signup_Display'>
                                         <div className="col-xs-12 col-sm-6    ">
@@ -68,19 +76,12 @@ export default function SignUp() {
                                             <TextField
                                                 name='mobile'
                                                 type="number"
-                                                variant="filled"
+                                                variant="outlined"
                                                 size='small'
 
-                                                {...register("mobile", {
-                                                    required: true,
-                                                    minLength: 10,
-                                                    maxLength: 15,
 
-                                                })}
                                             />
-                                            <small className='form-text text-danger'>
-                                                {errors?.mobile === "required" && "this field is required"}
-                                            </small>
+
 
                                         </div>
                                     </div>
@@ -120,11 +121,11 @@ export default function SignUp() {
                                         </div>
                                         <div className="col-xs-12 col-sm-6 ">
 
-                                            {/* <TextField
+                                            <TextField
                                                 type="password"
-                                                ref={register}
+
                                                 variant="filled"
-                                            /> */}
+                                            />
                                         </div>
                                     </div>
                                     <button type='submit'>submit </button>

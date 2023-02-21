@@ -1,7 +1,7 @@
 
  *{
    font-family: sans-serif;
-   font-size: 25px;
+   font-size: 14px;
  }
 
 
@@ -51,5 +51,16 @@
   border-radius: 33px;
   border: 2px solid #31B665;
 }
+.root-table {
+  width: 100%;
+}
+
+.paper-table {
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+
+
 
 /* End */
