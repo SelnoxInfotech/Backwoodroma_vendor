@@ -5,14 +5,16 @@ import { AiOutlineMail } from "react-icons/ai"
 import { AiFillEye } from "react-icons/ai"
 import { FaBirthdayCake } from "react-icons/fa"
 import { useForm } from "react-hook-form";
-import {TextField} from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 
 export default function SignUp() {
 
-    const { register, handleSubmit, errors } = useForm()
+    const { register, handleSubmit, errors } = useForm();
 
-    const onSubmit = (data) => console.log(data ,errors)
+    const onSubmit = (data) => {
+        console.log(data, errors)
+    }
 
     console.log(errors)
 
@@ -40,18 +42,21 @@ export default function SignUp() {
                                                 size='small'
                                                 variant="filled"
                                                 // className={classes.inputfield}
-                                                {...register( "fullname" ,{
-                                                    required: true,
-                                                    minLength: 5
-
-                                                })}
-                                                // error={Boolean(errors.fullname)}
-// helperText={errors?.firstname.message}
+                                                // className="input-field"
+                                                ref={register({ required: true })}
+                                            // error={Boolean(errors.fullname)}
+                                            // helperText={errors?.firstname.message}
                                             />
-                                            <small className='form-text text-danger'>
-                                                {/* {errors.Name?.type === "required" && "this field is required"} */}
-                                            </small>
+                                            {/* <small className='form-text text-danger'> */}
+                                                {/* {errors.fullname?.type === "required" && "this field is required"} */}
+                                                { errors.fullname && (
+                                                    <span className="error-message">This is required field</span>
+                                                )}
+                                            {/* </small> */}
 
+
+                                            <input name="lastname" ref={register({ required: true })} />
+      {errors?.lastname && 'Last name is required.'}
                                         </div>
                                     </div>
                                     <div className='col-12 signup_Display'>
@@ -61,20 +66,20 @@ export default function SignUp() {
                                         </div>
                                         <div className="col-xs-12 col-sm-6 ">
                                             <TextField
-                                            name='mobile'
+                                                name='mobile'
                                                 type="number"
-                                                variant="filled" 
+                                                variant="filled"
                                                 size='small'
-                                                
+
                                                 {...register("mobile", {
                                                     required: true,
                                                     minLength: 10,
-                                                    maxLength:15,
+                                                    maxLength: 15,
 
                                                 })}
                                             />
                                             <small className='form-text text-danger'>
-                                                {errors?.mobile.type === "required" && "this field is required"}
+                                                {errors?.mobile === "required" && "this field is required"}
                                             </small>
 
                                         </div>
