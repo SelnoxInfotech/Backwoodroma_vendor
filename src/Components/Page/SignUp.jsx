@@ -4,17 +4,17 @@ import { BiMobile } from "react-icons/bi"
 import { AiOutlineMail } from "react-icons/ai"
 import { AiFillEye } from "react-icons/ai"
 import { FaBirthdayCake } from "react-icons/fa"
-// import TextField from '../Component/Input/TextField'
 import { useForm } from "react-hook-form";
-import TextField from '@mui/material/TextField';
+import {TextField} from '@material-ui/core';
 
 
 export default function SignUp() {
 
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, errors } = useForm()
 
-    const onSubmit = (data) =>  console.log(data)
+    const onSubmit = (data) => console.log(data ,errors)
 
+    console.log(errors)
 
     return (
         <div className='container Border'>
@@ -34,11 +34,23 @@ export default function SignUp() {
                                         </div>
                                         <div className="col-xs-10 col-sm-6   ">
                                             <TextField
-                                            name='Name'
+                                                name='fullname'
+                                                id='fullname'
                                                 type="text"
+                                                size='small'
                                                 variant="filled"
-                                                ref={register}
+                                                // className={classes.inputfield}
+                                                {...register( "fullname" ,{
+                                                    required: true,
+                                                    minLength: 5
+
+                                                })}
+                                                // error={Boolean(errors.fullname)}
+// helperText={errors?.firstname.message}
                                             />
+                                            <small className='form-text text-danger'>
+                                                {/* {errors.Name?.type === "required" && "this field is required"} */}
+                                            </small>
 
                                         </div>
                                     </div>
@@ -52,8 +64,18 @@ export default function SignUp() {
                                             name='mobile'
                                                 type="number"
                                                 variant="filled" 
-                                                ref={register}
+                                                size='small'
+                                                
+                                                {...register("mobile", {
+                                                    required: true,
+                                                    minLength: 10,
+                                                    maxLength:15,
+
+                                                })}
                                             />
+                                            <small className='form-text text-danger'>
+                                                {errors?.mobile.type === "required" && "this field is required"}
+                                            </small>
 
                                         </div>
                                     </div>
@@ -63,12 +85,12 @@ export default function SignUp() {
                                             <span>Email</span>
                                         </div>
                                         <div className="col-xs-12 col-sm-6 ">
-                                            <TextField
+                                            {/* <TextField
                                             name='email'
                                                 type="email"
                                                 variant="filled"
                                                 ref={register}
-                                            />
+                                            /> */}
                                         </div>
                                     </div>
                                     <div className='col-12 signup_Display'>
@@ -78,12 +100,12 @@ export default function SignUp() {
                                         </div>
                                         <div className="col-xs-12 col-sm-6 ">
 
-                                            <TextField
+                                            {/* <TextField
                                             name='password'
                                                 type="password"
                                                 ref={register}
                                                 variant="filled"
-                                            />
+                                            /> */}
                                         </div>
                                     </div>
                                     <div className='col-12 signup_Display'>
@@ -93,11 +115,11 @@ export default function SignUp() {
                                         </div>
                                         <div className="col-xs-12 col-sm-6 ">
 
-                                            <TextField
+                                            {/* <TextField
                                                 type="password"
                                                 ref={register}
                                                 variant="filled"
-                                            />
+                                            /> */}
                                         </div>
                                     </div>
                                     <button type='submit'>submit </button>
