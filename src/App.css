@@ -1,7 +1,9 @@
 
  *{
+  margin: 0;
+  padding: 0;
    font-family: sans-serif;
-   font-size: 14px;
+  
  }
 
 
@@ -11,7 +13,7 @@
 
 
 .gap{
-  gap: 20px;
+  gap: 10px;
 }
 
 
@@ -22,20 +24,23 @@
   
 }
 .signup_margin span{
+  margin-left: 20px;
   color: #595959;
   font: normal normal bold 50px/31px Open Sans;
   letter-spacing: 1px;
 
 }
-.signup_field span {
-  margin-left: 20px;
+.icon {
+
+  font-size: larger;
+  margin-inline: 20px;
   color: #747474 ;
 }
 .signup_field{
  
   margin-top: 50px;
   position: relative;
-    left: 10%;
+    /* left: 10%; */
 }
 .signup_Display{
   display: flex;
@@ -43,24 +48,52 @@
 @media screen and (max-width: 580px) {
   .signup_Display{
     display:block;
+    position: relative;
+    justify-content: center;
+    /* left: 25%; */
   }
+  .signup_margin span{
+    margin-left: 20px;
+    color: #595959;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  
+  }
+ 
+ 
+
+
+
 }
+@media (min-width: 992px){
+  .col-lg-2 {
+      flex: 0 0 auto;
+      width: 34.666667%;
+  }
+    }
+    
+
+
+
+
+
+
+
 
 
 .Border{
   border-radius: 33px;
-  border: 2px solid #31B665;
-}
-.root-table {
-  width: 100%;
+  border: 1px solid #31B665;
 }
 
-.paper-table {
-  width: 100%;
-  margin-bottom: 2px;
-}
-
-
+/* 
+.pading{
+  position: fixed;
+      top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
 
 
 /* End */

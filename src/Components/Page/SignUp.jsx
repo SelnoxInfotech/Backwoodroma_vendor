@@ -6,20 +6,14 @@ import { AiFillEye } from "react-icons/ai"
 import { FaBirthdayCake } from "react-icons/fa"
 import { useForm } from "react-hook-form";
 import TextField from '@mui/material/TextField';
-import { makeStyles } from "@material-ui/core/styles";
 
 
 
-const useStyles = makeStyles((theme) => ({
-    inputField: {
-        width: "100%",
-        margin: theme.spacing(1, 0),
-    },
-}));
+
 
 export default function SignUp() {
-    const classes = useStyles();
-    const { register, handleSubmit, control, errors } = useForm();
+    
+    const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
         console.log(data, errors)
@@ -28,104 +22,130 @@ export default function SignUp() {
     console.log(errors)
 
     return (
-        <div className='container Border'>
+        <div className='container Border pading'>
 
 
 
             <div className='row   '>
                 <div className='col-12 '>
-                    <div className='col-6  signup_margin'>
+                    <div className='col-6   signup_margin'>
                         <span>SIGN UP</span>
                     </div>
-                    <div className="col-10  signup_field"   >
+                    <div className="col-12  signup_field"   >
                         <div className="container">
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className=" gap">
-                                    <div className='col-12 signup_Display'>
-                                        <div className="col-xs-12 col-sm-6    ">
-                                            <span><FaUser></FaUser></span>
+                                <div className=" row gap justify-content-center">
+                                    <div className='col-12 signup_Display center'>
+                                        <div className="col-sm-6 center pading">
+                                            <span className='icon'> <FaUser></FaUser></span>
                                             <span>Name</span>
                                         </div>
-                                        {/* <div className="  "> */}
+                   
+                                        <div className='col-sm-6 '>
                                         <TextField
-
                                             label="FirstName"
                                             id="filled"
                                             variant="filled"
                                             type="text"
+                                            fullWidth
                                             size='small'
-                                            className={classes.inputField}
                                             name="firstName"
                                             inputRef={register({
-                                                required: "First Name is required.",
-                                                minLength: 5
+                                                required: "Name is required*.",
+                                                minLength:{ 
+                                                    value:2,
+                                                    message:"Please enter valid name"
+                                                },
+                                                maxLength:{ 
+                                                    value:20,
+                                                    message:"Please enter shot valid name"
+                                                }
                                             })}
                                             helperText={errors.firstName?.message}
                                             error={Boolean(errors?.firstName)}
                                         />
-
-
-                                        {/* </div> */}
-                                    </div>
-                                    <div className='col-12 signup_Display'>
-                                        <div className="col-xs-12 col-sm-6    ">
-                                            <span><BiMobile></BiMobile></span>
-                                            <span>Mobile no</span>
-                                        </div>
-                                        <div className="col-xs-12 col-sm-6 ">
-                                            <TextField
-                                                name='mobile'
-                                                type="number"
-                                                variant="outlined"
-                                                size='small'
-
-
-                                            />
-
-
                                         </div>
                                     </div>
                                     <div className='col-12 signup_Display'>
-                                        <div className="col-xs-12 col-sm-6    ">
-                                            <span><AiOutlineMail></AiOutlineMail></span>
+                                    <div className='col-12 signup_Display center'>
+                                        <div className="col-sm-6 center pading">
+                                            <span className='icon'> <BiMobile></BiMobile></span>
+                                            <span>Mobile</span>
+                                        </div>
+                   
+                                        <div className='col-sm-6 '>
+                                        <TextField
+                                            label="Mobile"
+                                            id="filled"
+                                            variant="filled"
+                                            type="number"
+                                            fullWidth
+                                            size='small'
+                                            name="mobile"
+                                            inputRef={register({
+                                                required: "mobile Number is required*.",
+                                                minLength:{ 
+                                                    value:10,
+                                                    message:"Please enter minimum 10 digits"
+                                                },
+                                                maxLength:{ 
+                                                    value:15,
+                                                    message:"Please enter valid mobile number"
+                                                }
+                                            })}
+                                            helperText={errors.mobile?.message}
+                                            error={Boolean(errors?.mobile)}
+                                        />
+                                        </div>
+                                    </div>
+                                      
+                                    </div>
+                                    <div className='col-12 signup_Display center'>
+                                        <div className="col-sm-6 center pading">
+                                            <span className='icon'> <AiOutlineMail></AiOutlineMail></span>
                                             <span>Email</span>
                                         </div>
-                                        <div className="col-xs-12 col-sm-6 ">
-                                            {/* <TextField
-                                            name='email'
-                                                type="email"
-                                                variant="filled"
-                                                ref={register}
-                                            /> */}
+                   
+                                        <div className='col-sm-6 '>
+                                        <TextField
+                                            label="Email"
+                                            id="filled"
+                                            variant="filled"
+                                            type="email"
+                                            fullWidth
+                                            size='small'
+                                            name="email"
+                                            inputRef={register({
+                                                required: "email  is required*.",
+                                               
+                                            })}
+                                            helperText={errors.email?.message}
+                                            error={Boolean(errors?.email)}
+                                        />
                                         </div>
                                     </div>
-                                    <div className='col-12 signup_Display'>
-                                        <div className="col-xs-12 col-sm-6    ">
-                                            <span><AiFillEye></AiFillEye></span>
+                                    <div className='col-12 signup_Display center'>
+                                        <div className="col-sm-6 center pading">
+                                            <span className='icon'> <AiOutlineMail></AiOutlineMail></span>
                                             <span>Password</span>
                                         </div>
-                                        <div className="col-xs-12 col-sm-6 ">
-
-                                            {/* <TextField
-                                            name='password'
-                                                type="password"
-                                                ref={register}
-                                                variant="filled"
-                                            /> */}
-                                        </div>
-                                    </div>
-                                    <div className='col-12 signup_Display'>
-                                        <div className="col-xs-12 col-sm-6    ">
-                                            <span><FaBirthdayCake></FaBirthdayCake></span>
-                                            <span>Date of Birth</span>
-                                        </div>
-                                        <div className="col-xs-12 col-sm-6 ">
-
-                                            <TextField
-                                                type="password"
-
-                                                variant="filled"
-                                            />
+                   
+                                        <div className='col-sm-6 '>
+                                        <TextField
+                                            label="Password"
+                                            id="filled"
+                                            variant="filled"
+                                            type="text"
+                                            fullWidth
+                                            size='small'
+                                            name="password"
+                                            inputRef={register({
+                                                required: "password  is required*.",
+                                               
+                                            })}
+                                            helperText={errors.password?.message}
+                                            error={Boolean(errors?.password)}
+                                        />
                                         </div>
                                     </div>
                                     <button type='submit'>submit </button>
