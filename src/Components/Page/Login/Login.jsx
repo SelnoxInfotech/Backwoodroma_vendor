@@ -7,9 +7,11 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import { AiOutlineMail } from "react-icons/ai"
 import { AiFillEye } from "react-icons/ai"
-
+import LoadingButton from '@mui/lab/LoadingButton';
+import Box from '@mui/material/Box';
 function Login() {
-
+    
+    const [loading, setLoading] = React.useState(false);
     const { register, handleSubmit, errors } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -64,48 +66,62 @@ function Login() {
                                                 required: "Email is required*."
                                             })}
                                             helperText={errors.email?.message}
-                                            error={Boolean(errors?.email)}  
+                                            error={Boolean(errors?.email)}
                                         />
                                     </div>
                                 </div>
-                           
-                            <div className='col-12 signup_Display center'>
-                                <div className="col-sm-6 center pading">
-                                    <div className='col-4 name_style'>
-                                        <span className='icon'> <AiFillEye></AiFillEye></span>
-                                        <span>Password</span>
+
+                                <div className='col-12 signup_Display center'>
+                                    <div className="col-sm-6 center pading">
+                                        <div className='col-4 name_style'>
+                                            <span className='icon'> <AiFillEye></AiFillEye></span>
+                                            <span>Password</span>
+                                        </div>
+                                    </div>
+
+                                    <div className='col-sm-6 '>
+                                        <TextField
+                                            type={showPassword ? 'text' : 'password'}
+                                            InputProps={{
+                                                endAdornment: <InputAdornment position="end">
+                                                    <IconButton
+                                                        aria-label="toggle password visibility"
+                                                        onClick={handleClickShowPassword}
+                                                        onMouseDown={handleMouseDownPassword}
+                                                    >
+                                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                    </IconButton>
+                                                </InputAdornment>, style: { fontSize: 14 }
+                                            }}
+
+                                            variant="filled"
+                                            fullWidth
+                                            label="Password"
+                                            size='small'
+                                            name="password"
+                                            inputRef={register({
+                                                required: "password  is required*.",
+
+                                            })}
+                                            helperText={errors.password?.message}
+                                            error={Boolean(errors?.password)}
+                                        />
                                     </div>
                                 </div>
+                                <div className='col-12 center mt-5 mb-5 ' >
+                                        <Box sx={{ '& > button': { m: 1 } }}>
+                                            <LoadingButton
+                                                type="submit"
+                                                size="small"
+                                                // onClick={handleClick}
+                                                loading={loading}
+                                                variant="outlined"
 
-                                <div className='col-sm-6 '>
-                                    <TextField
-                                        type={showPassword ? 'text' : 'password'}
-                                        InputProps={{
-                                            endAdornment: <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleClickShowPassword}
-                                                    onMouseDown={handleMouseDownPassword}
-                                                >
-                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                </IconButton>
-                                            </InputAdornment>, style: { fontSize: 14 }
-                                        }}
-
-                                        variant="filled"
-                                        fullWidth
-                                        label="Password"
-                                        size='small'
-                                        name="password"
-                                        inputRef={register({
-                                            required: "password  is required*.",
-
-                                        })}
-                                        helperText={errors.password?.message}
-                                        error={Boolean(errors?.password)}
-                                    />
-                                </div>
-                            </div>
+                                            >
+                                                <span>SIGN UP</span>
+                                            </LoadingButton>
+                                        </Box>
+                                    </div>
                             </div>
                         </form>
                     </div>

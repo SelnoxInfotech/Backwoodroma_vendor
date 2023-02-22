@@ -5,47 +5,38 @@ import { AiOutlineMail } from "react-icons/ai"
 import { AiFillEye } from "react-icons/ai"
 import { FaBirthdayCake } from "react-icons/fa"
 import { BsGenderAmbiguous } from "react-icons/bs"
-import { useForm, Controller} from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
-import {
-    FormControlLabel,
-    FormLabel,
-    FormControl,
-    FormHelperText,
-    RadioGroup,
-    Radio,
-} from "@material-ui/core";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
-
+import LoadingButton from '@mui/lab/LoadingButton';
+import axios from "axios";
+import Box from '@mui/material/Box';
+import {FormControlLabel,FormLabel,FormControl,FormHelperText,RadioGroup,Radio,} from "@material-ui/core";
+import {MuiPickersUtilsProvider,KeyboardDatePicker,} from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import style  from "../../../Style"
 
 export default function SignUp() {
-    
+    const { classes } = style;
     const { register, handleSubmit, errors, control } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
-
     const onSubmit = (data) => {
-        console.log(data.Date, errors)
+
+        axios.post('http://34.201.114.126:8000/VendorPanel/register/',
+        setLoading(true),
+        data).then((response) => {
+
+            }).catch(()=>{
+                setLoading(false)
+            })
     }
-
-    console.log(errors)
-
-
-
-
+    console.log(classes)
     return (
         <div className='container Border pading'>
 
@@ -64,70 +55,70 @@ export default function SignUp() {
                                         <div className="col-sm-6 center pading">
                                             <div className='col-4 name_style'>
                                                 <span className='icon'> <FaUser></FaUser></span>
-                                                <span>Name</span> 
+                                                <span>Name</span>
                                             </div>
                                         </div>
-                   
+
                                         <div className='col-sm-6 '>
-                                        <TextField
-                                            label="FirstName"
-                                            id="filled"
-                                            variant="filled"
-                                            type="text"
-                                            fullWidth
-                                            size='small'
-                                            name="firstName"
-                                            inputRef={register({
-                                                required: "Name is required*.",
-                                                minLength:{ 
-                                                    value:2,
-                                                    message:"Please enter valid name"
-                                                },
-                                                maxLength:{ 
-                                                    value:20,
-                                                    message:"Please enter shot valid name"
-                                                }
-                                            })}
-                                            helperText={errors.firstName?.message}
-                                            error={Boolean(errors?.firstName)}
-                                        />
+                                            <TextField
+                                                label="FirstName"
+                                                id="filled"
+                                                variant="filled"
+                                                type="text"
+                                                fullWidth
+                                                size='small'
+                                                name="username"
+                                                inputRef={register({
+                                                    required: "Name is required*.",
+                                                    minLength: {
+                                                        value: 2,
+                                                        message: "Please enter valid name"
+                                                    },
+                                                    maxLength: {
+                                                        value: 150,
+                                                        message: "Please enter shot valid name"
+                                                    }
+                                                })}
+                                                helperText={errors.username?.message}
+                                                error={Boolean(errors?.username)}
+                                            />
                                         </div>
                                     </div>
                                     <div className='col-12 signup_Display'>
-                                    <div className='col-12 signup_Display center'>
-                                        <div className="col-sm-6 center pading">
+                                        <div className='col-12 signup_Display center'>
+                                            <div className="col-sm-6 center pading">
                                                 <div className='col-4 name_style'>
                                                     <span className='icon'> <BiMobile></BiMobile></span>
                                                     <span>Mobile</span>
-                                           </div>
+                                                </div>
+                                            </div>
+
+                                            <div className='col-sm-6 '>
+                                                <TextField
+                                                    label="Mobile"
+                                                    id="filled"
+                                                    variant="filled"
+                                                    type="number"
+                                                    fullWidth
+                                                    size='small'
+                                                    name="mobile"
+                                                    inputRef={register({
+                                                        required: "mobile Number is required*.",
+                                                        minLength: {
+                                                            value: 10,
+                                                            message: "Please enter minimum 10 digits"
+                                                        },
+                                                        maxLength: {
+                                                            value: 15,
+                                                            message: "Please enter valid mobile number"
+                                                        }
+                                                    })}
+                                                    helperText={errors.mobile?.message}
+                                                    error={Boolean(errors?.mobile)}
+                                                />
+                                            </div>
                                         </div>
-                   
-                                        <div className='col-sm-6 '>
-                                        <TextField
-                                            label="Mobile"
-                                            id="filled"
-                                            variant="filled"
-                                            type="number"
-                                            fullWidth
-                                            size='small'
-                                            name="mobile"
-                                            inputRef={register({
-                                                required: "mobile Number is required*.",
-                                                minLength:{ 
-                                                    value:10,
-                                                    message:"Please enter minimum 10 digits"
-                                                },
-                                                maxLength:{ 
-                                                    value:15,
-                                                    message:"Please enter valid mobile number"
-                                                }
-                                            })}
-                                            helperText={errors.mobile?.message}
-                                            error={Boolean(errors?.mobile)}
-                                        />
-                                        </div>
-                                    </div>
-                                      
+
                                     </div>
                                     <div className='col-12 signup_Display center'>
                                         <div className="col-sm-6 center pading">
@@ -136,23 +127,23 @@ export default function SignUp() {
                                                 <span>Email</span>
                                             </div>
                                         </div>
-                   
+
                                         <div className='col-sm-6 '>
-                                        <TextField
-                                            label="Email"
-                                            id="filled"
-                                            variant="filled"
-                                            type="email"
-                                            fullWidth
-                                            size='small'
-                                            name="email"
-                                            inputRef={register({
-                                                required: "email  is required*.",
-                                               
-                                            })}
-                                            helperText={errors.email?.message}
-                                            error={Boolean(errors?.email)}
-                                        />
+                                            <TextField
+                                                label="Email"
+                                                id="filled"
+                                                variant="filled"
+                                                type="email"
+                                                fullWidth
+                                                size='small'
+                                                name="email"
+                                                inputRef={register({
+                                                    required: "email  is required*.",
+
+                                                })}
+                                                helperText={errors.email?.message}
+                                                error={Boolean(errors?.email)}
+                                            />
                                         </div>
                                     </div>
                                     <div className='col-12 signup_Display center'>
@@ -162,34 +153,33 @@ export default function SignUp() {
                                                 <span>Password</span>
                                             </div>
                                         </div>
-                   
+
                                         <div className='col-sm-6 '>
                                             <TextField
                                                 type={showPassword ? 'text' : 'password'}
                                                 InputProps={{
-                                                endAdornment: <InputAdornment position="end">
+                                                    endAdornment: <InputAdornment position="end">
                                                         <IconButton
                                                             aria-label="toggle password visibility"
                                                             onClick={handleClickShowPassword}
-                                                            onMouseDown={handleMouseDownPassword}
                                                         >
                                                             {showPassword ? <VisibilityOff /> : <Visibility />}
                                                         </IconButton>
                                                     </InputAdornment>, style: { fontSize: 14 }
                                                 }}
-                                                
-                                            variant="filled"
+
+                                                variant="filled"
                                                 fullWidth
                                                 label="Password"
-                                            size='small'
-                                            name="password"
-                                            inputRef={register({
-                                                required: "password  is required*.",
-                                               
-                                            })}
-                                            helperText={errors.password?.message}
-                                            error={Boolean(errors?.password)}
-                                        />
+                                                size='small'
+                                                name="password"
+                                                inputRef={register({
+                                                    required: "password  is required*.",
+
+                                                })}
+                                                helperText={errors.password?.message}
+                                                error={Boolean(errors?.password)}
+                                            />
                                         </div>
                                     </div>
 
@@ -197,8 +187,8 @@ export default function SignUp() {
                                         <div className="col-sm-6 center pading">
                                             <div className='col-4 name_style'>
 
-                                            <span className='icon'> <FaBirthdayCake></FaBirthdayCake></span>
-                                            <span>Date of Birth</span>
+                                                <span className='icon'> <FaBirthdayCake></FaBirthdayCake></span>
+                                                <span>Date of Birth</span>
 
                                             </div>
                                         </div>
@@ -209,7 +199,7 @@ export default function SignUp() {
                                                 <Controller
                                                     render={(props) => (
                                                         <KeyboardDatePicker
-                                                            disableToolbar
+
                                                             variant="inline"
                                                             format="MM/dd/yyyy"
                                                             margin="normal"
@@ -233,12 +223,12 @@ export default function SignUp() {
                                         </div>
 
                                     </div>
-                                    
+
                                     <div className='col-12 signup_Display '>
                                         <div className="col-sm-6 center pading">
                                             <div className='col-4 name_style'>
                                                 <span className='icon'><BsGenderAmbiguous></BsGenderAmbiguous></span>
-                                            <span>Gender</span>
+                                                <span>Gender</span>
                                             </div>
                                         </div>
 
@@ -270,7 +260,7 @@ export default function SignUp() {
                                                         }
                                                         label="Male"
                                                     />
-                                                    <FormControlLabel
+                                                    {/* <FormControlLabel
                                                         value="other"
                                                         control={
                                                             <Radio
@@ -280,19 +270,27 @@ export default function SignUp() {
                                                             />
                                                         }
                                                         label="Other"
-                                                    />
+                                                    /> */}
                                                 </RadioGroup>
                                                 <FormHelperText>{errors.gender?.message}</FormHelperText>
                                             </FormControl>
                                         </div>
 
                                     </div>
-                                    <div className='col-12 center mt-5 ' >
-                                
-                                        <button className='btn Sub_button' type='submit' style={{ fontSize: 15 }}>
-                                        SIGN UP
-                                    </button>
-                                   </div>
+                                    <div className='col-12 center mt-5 mb-5 ' >
+                                        <Box sx={{ '& > button': { m: 1 } }}>
+                                            <LoadingButton
+                                                type="submit"
+                                                size="small"
+                                                // onClick={handleClick}
+                                                loading={loading}
+                                                variant="outlined"
+
+                                            >
+                                                <span>SIGN UP</span>
+                                            </LoadingButton>
+                                        </Box>
+                                    </div>
                                 </div>
                             </form>
                         </div>
