@@ -4,6 +4,7 @@ import { BiMobile } from "react-icons/bi"
 import { AiOutlineMail } from "react-icons/ai"
 import { AiFillEye } from "react-icons/ai"
 import { FaBirthdayCake } from "react-icons/fa"
+import { BsGenderAmbiguous } from "react-icons/bs"
 import { useForm, Controller} from "react-hook-form";
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -37,7 +38,7 @@ export default function SignUp() {
     };
 
     const onSubmit = (data) => {
-        console.log(data, errors)
+        console.log(data.Date, errors)
     }
 
     console.log(errors)
@@ -61,8 +62,10 @@ export default function SignUp() {
                                 <div className=" row gap justify-content-center">
                                     <div className='col-12 signup_Display center'>
                                         <div className="col-sm-6 center pading">
-                                            <span className='icon'> <FaUser></FaUser></span>
-                                            <span>Name</span>
+                                            <div className='col-4 name_style'>
+                                                <span className='icon'> <FaUser></FaUser></span>
+                                                <span>Name</span> 
+                                            </div>
                                         </div>
                    
                                         <div className='col-sm-6 '>
@@ -93,8 +96,10 @@ export default function SignUp() {
                                     <div className='col-12 signup_Display'>
                                     <div className='col-12 signup_Display center'>
                                         <div className="col-sm-6 center pading">
-                                            <span className='icon'> <BiMobile></BiMobile></span>
-                                            <span>Mobile</span>
+                                                <div className='col-4 name_style'>
+                                                    <span className='icon'> <BiMobile></BiMobile></span>
+                                                    <span>Mobile</span>
+                                           </div>
                                         </div>
                    
                                         <div className='col-sm-6 '>
@@ -126,8 +131,10 @@ export default function SignUp() {
                                     </div>
                                     <div className='col-12 signup_Display center'>
                                         <div className="col-sm-6 center pading">
-                                            <span className='icon'> <AiOutlineMail></AiOutlineMail></span>
-                                            <span>Email</span>
+                                            <div className='col-4 name_style'>
+                                                <span className='icon'> <AiOutlineMail></AiOutlineMail></span>
+                                                <span>Email</span>
+                                            </div>
                                         </div>
                    
                                         <div className='col-sm-6 '>
@@ -150,25 +157,15 @@ export default function SignUp() {
                                     </div>
                                     <div className='col-12 signup_Display center'>
                                         <div className="col-sm-6 center pading">
-                                            <span className='icon'> <AiFillEye></AiFillEye></span>
-                                            <span>Password</span>
+                                            <div className='col-4 name_style'>
+                                                <span className='icon'> <AiFillEye></AiFillEye></span>
+                                                <span>Password</span>
+                                            </div>
                                         </div>
                    
                                         <div className='col-sm-6 '>
                                             <TextField
                                                 type={showPassword ? 'text' : 'password'}
-
-                                                // inputProps={
-                                                //     <InputAdornment position="end">
-                                                //         <IconButton
-                                                //             aria-label="toggle password visibility"
-                                                //             onClick={handleClickShowPassword}
-                                                //             onMouseDown={handleMouseDownPassword}
-                                                //         >
-                                                //             {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                //         </IconButton>
-                                                //     </InputAdornment>
-                                                // }
                                                 InputProps={{
                                                 endAdornment: <InputAdornment position="end">
                                                         <IconButton
@@ -182,7 +179,8 @@ export default function SignUp() {
                                                 }}
                                                 
                                             variant="filled"
-                                            fullWidth
+                                                fullWidth
+                                                label="Password"
                                             size='small'
                                             name="password"
                                             inputRef={register({
@@ -197,8 +195,12 @@ export default function SignUp() {
 
                                     <div className='col-12 signup_Display center'>
                                         <div className="col-sm-6 center pading">
+                                            <div className='col-4 name_style'>
+
                                             <span className='icon'> <FaBirthdayCake></FaBirthdayCake></span>
                                             <span>Date of Birth</span>
+
+                                            </div>
                                         </div>
 
                                         <div className='col-sm-6 '>
@@ -234,7 +236,10 @@ export default function SignUp() {
                                     
                                     <div className='col-12 signup_Display '>
                                         <div className="col-sm-6 center pading">
+                                            <div className='col-4 name_style'>
+                                                <span className='icon'><BsGenderAmbiguous></BsGenderAmbiguous></span>
                                             <span>Gender</span>
+                                            </div>
                                         </div>
 
                                         <div className='col-sm-6 '>
@@ -282,7 +287,9 @@ export default function SignUp() {
                                         </div>
 
                                     </div>
-                                    <button type='submit'>submit </button>
+                                    <div className='col-12 center'>
+                                        <button className='btn ' type='submit'>submit </button>
+                                   </div>
                                 </div>
                             </form>
                         </div>

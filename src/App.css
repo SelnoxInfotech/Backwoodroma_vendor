@@ -9,6 +9,9 @@
 
 .center{
   text-align: center;
+  justify-content: center;
+   
+    display: flex;
 }
 
 
@@ -73,7 +76,10 @@
   }
     }
     
-
+.name_style{
+  display: flex;
+  justify-items: left;
+}
 
 
 
