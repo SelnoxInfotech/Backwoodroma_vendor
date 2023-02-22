@@ -287,8 +287,11 @@ export default function SignUp() {
                                         </div>
 
                                     </div>
-                                    <div className='col-12 center'>
-                                        <button className='btn ' type='submit'>submit </button>
+                                    <div className='col-12 center mt-5 ' >
+                                
+                                        <button className='btn Sub_button' type='submit' style={{ fontSize: 15 }}>
+                                        SIGN UP
+                                    </button>
                                    </div>
                                 </div>
                             </form>
