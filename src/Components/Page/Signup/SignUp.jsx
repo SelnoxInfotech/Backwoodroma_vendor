@@ -12,16 +12,17 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import axios from "axios";
 import Box from '@mui/material/Box';
 import {FormControlLabel,FormLabel,FormControl,FormHelperText,RadioGroup,Radio,} from "@material-ui/core";
-import {MuiPickersUtilsProvider,KeyboardDatePicker,} from "@material-ui/pickers";
+import {MuiPickersUtilsProvider,DatePicker,} from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import style  from "../../../Style"
 
+
 export default function SignUp() {
     const { classes } = style;
-    const { register, handleSubmit, errors, control } = useForm();
+    const { register, handleSubmit, errors, control,reset } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
 
@@ -29,14 +30,14 @@ export default function SignUp() {
     const onSubmit = (data) => {
 
         axios.post('http://34.201.114.126:8000/VendorPanel/register/',
-        setLoading(true),
-        data).then((response) => {
+        data
+        
+        ).then((response) => {
 
             }).catch(()=>{
                 setLoading(false)
             })
     }
-    console.log(classes)
     return (
         <div className='container Border pading'>
 
@@ -198,20 +199,20 @@ export default function SignUp() {
                                                 {/* 5) Date Picker */}
                                                 <Controller
                                                     render={(props) => (
-                                                        <KeyboardDatePicker
-
+                                                        <DatePicker
+                                                       
                                                             variant="inline"
                                                             format="MM/dd/yyyy"
                                                             margin="normal"
                                                             label="Date of Birth"
                                                             value={props.value}
-                                                            onChange={props.onChange}
+                                                            onChange={props.onChange }
                                                             fullWidth
-                                                            error={Boolean(errors.Date)}
-                                                            helperText={errors.Date?.message}
+                                                            error={Boolean(errors.DateOfBirth)}
+                                                            helperText={errors.DateOfBirth?.message}
                                                         />
                                                     )}
-                                                    name="Date"
+                                                    name="DateOfBirth"
                                                     defaultValue={null}
                                                     control={control}
                                                     rules={{
@@ -237,9 +238,9 @@ export default function SignUp() {
                                                 error={Boolean(errors.gender)}
                                             >
                                                 <FormLabel>Choose Your Gender</FormLabel>
-                                                <RadioGroup row name="gender">
+                                                <RadioGroup row name="Gender">
                                                     <FormControlLabel
-                                                        value="female"
+                                                        value="f"
                                                         control={
                                                             <Radio
                                                                 inputRef={register({
@@ -250,7 +251,7 @@ export default function SignUp() {
                                                         label="Female"
                                                     />
                                                     <FormControlLabel
-                                                        value="male"
+                                                        value="M"
                                                         control={
                                                             <Radio
                                                                 inputRef={register({
@@ -272,7 +273,7 @@ export default function SignUp() {
                                                         label="Other"
                                                     /> */}
                                                 </RadioGroup>
-                                                <FormHelperText>{errors.gender?.message}</FormHelperText>
+                                                <FormHelperText>{errors.Gender?.message}</FormHelperText>
                                             </FormControl>
                                         </div>
 
