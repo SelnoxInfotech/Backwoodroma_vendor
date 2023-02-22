@@ -4,22 +4,46 @@ import { BiMobile } from "react-icons/bi"
 import { AiOutlineMail } from "react-icons/ai"
 import { AiFillEye } from "react-icons/ai"
 import { FaBirthdayCake } from "react-icons/fa"
-import { useForm } from "react-hook-form";
+import { useForm, Controller} from "react-hook-form";
 import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import {
+    FormControlLabel,
+    FormLabel,
+    FormControl,
+    FormHelperText,
+    RadioGroup,
+    Radio,
+} from "@material-ui/core";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
 
-
-
-
+import DateFnsUtils from "@date-io/date-fns";
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export default function SignUp() {
     
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors, control } = useForm();
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
     const onSubmit = (data) => {
         console.log(data, errors)
     }
 
     console.log(errors)
+
+
+
 
     return (
         <div className='container Border pading'>
@@ -126,16 +150,38 @@ export default function SignUp() {
                                     </div>
                                     <div className='col-12 signup_Display center'>
                                         <div className="col-sm-6 center pading">
-                                            <span className='icon'> <AiOutlineMail></AiOutlineMail></span>
+                                            <span className='icon'> <AiFillEye></AiFillEye></span>
                                             <span>Password</span>
                                         </div>
                    
                                         <div className='col-sm-6 '>
-                                        <TextField
-                                            label="Password"
-                                            id="filled"
+                                            <TextField
+                                                type={showPassword ? 'text' : 'password'}
+
+                                                // inputProps={
+                                                //     <InputAdornment position="end">
+                                                //         <IconButton
+                                                //             aria-label="toggle password visibility"
+                                                //             onClick={handleClickShowPassword}
+                                                //             onMouseDown={handleMouseDownPassword}
+                                                //         >
+                                                //             {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                //         </IconButton>
+                                                //     </InputAdornment>
+                                                // }
+                                                InputProps={{
+                                                endAdornment: <InputAdornment position="end">
+                                                        <IconButton
+                                                            aria-label="toggle password visibility"
+                                                            onClick={handleClickShowPassword}
+                                                            onMouseDown={handleMouseDownPassword}
+                                                        >
+                                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                        </IconButton>
+                                                    </InputAdornment>, style: { fontSize: 14 }
+                                                }}
+                                                
                                             variant="filled"
-                                            type="text"
                                             fullWidth
                                             size='small'
                                             name="password"
@@ -148,6 +194,94 @@ export default function SignUp() {
                                         />
                                         </div>
                                     </div>
+
+                                    <div className='col-12 signup_Display center'>
+                                        <div className="col-sm-6 center pading">
+                                            <span className='icon'> <FaBirthdayCake></FaBirthdayCake></span>
+                                            <span>Date of Birth</span>
+                                        </div>
+
+                                        <div className='col-sm-6 '>
+                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                {/* 5) Date Picker */}
+                                                <Controller
+                                                    render={(props) => (
+                                                        <KeyboardDatePicker
+                                                            disableToolbar
+                                                            variant="inline"
+                                                            format="MM/dd/yyyy"
+                                                            margin="normal"
+                                                            label="Date of Birth"
+                                                            value={props.value}
+                                                            onChange={props.onChange}
+                                                            fullWidth
+                                                            error={Boolean(errors.Date)}
+                                                            helperText={errors.Date?.message}
+                                                        />
+                                                    )}
+                                                    name="Date"
+                                                    defaultValue={null}
+                                                    control={control}
+                                                    rules={{
+                                                        required: "Date of birth required.",
+                                                    }}
+                                                />
+                                            </MuiPickersUtilsProvider>
+
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div className='col-12 signup_Display '>
+                                        <div className="col-sm-6 center pading">
+                                            <span>Gender</span>
+                                        </div>
+
+                                        <div className='col-sm-6 '>
+                                            <FormControl
+                                                error={Boolean(errors.gender)}
+                                            >
+                                                <FormLabel>Choose Your Gender</FormLabel>
+                                                <RadioGroup row name="gender">
+                                                    <FormControlLabel
+                                                        value="female"
+                                                        control={
+                                                            <Radio
+                                                                inputRef={register({
+                                                                    required: "Choose your gender*",
+                                                                })}
+                                                            />
+                                                        }
+                                                        label="Female"
+                                                    />
+                                                    <FormControlLabel
+                                                        value="male"
+                                                        control={
+                                                            <Radio
+                                                                inputRef={register({
+                                                                    required: "Choose your gender*",
+                                                                })}
+                                                            />
+                                                        }
+                                                        label="Male"
+                                                    />
+                                                    <FormControlLabel
+                                                        value="other"
+                                                        control={
+                                                            <Radio
+                                                                inputRef={register({
+                                                                    required: "Choose your gender*",
+                                                                })}
+                                                            />
+                                                        }
+                                                        label="Other"
+                                                    />
+                                                </RadioGroup>
+                                                <FormHelperText>{errors.gender?.message}</FormHelperText>
+                                            </FormControl>
+                                        </div>
+
+                                    </div>
                                     <button type='submit'>submit </button>
                                 </div>
                             </form>
@@ -158,3 +292,4 @@ export default function SignUp() {
         </div>
     )
 }
+
