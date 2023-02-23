@@ -6,12 +6,19 @@
   
  }
 
-
+ .color{
+  color: #31B665;
+  font-size: 18px;
+ }
 .center{
   text-align: center;
   justify-content: center;
    
     display: flex;
+}
+.display{
+  display: grid;
+  gap: 13px;
 }
 
 .gap{
@@ -120,3 +127,17 @@
   position: relative;
   left: 10%;
 }
+
+/* otp */
+
+.otp_input input{
+
+  position: relative;
+  height: 2rem;
+  min-width: 25px;
+  background-color: #F7F7F7;
+  border: 1px solid green;
+}
+
+
+/* end */

@@ -11,33 +11,48 @@ import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
 import axios from "axios";
 import Box from '@mui/material/Box';
-import {FormControlLabel,FormLabel,FormControl,FormHelperText,RadioGroup,Radio,} from "@material-ui/core";
-import {MuiPickersUtilsProvider,DatePicker,} from "@material-ui/pickers";
+import { FormControlLabel, FormLabel, FormControl, FormHelperText, RadioGroup, Radio, } from "@material-ui/core";
+import { MuiPickersUtilsProvider, DatePicker, } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import style  from "../../../Style"
-
+import Otp from "../../Component/OTP/Otp"
 
 export default function SignUp() {
-    const { classes } = style;
-    const { register, handleSubmit, errors, control,reset } = useForm();
+    const { register, handleSubmit, errors, control, reset } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
+    const [popup, SetPopup] = React.useState(false)
+    const [dulicate, Setduplicate] = React.useState([])
+    const [email , Setemail] = React.useState()
+    const [Otppopup, Setotppopup] = React.useState(true)
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const onSubmit = (data) => {
 
+    
         axios.post('http://34.201.114.126:8000/VendorPanel/register/',
-        data
-        
+            data,
+            setLoading(true),
+             
         ).then((response) => {
+            if (response.status === 200)
+                SetPopup(true)
+                Setemail(data.email)
+        }).catch((error) => {
+            Setduplicate(error.response.data.email)
+            if (error.response.data.email) {
+                Setduplicate(error.response.data)
+            }
+            else if (error.response.data.username) {
 
-            }).catch(()=>{
-                setLoading(false)
-            })
+                Setduplicate(error.response.data)
+            }
+            setLoading(false)
+        })
     }
+
     return (
         <div className='container Border pading'>
 
@@ -69,6 +84,7 @@ export default function SignUp() {
                                                 fullWidth
                                                 size='small'
                                                 name="username"
+                                                onChange={() => Setduplicate('')}
                                                 inputRef={register({
                                                     required: "Name is required*.",
                                                     minLength: {
@@ -79,9 +95,10 @@ export default function SignUp() {
                                                         value: 150,
                                                         message: "Please enter shot valid name"
                                                     }
-                                                })}
-                                                helperText={errors.username?.message}
-                                                error={Boolean(errors?.username)}
+                                                }
+                                                )}
+                                                helperText={errors.username?.message || dulicate?.username}
+                                                error={Boolean(errors?.username) || Boolean(dulicate?.username)}
                                             />
                                         </div>
                                     </div>
@@ -101,7 +118,7 @@ export default function SignUp() {
                                                     variant="filled"
                                                     type="number"
                                                     fullWidth
-                                                    size='small'
+                                                    size='sfalsemall'
                                                     name="mobile"
                                                     inputRef={register({
                                                         required: "mobile Number is required*.",
@@ -138,12 +155,13 @@ export default function SignUp() {
                                                 fullWidth
                                                 size='small'
                                                 name="email"
+                                                onChange={() => Setduplicate('')}
                                                 inputRef={register({
                                                     required: "email  is required*.",
 
                                                 })}
-                                                helperText={errors.email?.message}
-                                                error={Boolean(errors?.email)}
+                                                helperText={errors.email?.message || dulicate?.email}
+                                                error={Boolean(errors?.email) || Boolean(dulicate?.email)}
                                             />
                                         </div>
                                     </div>
@@ -200,13 +218,13 @@ export default function SignUp() {
                                                 <Controller
                                                     render={(props) => (
                                                         <DatePicker
-                                                       
+
                                                             variant="inline"
                                                             format="MM/dd/yyyy"
                                                             margin="normal"
                                                             label="Date of Birth"
                                                             value={props.value}
-                                                            onChange={props.onChange }
+                                                            onChange={props.onChange}
                                                             fullWidth
                                                             error={Boolean(errors.DateOfBirth)}
                                                             helperText={errors.DateOfBirth?.message}
@@ -235,7 +253,7 @@ export default function SignUp() {
 
                                         <div className='col-sm-6 '>
                                             <FormControl
-                                                error={Boolean(errors.gender)}
+                                                error={Boolean(errors.Gender)}
                                             >
                                                 <FormLabel>Choose Your Gender</FormLabel>
                                                 <RadioGroup row name="Gender">
@@ -261,17 +279,7 @@ export default function SignUp() {
                                                         }
                                                         label="Male"
                                                     />
-                                                    {/* <FormControlLabel
-                                                        value="other"
-                                                        control={
-                                                            <Radio
-                                                                inputRef={register({
-                                                                    required: "Choose your gender*",
-                                                                })}
-                                                            />
-                                                        }
-                                                        label="Other"
-                                                    /> */}
+
                                                 </RadioGroup>
                                                 <FormHelperText>{errors.Gender?.message}</FormHelperText>
                                             </FormControl>
@@ -298,6 +306,15 @@ export default function SignUp() {
                     </div>
                 </div>
             </div>
+            {
+                popup && <Otp
+                    Otppopup={Otppopup}
+                    Setotppopup={Setotppopup}
+                    email={email}
+                    setLoading={setLoading}
+                    reset={reset}
+                ></Otp>
+            }
         </div>
     )
 }
