@@ -17,7 +17,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Otp from "../../Component/OTP/Otp"
+import Otp from "../../Component/OTP/OTP"
 
 export default function SignUp() {
     const { register, handleSubmit, errors, control, reset } = useForm();
@@ -315,6 +315,9 @@ export default function SignUp() {
                     reset={reset}
                 ></Otp>
             }
+            <div>
+              
+          </div>
         </div>
     )
 }

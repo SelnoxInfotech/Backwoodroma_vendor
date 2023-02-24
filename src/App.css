@@ -29,7 +29,6 @@
   border: 1px solid #31B665;
 }
 
-
 /* Signup  */
 .signup_margin{
   margin-top: 150px;
@@ -80,24 +79,14 @@
       width: 34.666667%;
   }
     }
-    
 .name_style{
   display: flex;
   justify-items: left;
   font-size: 21px;
 }
 
-/* 
-.pading{
-  position: fixed;
-      top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
 
 /* End */
-
-
 /* Save Button */
 .Sub_button{
   font-size: 15px;
@@ -108,18 +97,12 @@
   background-color:#FFFFFF;
   color: #31B665;
 }
-
-
 .btn:hover {
    color:#31B665;
   border-color: #31B665;
 }
-
 /* End */
-
-
 /* Login */
-
 .login_width .container{
   width: 83%;
 }
@@ -127,17 +110,12 @@
   position: relative;
   left: 10%;
 }
-
 /* otp */
-
 .otp_input input{
-
   position: relative;
   height: 2rem;
   min-width: 25px;
   background-color: #F7F7F7;
   border: 1px solid green;
 }
-
-
 /* end */
