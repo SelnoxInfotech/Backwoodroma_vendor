@@ -214,7 +214,7 @@ export default function SignUp() {
                                                             format="MM/dd/yyyy"
                                                             margin="normal"
                                                             label="Date of Birth"
-                                                            value={props.value}
+                                                            // value={props.value}
                                                             onChange={props.onChange}
                                                             fullWidth
                                                             error={Boolean(errors.Date)}
