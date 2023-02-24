@@ -78,11 +78,10 @@ export default function SignUp() {
                                         <div className='col-sm-6 '>
                                             <TextField
                                                 label="FirstName"
-                                                id="filled"
                                                 variant="filled"
                                                 type="text"
                                                 fullWidth
-                                                size='small'
+                                                // size='small'
                                                 name="username"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
@@ -114,11 +113,10 @@ export default function SignUp() {
                                             <div className='col-sm-6 '>
                                                 <TextField
                                                     label="Mobile"
-                                                    id="filled"
                                                     variant="filled"
                                                     type="number"
                                                     fullWidth
-                                                    size='sfalsemall'
+                                                    // size='small'
                                                     name="mobile"
                                                     inputRef={register({
                                                         required: "mobile Number is required*.",
@@ -149,11 +147,10 @@ export default function SignUp() {
                                         <div className='col-sm-6 '>
                                             <TextField
                                                 label="Email"
-                                                id="filled"
                                                 variant="filled"
                                                 type="email"
                                                 fullWidth
-                                                size='small'
+                                                // size='small'
                                                 name="email"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
@@ -190,12 +187,22 @@ export default function SignUp() {
                                                 variant="filled"
                                                 fullWidth
                                                 label="Password"
-                                                size='small'
+                                                // size='small'
                                                 name="password"
                                                 inputRef={register({
                                                     required: "password  is required*.",
+                                                    minLength: {
+                                                        value: 8,
+                                                        message: 'Password must be more than 8 characters'
+                                                    },
+                                                    // pattern: {
+                                                    //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{4,12}$/,
+                                                    //     message:"aaaaaaaaaaaaaa"
+                                                    // }
+                                                 
 
-                                                })}
+                                                },
+                                                )}
                                                 helperText={errors.password?.message}
                                                 error={Boolean(errors?.password)}
                                             />

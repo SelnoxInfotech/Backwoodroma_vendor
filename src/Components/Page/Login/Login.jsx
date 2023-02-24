@@ -43,7 +43,7 @@ function Login() {
 
             //     Setduplicate(error.response.data)
             // }
-            console.log(error)
+            prompt(error)
             setLoading(false)
         })
     }
