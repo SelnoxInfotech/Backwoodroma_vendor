@@ -6,19 +6,28 @@
   
  }
 
-
+ .color{
+  color: #31B665;
+  font-size: 18px;
+ }
 .center{
   text-align: center;
   justify-content: center;
    
     display: flex;
 }
-
+.display{
+  display: grid;
+  gap: 13px;
+}
 
 .gap{
   gap: 10px;
 }
-
+.Border{
+  border-radius: 33px;
+  border: 1px solid #31B665;
+}
 
 
 /* Signup  */
@@ -64,10 +73,6 @@
   
   }
  
- 
-
-
-
 }
 @media (min-width: 992px){
   .col-lg-2 {
@@ -79,18 +84,7 @@
 .name_style{
   display: flex;
   justify-items: left;
-}
-
-
-
-
-
-
-
-
-.Border{
-  border-radius: 33px;
-  border: 1px solid #31B665;
+  font-size: 21px;
 }
 
 /* 
@@ -101,5 +95,49 @@
   transform: translate(-50%, -50%);
 } */
 
+/* End */
+
+
+/* Save Button */
+.Sub_button{
+  font-size: 15px;
+  color:#FFFFFF;
+  background-color: #31B665;
+}
+.Sub_button:hover{
+  background-color:#FFFFFF;
+  color: #31B665;
+}
+
+
+.btn:hover {
+   color:#31B665;
+  border-color: #31B665;
+}
 
 /* End */
+
+
+/* Login */
+
+.login_width .container{
+  width: 83%;
+}
+.login_Title {
+  position: relative;
+  left: 10%;
+}
+
+/* otp */
+
+.otp_input input{
+
+  position: relative;
+  height: 2rem;
+  min-width: 25px;
+  background-color: #F7F7F7;
+  border: 1px solid green;
+}
+
+
+/* end */
