@@ -20,6 +20,11 @@
   display: grid;
   gap: 13px;
 }
+.name_style {
+  display: flex;
+  justify-items: left;
+  /* font-size: 21px; */
+}
 
 .gap{
   gap: 10px;
@@ -31,7 +36,7 @@
 
 /* Signup  */
 .signup_margin{
-  margin-top: 150px;
+  margin-top: 100px;
   
 }
 .signup_margin span{
@@ -79,28 +84,7 @@
       width: 34.666667%;
   }
     }
-.name_style{
-  display: flex;
-  justify-items: left;
-  font-size: 21px;
-}
 
-
-/* End */
-/* Save Button */
-.Sub_button{
-  font-size: 15px;
-  color:#FFFFFF;
-  background-color: #31B665;
-}
-.Sub_button:hover{
-  background-color:#FFFFFF;
-  color: #31B665;
-}
-.btn:hover {
-   color:#31B665;
-  border-color: #31B665;
-}
 /* End */
 /* Login */
 .login_width .container{
