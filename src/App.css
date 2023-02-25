@@ -25,6 +25,14 @@
   justify-items: left;
   /* font-size: 21px; */
 }
+.blur{
+  opacity: 0.4;
+}
+.check_mark{
+  position: absolute;
+    top: 50%;
+    bottom: 50%;
+}
 
 .gap{
   gap: 10px;
@@ -102,4 +110,22 @@
   background-color: #F7F7F7;
   border: 1px solid green;
 }
+/* end */
+
+
+/* Store_image */
+.StoreAdd_Image{
+  height: 150px;
+  min-width: 60%;
+  border: 2px dashed black;
+      position: relative;
+        top: 15%
+;
+}
+.image_background{
+  height: 200px;
+    min-width: 60%;
+  background-color: beige;
+}
+
 /* end */
