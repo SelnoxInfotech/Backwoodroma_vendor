@@ -1,5 +1,5 @@
 import React from "react";
-
+import { IoCloudUploadOutline } from "react-icons/io5"
 
 export default function StoreImage() {
     return (
@@ -15,7 +15,8 @@ export default function StoreImage() {
                 <div className='col-sm-8  center'>
                     <div className="col-6 image_background center">
                         <div className="col-4   StoreAdd_Image  " >
-
+                            <IoCloudUploadOutline></IoCloudUploadOutline>
+                            {/* <span>uploade</span> */}
                         </div>
                     </div>
                 </div>
