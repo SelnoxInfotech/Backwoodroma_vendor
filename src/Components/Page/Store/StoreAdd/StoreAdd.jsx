@@ -1,14 +1,15 @@
-import { TextField } from "@material-ui/core";
+import { TextField } from "@mui/material";
 import React from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Checkmark } from 'react-checkmark'
 import StoreImage from "../StoreComponent/StoreImage";
-import { useForm, Controller } from "react-hook-form";
-import LoadingButton from '@mui/lab/LoadingButton';
-import StoreStatus from "../StoreComponent/StoreStatus"
 
+import LoadingButton from '@mui/lab/LoadingButton';
+import { BsBuilding } from "react-icons/bs"
+import StoreStatus from "../StoreComponent/StoreStatus"
+import { useForm, Controller } from "react-hook-form";
 
 import Box from '@mui/material/Box';
 export default function StoreAdd() {
@@ -16,11 +17,16 @@ export default function StoreAdd() {
     const [loading, Setloading] = React.useState(false)
     const [SuccessFull ,  SetSuccessFull] = React.useState(false)
     const [editorState, setEditorState] = React.useState(() =>
-        EditorState.createEmpty()
+    EditorState.createEmpty()
     );
     React.useEffect(() => {
-        console.log(editorState);
+        // console.log(editorState);
     }, [editorState]);
+
+
+    function Store(data) {
+        console.log(data)
+    }
 
     return (
         <div>
@@ -30,7 +36,7 @@ export default function StoreAdd() {
                         <div className='col-6   signup_margin'>
                             <span>STORE DETAILS</span>
                         </div>
-                        <form>
+                        <form onSubmit={handleSubmit(Store)}>
                             <div className="col-12 login_width  signup_field"   >
                                 <div className="container-fluid">
                                     <div className=" row gap justify-content-center">
@@ -44,12 +50,19 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-8 '>
                                                 <TextField
+                                                    name="storname"
                                                     variant="filled"
+                                                    type="text"
                                                     fullWidth
-                                                    disabled={false}
+                                                    inputRef={register({
+                                                        required: "Store Name is required*."
+                                                    })}
+                                                    helperText={errors.storname?.message}
+                                                    error={Boolean(errors?.storname)}
                                                 ></TextField>
                                             </div>
                                         </div>
+
                                         <div className='col-12  signup_Display center'>
                                             <div className="col-sm-4 center pading">
                                                 <div className='col-4 name_style'>
@@ -60,8 +73,15 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-8 '>
                                                 <TextField
+                                                    name="StoreType"
                                                     variant="filled"
+                                                    type="text"
                                                     fullWidth
+                                                    inputRef={register({
+                                                        required: "Store Type is required*."
+                                                    })}
+                                                    helperText={errors.StoreType?.message}
+                                                    error={Boolean(errors?.StoreType)}
                                                 ></TextField>
                                             </div>
                                         </div>
@@ -75,8 +95,7 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-2 '>
                                                 <TextField
-                                                    variant="filled"
-                                                    fullWidth
+                                                   
                                                 ></TextField>
                                             </div>
                                             <div className="col-6 signup_Display">
@@ -86,8 +105,7 @@ export default function StoreAdd() {
                                                 </div>
                                                 <div className='col-sm-2 '>
                                                     <TextField
-                                                        variant="filled"
-                                                        fullWidth
+                                                        
                                                     ></TextField>
                                                 </div>
                                                 <div className='col display name_style'>
@@ -96,8 +114,7 @@ export default function StoreAdd() {
                                                 </div>
                                                 <div className='col-sm-2 '>
                                                     <TextField
-                                                        variant="filled"
-                                                        fullWidth
+                                                        
                                                     ></TextField>
                                                 </div>
                                             </div>
@@ -112,8 +129,7 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-8 '>
                                                 <TextField
-                                                    variant="filled"
-                                                    fullWidth
+                                                    
                                                 ></TextField>
                                             </div>
                                         </div>
@@ -127,8 +143,6 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-3 '>
                                                 <TextField
-                                                    variant="filled"
-                                                    fullWidth
                                                 ></TextField>
                                             </div>
                                             <div className="col-5 signup_Display">
@@ -138,8 +152,7 @@ export default function StoreAdd() {
                                                 </div>
                                                 <div className='col '>
                                                     <TextField
-                                                        variant="filled"
-                                                        fullWidth
+                                                       
                                                     ></TextField>
                                                 </div>
                                             </div>
@@ -154,8 +167,7 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-8 '>
                                                 <TextField
-                                                    variant="filled"
-                                                    fullWidth
+                                                    
                                                 ></TextField>
                                             </div>
                                         </div>
@@ -199,9 +211,7 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-8 '>
                                                 <TextField
-                                                    variant="filled"
-                                                    fullWidth
-                                                    disabled={false}
+                                                    
                                                 ></TextField>
                                             </div>
                                         </div>
@@ -216,8 +226,7 @@ export default function StoreAdd() {
 
                                             <div className='col-sm-3 '>
                                                 <TextField
-                                                    variant="filled"
-                                                    fullWidth
+                                                   
                                                 ></TextField>
                                             </div>
                                             <div className="col-5 signup_Display">
@@ -227,19 +236,19 @@ export default function StoreAdd() {
                                                 </div>
                                                 <div className='col '>
                                                     <TextField
-                                                        variant="filled"
-                                                        fullWidth
+                                                       
                                                     ></TextField>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='col-12 signup_Display '>
-                                           
 
-                                           <StoreStatus></StoreStatus>
+
+                                            <StoreStatus></StoreStatus>
 
                                         </div>
                                         <StoreImage></StoreImage>
+
                                     </div>
                                 </div>
                             </div>
