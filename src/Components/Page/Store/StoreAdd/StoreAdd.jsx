@@ -24,9 +24,11 @@ import {
     MenuItem,
 } from "@material-ui/core";
 import Cookies from 'universal-cookie';
+import { convertToHTML } from 'draft-convert';
 import { FormControl, FormHelperText, } from "@material-ui/core";
 import Box from '@mui/material/Box';
 import axios from "axios";
+import { Add } from "@mui/icons-material";
 export default function StoreAdd() {
     const cookies = new Cookies();
     const token_data = cookies.get('Token_access')
@@ -35,6 +37,7 @@ export default function StoreAdd() {
     const [SuccessFull, SetSuccessFull] = React.useState(false)
     const [country, setCountry] = React.useState([])
     const [selectCountry, setSelectCountry] = React.useState()
+    const [convertedContent, setConvertedContent] = React.useState(null);
     const [AddStore, SetStore] = React.useState({
         Store_Name: "",
         city_id: '',
@@ -48,6 +51,8 @@ export default function StoreAdd() {
         State_id: "",
         City_id: "",
         License_Type: "None",
+        Stores_Website: "",
+        Store_Image:""
         // expires : new Date().toISOString().slice(0, 16),
 
     });
@@ -57,9 +62,14 @@ export default function StoreAdd() {
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty()
     );
+
+
     React.useEffect(() => {
-        // console.log(editorState);
+        let html = convertToHTML(editorState.getCurrentContent());
+        setConvertedContent(html);
     }, [editorState]);
+
+
     React.useEffect(() => {
         axios("http://34.201.114.126:8000/AdminPanel/Get-Country", {
 
@@ -81,6 +91,7 @@ export default function StoreAdd() {
 
 
     function Store(data) {
+        console.log(data)
         const entries = Object.entries(data)
         entries.map(([key, value]) => (
             SetStore(prevState => ({
@@ -91,7 +102,7 @@ export default function StoreAdd() {
         ))
 
     }
-
+    console.log( AddStore)
     function SelectedCountry(e) {
         setSelectCountry(e.target.value)
     }
@@ -273,7 +284,26 @@ export default function StoreAdd() {
                                                 <TextField
                                                     variant="filled"
                                                     type="text"
+                                                    name="Stores_Website"
                                                     fullWidth
+                                                    inputRef={register({
+                                                        required: "Address is required*.",
+                                                        pattern: {
+                                                            value: new RegExp(
+                                                                '^([a-zA-Z]+:\\/\\/)?' +
+                                                                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
+                                                                '((\\d{1,3}\\.){3}\\d{1,3}))' +
+                                                                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+                                                                '(\\?[;&a-z\\d%_.~+=-]*)?' +
+                                                                '(\\#[-a-z\\d_]*)?$',
+                                                                'i'
+                                                            ),
+                                                            message: "Url in not valid"
+                                                        }
+
+                                                    })}
+                                                    helperText={errors.Stores_Website?.message}
+                                                    error={Boolean(errors?.Stores_Website)}
                                                 ></TextField>
                                             </div>
                                             <div className="col-5 signup_Display">
@@ -282,7 +312,6 @@ export default function StoreAdd() {
                                                     <span>Mobile</span>
                                                 </div>
                                                 <div className='col '>
-                                                    {/* <label htmlFor="phone-input">Phone Number</label> */}
                                                     <Controller
                                                         name="Stores_MobileNo"
                                                         control={control}
@@ -294,7 +323,7 @@ export default function StoreAdd() {
                                                             <MuiPhoneNumber
                                                                 name={name}
                                                                 value={value}
-                                                                
+
                                                                 onChange={onChange}
                                                                 id="contactPhoneNumber"
                                                                 defaultCountry={"in"}
@@ -307,7 +336,7 @@ export default function StoreAdd() {
                                                             />
                                                         )}
                                                     />
-                                                  
+
                                                 </div>
                                             </div>
                                         </div>
@@ -335,7 +364,11 @@ export default function StoreAdd() {
                                             ></TextField> */}
                                             </div>
                                         </div>
-                                        <StoreImage></StoreImage>
+                                        <StoreImage
+                                        name="Store_Image"
+                                        SetStore={SetStore}
+                                        value={AddStore.Store_Image}
+                                        ></StoreImage>
                                         <hr></hr>
                                         <div className={'col-12 signup_margin '}>
                                             <div className='col-6   '>
