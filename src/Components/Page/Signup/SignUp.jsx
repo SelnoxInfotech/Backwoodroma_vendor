@@ -17,7 +17,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Otp from "../../Component/OTP/OTP"
+import Otp from "../../Component/OTP/Otp"
 
 export default function SignUp() {
     const { register, handleSubmit, errors, control, reset } = useForm();
@@ -29,6 +29,7 @@ export default function SignUp() {
     const [Otppopup, Setotppopup] = React.useState(true)
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    
     const onSubmit = (data) => {
 
     
@@ -230,7 +231,7 @@ export default function SignUp() {
                                                             format="MM/dd/yyyy"
                                                             margin="normal"
                                                             label="Date of Birth"
-                                                            // value={props.value}
+                                                            value={props.value}
                                                             onChange={props.onChange}
                                                             fullWidth
                                                             error={Boolean(errors.DateOfBirth)}

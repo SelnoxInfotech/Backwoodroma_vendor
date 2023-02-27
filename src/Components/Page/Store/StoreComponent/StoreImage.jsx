@@ -1,13 +1,13 @@
 import React from "react";
 import { IoCloudUploadOutline } from "react-icons/io5"
-
+import {FcAddImage} from "react-icons/fc"
 export default function StoreImage() {
     return (
         <div>
             <div className='col-12  signup_Display center'>
                 <div className="col-sm-4 center pading">
                     <div className='col-4 name_style'>
-                        <span className='icon'>x</span>
+                        <span className='icon'><FcAddImage></FcAddImage></span>
                         <span>Store Image</span>
                     </div>
                 </div>

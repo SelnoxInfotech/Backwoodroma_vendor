@@ -115,6 +115,7 @@
 
 /* Store_image */
 .StoreAdd_Image{
+  color: #31B665;
   height: 150px;
   min-width: 60%;
   border: 2px dashed black;
@@ -125,7 +126,7 @@ font-size: 70px;
 .image_background{
   height: 200px;
     min-width: 60%;
-  background-color: beige;
+  background-color: #F7F7F7;
 }
 
 /* end */

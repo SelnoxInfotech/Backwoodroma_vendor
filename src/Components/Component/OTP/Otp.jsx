@@ -8,10 +8,12 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios"
 import { Checkmark } from 'react-checkmark'
-
+import { useNavigate } from "react-router-dom";
 export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, reset }) {
+    const navigate = useNavigate();
     const [OTP, Setotp] = React.useState()
     const [successCheck, SetSccessCheck] = React.useState(false)
+    const [invalide , Setinvalid] = React.useState(false)
     const handleClose = () => {
         Setotppopup(false)
         setLoading(false)
@@ -29,10 +31,15 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
                 Setotppopup(false)
                 setLoading(false)
                 reset()
-            }, 500000);
+                navigate('/login')
+            }, 5000);
             SetSccessCheck(true)
 
-        }).catch(() => {
+        }).catch((error) => {
+            if(error.response.status=== 400){
+
+                Setinvalid(true)
+            }
 
         })
     }
@@ -61,6 +68,9 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
                                 <div className="gap display">
                                     <div className="col-12 center  ">
                                         <div className="otp_input">
+                                            {
+                                                invalide && <span>InValide Otp</span>
+                                            }
                                             <OtpInput
                                                 value={OTP}
                                                 onChange={handleChange}
@@ -82,7 +92,9 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
                                 <Button onClick={onSubmit}>Verify</Button>
                             </DialogActions>
                         </>
-                        : <Checkmark size='96px' />
+                        : 
+                            <Checkmark size='76px' />
+                    
                 }
             </Dialog>
         </div>

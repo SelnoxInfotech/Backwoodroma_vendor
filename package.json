@@ -21,6 +21,7 @@
     "bootstrap": "^5.2.3",
     "date-fns": "^2.29.3",
     "draft-js": "^0.11.7",
+    "material-ui-phone-number": "^3.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-checkmark": "^1.4.0",
@@ -29,9 +30,11 @@
     "react-hook-form": "^6.15.8",
     "react-icons": "^4.7.1",
     "react-otp-input": "^2.4.0",
+    "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

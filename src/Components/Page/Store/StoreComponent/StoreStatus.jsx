@@ -6,7 +6,7 @@ export default function Status() {
             <div className="col-sm-4 center pading">
                 <div className='col-4 name_style'>
                     <span className='icon'></span>
-                    <span>Gender</span>
+                    <span>Status</span>
                 </div>
             </div>
 
@@ -14,24 +14,24 @@ export default function Status() {
                 <FormControl
 
                 >
-                    <FormLabel>Choose Your Gender</FormLabel>
-                    <RadioGroup row name="Gender">
+                    <FormLabel>Choose Your Status</FormLabel>
+                    <RadioGroup row name="Status">
                         <FormControlLabel
-                            value="f"
+                            value="Active"
                             control={
                                 <Radio
 
                                 />
                             }
-                            label="Female"
+                            label="Active"
                         />
                         <FormControlLabel
-                            value="M"
+                            value="Inactive"
                             control={
                                 <Radio
                                 />
                             }
-                            label="Male"
+                            label="Inactive"
                         />
 
                     </RadioGroup>
