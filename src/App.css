@@ -5,7 +5,9 @@
    font-family: sans-serif;
   
  }
-
+ * {
+  scroll-behavior: smooth;
+}
  .color{
   color: #31B665;
   font-size: 18px;

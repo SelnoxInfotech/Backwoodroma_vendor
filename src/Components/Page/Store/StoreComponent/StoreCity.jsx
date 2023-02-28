@@ -15,13 +15,12 @@ export default function StoreCity({SetStore,AddStore}) {
         }))
     }
     React.useEffect(() => {
-        axios.get(`http://34.201.114.126:8000/AdminPanel/FilterCitiesByStates/${AddStore.State_id}`, {
+        axios.get(`http://34.201.114.126:8000/VendorPanel/FilterCitiesByStates/${AddStore.State_id}`, {
 
-            headers: {
-                'Authorization': `Bearer ${token_data}`
-            }
+          
 
         }).then(response => {
+            console.log(response.data.data)
             SetCity(response.data.data)
             SetStore(Store => ({ ...Store, City_id: response.data.data[0].id }))
         })

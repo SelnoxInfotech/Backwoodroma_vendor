@@ -19,7 +19,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Otp from "../../Component/OTP/Otp"
 
-export default function SignUp() {
+export default function SignUp() {  
     const { register, handleSubmit, errors, control, reset } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
@@ -83,7 +83,7 @@ export default function SignUp() {
                                                 type="text"
                                                 fullWidth
                                                 // size='small'
-                                                name="username"
+                                                name="Name"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
                                                     required: "Name is required*.",

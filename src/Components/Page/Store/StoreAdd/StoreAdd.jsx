@@ -1,5 +1,5 @@
+import React, { useRef } from "react";
 import { TextField } from "@mui/material";
-import React from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -18,29 +18,35 @@ import { BsFillCreditCard2BackFill } from "react-icons/bs"
 import States from "../StoreComponent/StoreState"
 import StoreCity from "../StoreComponent/StoreCity"
 import MuiPhoneNumber from 'material-ui-phone-number';
+import DateFnsUtils from "@date-io/date-fns";
 import {
     InputLabel,
     Select,
     MenuItem,
 } from "@material-ui/core";
-import Cookies from 'universal-cookie';
+import { MuiPickersUtilsProvider, DatePicker, } from "@material-ui/pickers";
+import License from "../StoreComponent/StoreImage"
 import { convertToHTML } from 'draft-convert';
 import { FormControl, FormHelperText, } from "@material-ui/core";
 import Box from '@mui/material/Box';
 import axios from "axios";
-import { Add } from "@mui/icons-material";
 export default function StoreAdd() {
-    const cookies = new Cookies();
-    const token_data = cookies.get('Token_access')
+    const storeImage = useRef(null);
+    const License_Doc = useRef(null);
+    const mobile = useRef(null);
     const { register, handleSubmit, errors, control, reset } = useForm();
     const [loading, Setloading] = React.useState(false)
     const [SuccessFull, SetSuccessFull] = React.useState(false)
     const [country, setCountry] = React.useState([])
     const [selectCountry, setSelectCountry] = React.useState()
     const [convertedContent, setConvertedContent] = React.useState(null);
+    const [DuplicateError, SetDuplicateError] = React.useState({
+        LicenceNo: "",
+        Stores_MobileNo: "",
+    })
     const [AddStore, SetStore] = React.useState({
         Store_Name: "",
-        city_id: '',
+
         Store_Type: "",
         LicenceNo: "",
         Store_Address: "",
@@ -50,14 +56,13 @@ export default function StoreAdd() {
         Country_id: "",
         State_id: "",
         City_id: "",
-        License_Type: "None",
+        License_Type: "",
         Stores_Website: "",
-        Store_Image:""
-        // expires : new Date().toISOString().slice(0, 16),
+        Store_Image: "",
+        LicenseDoc: "",
+        expires: ""
 
     });
-
-
 
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty()
@@ -71,38 +76,101 @@ export default function StoreAdd() {
 
 
     React.useEffect(() => {
-        axios("http://34.201.114.126:8000/AdminPanel/Get-Country", {
+        axios("http://34.201.114.126:8000/VendorPanel/ActiveCountry/", {
 
-            headers: {
-                'Authorization': `Bearer ${token_data}`
-            }
 
         }).then(response => {
 
-            setCountry(response.data)
+            setCountry(response.data.data)
             // setCountry_id(response.data[0].id)
 
         })
-    }, [token_data])
+    }, [])
 
 
 
 
 
 
-    function Store(data) {
-        console.log(data)
+    async function Store(data) {
+
+
         const entries = Object.entries(data)
-        entries.map(([key, value]) => (
-            SetStore(prevState => ({
-                ...prevState,
-                [key]: value
-            }))
 
-        ))
+        // entries.map(([key, value]) => (
+        //     SetStore(Store => ({ ...Store, [key]: value }))
+
+        // ))
+        var promise = new Promise(function (resolve, reject) {
+            entries.map(([key, value]) => (
+                SetStore(Store => ({ ...Store, [key]: value }))
+    
+            ))
+        });
+
+        SetDuplicateError("")
+        submitted()
+        console.log(promise)
+        return promise
+    }
+
+
+    // Store().then(
+    //     submitted()
+    // )
+    function submitted() {
+
+        const formdata = new FormData();
+        formdata.append('Store_Name', AddStore.Store_Name);
+        formdata.append('Store_Image', AddStore.Store_Image);
+        formdata.append('City_id', AddStore.City_id);
+        formdata.append('Store_Type', AddStore.Store_Type);
+        formdata.append('LicenceNo', AddStore.LicenceNo);
+        formdata.append('LicenseDoc', AddStore.LicenseDoc);
+        formdata.append('License_Type', AddStore.License_Type);
+        formdata.append('Expiration', AddStore.expires)
+        formdata.append('Store_Address', AddStore.Store_Address);
+        formdata.append('Stores_Website', AddStore.Stores_Website);
+        formdata.append('Stores_MobileNo', AddStore.Stores_MobileNo);
+        formdata.append('Status', AddStore.Status);
+        formdata.append('Stores_Description', convertedContent);
+
+        axios.post(
+            'http://34.201.114.126:8000/VendorPanel/Add-Stores/',
+            formdata,
+            // Setloading(true)
+        ).then((response) => {
+            SetSuccessFull(true);
+        }).catch(
+            function (error) {
+
+                if (error.response.data.error.LicenceNo) {
+                    SetDuplicateError(prevState => ({
+                        ...prevState,
+                        "LicenceNo": error.response.data.error.LicenceNo[0]
+                    }))
+
+                }
+                if (error.response.data.error.Stores_MobileNo) {
+                    SetDuplicateError(prevState => ({
+                        ...prevState,
+                        "Stores_MobileNo": error.response.data.error.Stores_MobileNo[0]
+                    }))
+                    //  console.log(mobile)
+                    // mobile.current.scrollIntoView({ behavior: 'smooth', block: 'start' })   
+
+                    // window.scrollTo(0, mobile.current.offsetTop);
+                }
+
+            }
+        )
+
 
     }
-    console.log( AddStore)
+
+
+
+
     function SelectedCountry(e) {
         setSelectCountry(e.target.value)
     }
@@ -316,6 +384,7 @@ export default function StoreAdd() {
                                                         name="Stores_MobileNo"
                                                         control={control}
                                                         defaultValue=""
+                                                        ref={mobile}
                                                         rules={{
                                                             required: "Enter valid phone number",
                                                         }}
@@ -331,8 +400,8 @@ export default function StoreAdd() {
                                                                 label="Contact  "
                                                                 variant="filled"
                                                                 margin="normal"
-                                                                error={Boolean(errors?.Stores_MobileNo)}
-                                                                helperText={errors.Stores_MobileNo?.message}
+                                                                error={Boolean(errors?.Stores_MobileNo || DuplicateError.Stores_MobileNo)}
+                                                                helperText={errors.Stores_MobileNo?.message || DuplicateError.Stores_MobileNo}
                                                             />
                                                         )}
                                                     />
@@ -358,16 +427,15 @@ export default function StoreAdd() {
                                                         />
                                                     </div>
                                                 </div>
-                                                {/* <TextField
-                                                variant="filled"
-                                                fullWidth
-                                            ></TextField> */}
+
                                             </div>
                                         </div>
                                         <StoreImage
-                                        name="Store_Image"
-                                        SetStore={SetStore}
-                                        value={AddStore.Store_Image}
+                                            Title="Store Image"
+                                            Name={"Store_Image"}
+                                            SetStore={SetStore}
+                                            value={AddStore.Store_Image}
+                                            refernce={storeImage}
                                         ></StoreImage>
                                         <hr></hr>
                                         <div className={'col-12 signup_margin '}>
@@ -386,14 +454,22 @@ export default function StoreAdd() {
                                             <div className='col-sm-8 '>
                                                 <TextField
                                                     variant="filled"
-                                                    type="number "
+                                                    type="text "
                                                     fullWidth
                                                     name="LicenceNo"
                                                     inputRef={register({
-                                                        required: "LicenceNo is required*."
+                                                        required: "Address is required*.",
+                                                        minLength: {
+                                                            value: 4,
+                                                            message: 'more than 4 characters'
+                                                        },
+                                                        maxLength: {
+                                                            value: 20,
+                                                            message: 'less than 20 characters'
+                                                        },
                                                     })}
-                                                    helperText={errors.LicenceNo?.message}
-                                                    error={Boolean(errors?.LicenceNo)}
+                                                    helperText={errors.LicenceNo?.message || DuplicateError.LicenceNo}
+                                                    error={Boolean(errors?.LicenceNo || DuplicateError.LicenceNo)}
                                                 ></TextField>
                                             </div>
                                         </div>
@@ -407,17 +483,46 @@ export default function StoreAdd() {
                                             </div>
 
                                             <div className='col-sm-3 '>
-                                                <TextField
+
+                                                <FormControl
                                                     variant="filled"
-                                                    type="number "
                                                     fullWidth
                                                     name="License_Type"
-                                                    inputRef={register({
-                                                        required: "LicenceNo is required*."
-                                                    })}
-                                                    helperText={errors.License_Type?.message}
                                                     error={Boolean(errors?.License_Type)}
-                                                ></TextField>
+                                                >
+                                                    <InputLabel id="demo-simple-select-label">
+                                                        Select Your License Type
+                                                    </InputLabel>
+                                                    <Controller
+                                                        render={(props) => (
+                                                            <Select value={props.value} onChange={props.onChange}>
+                                                                <MenuItem value="">Choose your License Type</MenuItem>
+                                                                <MenuItem value={"None"} style={{ fontSize: 15 }}>None</MenuItem>
+                                                                <MenuItem value={"Adult-Use Cultivation"} style={{ fontSize: 15 }}>Adult-Use Cultivation</MenuItem>
+                                                                <MenuItem value={"Adult-Use Nonstorefront"} style={{ fontSize: 15 }}>Adult-Use Mfg</MenuItem>
+                                                                <MenuItem value={"Adult-Use Retail"} style={{ fontSize: 15 }}>Adult-Use Retail</MenuItem>
+                                                                <MenuItem value={"Distributor"} style={{ fontSize: 15 }}>Distributor</MenuItem>
+                                                                <MenuItem value={"Event"} style={{ fontSize: 15 }}>Event</MenuItem>
+                                                                <MenuItem value={"Medical Cultivation"} style={{ fontSize: 15 }}>Medical Cultivation</MenuItem>
+                                                                <MenuItem value={"Medical Mfg"} style={{ fontSize: 15 }}>Medical Mfg</MenuItem>
+                                                                <MenuItem value={"Medical Nonstorefront"} style={{ fontSize: 15 }}>Medical Nonstorefront</MenuItem>
+                                                                <MenuItem value={"Medical Retail"} style={{ fontSize: 15 }}>Medical Retail</MenuItem>
+                                                                <MenuItem value={"Microbusiness"} style={{ fontSize: 15 }}>Microbusiness</MenuItem>
+                                                                <MenuItem value={"Testing Lab"} style={{ fontSize: 15 }}>Testing Lab</MenuItem>
+                                                            </Select>
+                                                        )}
+                                                        name="License_Type"
+                                                        control={control}
+                                                        defaultValue=""
+                                                        rules={{
+                                                            required: "please choose your License Type.",
+                                                        }}
+                                                    />
+                                                    <FormHelperText>{errors.License_Type?.message}</FormHelperText>
+                                                </FormControl>
+
+
+
                                             </div>
                                             <div className="col-5 signup_Display">
                                                 <div className='col display name_style'>
@@ -425,19 +530,45 @@ export default function StoreAdd() {
                                                     <span>Expiration</span>
                                                 </div>
                                                 <div className='col '>
-                                                    <TextField
+                                                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                        {/* 5) Date Picker */}
+                                                        <Controller
+                                                            render={(props) => (
+                                                                <DatePicker
 
-                                                    ></TextField>
+                                                                    variant="inline"
+                                                                    format="MM/dd/yyyy"
+                                                                    margin="normal"
+                                                                    label="Expiration"
+                                                                    value={props.value}
+                                                                    onChange={props.onChange}
+                                                                    fullWidth
+                                                                />
+                                                            )}
+                                                            name="expires"
+                                                            defaultValue={null}
+                                                            control={control}
+
+                                                        />
+                                                    </MuiPickersUtilsProvider>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='col-12 signup_Display '>
 
 
-                                            <StoreStatus></StoreStatus>
+                                            <StoreStatus
+                                                SetStore={SetStore}
+                                            ></StoreStatus>
 
                                         </div>
-                                        <StoreImage></StoreImage>
+                                        <License
+                                            Title="License Doc"
+                                            Name={"LicenseDoc"}
+                                            SetStore={SetStore}
+                                            value={AddStore.LicenseDoc}
+                                            refernce={License_Doc}
+                                        ></License>
 
                                     </div>
                                 </div>

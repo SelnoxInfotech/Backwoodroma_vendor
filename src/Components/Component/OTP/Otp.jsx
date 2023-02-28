@@ -13,7 +13,7 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
     const navigate = useNavigate();
     const [OTP, Setotp] = React.useState()
     const [successCheck, SetSccessCheck] = React.useState(false)
-    const [invalide , Setinvalid] = React.useState(false)
+    const [invalide, Setinvalid] = React.useState(false)
     const handleClose = () => {
         Setotppopup(false)
         setLoading(false)
@@ -32,11 +32,11 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
                 setLoading(false)
                 reset()
                 navigate('/login')
-            }, 5000);
+            }, 3000);
             SetSccessCheck(true)
 
         }).catch((error) => {
-            if(error.response.status=== 400){
+            if (error.response.status === 400) {
 
                 Setinvalid(true)
             }
@@ -91,10 +91,18 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
                                 <Button onClick={handleClose}>Cancel</Button>
                                 <Button onClick={onSubmit}>Verify</Button>
                             </DialogActions>
+
                         </>
-                        : 
-                            <Checkmark size='76px' />
-                    
+                        :
+                        <>
+                            <Checkmark size='76px' color="#31B665" />
+                            <DialogActions>
+                                <Button onClick={handleClose}>Cancel</Button>
+                                <Button onClick={onSubmit}>Verify</Button>
+                            </DialogActions>
+
+
+                        </>
                 }
             </Dialog>
         </div>

@@ -17,11 +17,9 @@ export default function States({ SetStore, AddStore ,selectCountry}) {
     }
 
     React.useEffect(() => {
-        axios.get(`http://34.201.114.126:8000/AdminPanel/FilterStatesByCountry/${selectCountry}`, {
+        axios.get(`http://34.201.114.126:8000/VendorPanel/FilterStatesByCountry/${selectCountry}`, {
 
-            headers: {
-                'Authorization': `Bearer ${token_data}`
-            }
+        
 
         }).then(response => {
             SetState(response.data.data)
