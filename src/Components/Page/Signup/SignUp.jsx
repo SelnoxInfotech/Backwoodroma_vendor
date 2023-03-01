@@ -97,8 +97,8 @@ export default function SignUp() {
                                                     }
                                                 }
                                                 )}
-                                                helperText={errors.username?.message || dulicate?.username}
-                                                error={Boolean(errors?.username) || Boolean(dulicate?.username)}
+                                                helperText={errors.Name?.message || dulicate?.Name}
+                                                error={Boolean(errors?.Name) || Boolean(dulicate?.Name)}
                                             />
                                         </div>
                                     </div>

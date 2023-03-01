@@ -5,8 +5,10 @@ import Button from '@mui/material/Button';
 
 export default function StoreImage({Name,SetStore,value,Title, refernce}) {
     // const inputRef = useRef(null);
-   
+    // console.log(Title)
+
     const handleimage = (event) => {
+    //    console.log(event.target.name)
 
         SetStore(prevState => ({
             ...prevState,
@@ -37,7 +39,7 @@ export default function StoreImage({Name,SetStore,value,Title, refernce}) {
                 <div className='col-sm-8  center'>
                     <div className="col-6 image_background center">
                         <div className="col-4   StoreAdd_Image   ">
-                            <input type="file"  name={Name} id="file" ref={refernce} className="file"onChange={handleimage} />
+                            <input type="file"   name={Title||''} id="file" refs={refernce} className="file"onChange={handleimage} />
 
                             {
                                 value ? <div className="center"  >

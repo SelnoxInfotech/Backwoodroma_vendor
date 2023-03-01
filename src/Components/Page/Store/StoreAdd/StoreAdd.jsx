@@ -52,7 +52,7 @@ export default function StoreAdd() {
         Store_Address: "",
         Stores_Website: "",
         Stores_MobileNo: "",
-        Status: "Active",
+        Status: "",
         Country_id: "",
         State_id: "",
         City_id: "",
@@ -90,11 +90,11 @@ export default function StoreAdd() {
 
 
 
-
+    console.log(AddStore==="",errors)
 
     async function Store(data) {
 
-
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         const entries = Object.entries(data)
 
         // entries.map(([key, value]) => (
@@ -102,16 +102,34 @@ export default function StoreAdd() {
 
         // ))
         var promise = new Promise(function (resolve, reject) {
-            entries.map(([key, value]) => (
-                SetStore(Store => ({ ...Store, [key]: value }))
-    
-            ))
-        });
+            return resolve(
+                entries.map(([key, value]) => (
+                    SetStore(Store => ({ ...Store, [key]: value }))
+        
+                ))
+            )
+            
+        //     if(AddStore===""){
 
-        SetDuplicateError("")
-        submitted()
-        console.log(promise)
-        return promise
+        //         return resolve()
+        //     }
+        //   else{
+            // return  reject(Error("Promise rejected"));
+        //   }
+        });
+        console.log( Promise.reject());
+        promise.then(function(result) {
+            submitted()
+            if(result){
+                SetDuplicateError("")
+            }
+        console.log(promise,result)
+        }, err => {
+            console.log(err); // Error: "Promise rejected"
+         });
+        // SetDuplicateError("")
+        // submitted()
+        // console.log(promise)
     }
 
 
@@ -263,7 +281,7 @@ export default function StoreAdd() {
                                                     fullWidth
                                                     variant="filled"
                                                     // className={classes.inputField}
-                                                    error={Boolean(errors.Country_id)}
+                                                    error={Boolean(errors?.Country_id)}
                                                 >
                                                     <InputLabel id="demo-simple-select-label">
                                                         Select Your country
@@ -381,20 +399,14 @@ export default function StoreAdd() {
                                                 </div>
                                                 <div className='col '>
                                                     <Controller
-                                                        name="Stores_MobileNo"
-                                                        control={control}
-                                                        defaultValue=""
-                                                        ref={mobile}
-                                                        rules={{
-                                                            required: "Enter valid phone number",
-                                                        }}
+                                                        
                                                         render={({ name, onChange, value }) => (
                                                             <MuiPhoneNumber
                                                                 name={name}
                                                                 value={value}
-
+                                                                // inputRef={ref}
                                                                 onChange={onChange}
-                                                                id="contactPhoneNumber"
+                                                                id="Stores_MobileNo"
                                                                 defaultCountry={"in"}
                                                                 style={{ width: "100%" }}
                                                                 label="Contact  "
@@ -404,6 +416,24 @@ export default function StoreAdd() {
                                                                 helperText={errors.Stores_MobileNo?.message || DuplicateError.Stores_MobileNo}
                                                             />
                                                         )}
+                                                        name="Stores_MobileNo"
+                                                        control={control}
+                                                        defaultValue=""
+                                                        ref={mobile}
+                                                        rules={
+                                                            {
+                                                                required: "Enter valid phone number",
+                                                                minLength: {
+                                                                    value: 8,
+                                                                    message: "Please enter minimum 10 digits"
+                                                                },
+                                                                maxLength: {
+                                                                    value: 15,
+                                                                    message: "Please enter valid mobile number"
+                                                                }
+                                                            }
+                                                        }
+                                                      
                                                     />
 
                                                 </div>
@@ -431,7 +461,7 @@ export default function StoreAdd() {
                                             </div>
                                         </div>
                                         <StoreImage
-                                            Title="Store Image"
+                                            Title="Store_Image"
                                             Name={"Store_Image"}
                                             SetStore={SetStore}
                                             value={AddStore.Store_Image}
@@ -563,7 +593,7 @@ export default function StoreAdd() {
 
                                         </div>
                                         <License
-                                            Title="License Doc"
+                                            Title="LicenseDoc"
                                             Name={"LicenseDoc"}
                                             SetStore={SetStore}
                                             value={AddStore.LicenseDoc}
