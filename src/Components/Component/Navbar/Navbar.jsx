@@ -5,62 +5,80 @@ import { BiBell } from "react-icons/bi"
 import { CiUser } from "react-icons/ci"
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import SideNavbar from "./Sidebar/SideNavbar";
+
 const Navbar = () => {
+    const [windowSize, setWindowSize] = React.useState()
+
+    React.useEffect(() => {
+        const handleResize = () => {
+            setWindowSize(window.innerWidth)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+
+        if (windowSize >= 993) {
+            console.log(windowSize >= 993)
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+        else{
+            if (windowSize <= 993) {
+                document.getElementById("mySidebar").style.width = "0px"
+                // 
+            }
+    
+        }
+        
+        return () => window.removeEventListener('resize', handleResize)
+   
+
+    }, [windowSize])
+
+//     React.useEffect(()=>{
+//         if (windowSize >= 993) {
+//         console.log(windowSize >= 993)
+//         document.getElementById("mySidebar").style.width = "0px";
+//     }
+//     if (windowSize <= 993) {
+//         // console.log(windowSize <=993)
+//         // document.getElementById("mySidebar").style.width = "0px";
+//     }
+// },[windowSize])
+
+
+
+
+
+
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginRight = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+
     return (
         <>
-            <nav className="navbar navbar-inverse navbar-expand-lg navbar-light vendor_navbar sticky-top " >
-                <div className="container-fluid ">
-                    {/* main row */}
-                    <div className="row w-100 ">
-                        <div className="col">
-                            <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                {/* <ul className="navbar-nav me-auto mb-2 ml-4">
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Link</a>
-                            </li>
 
+            <nav className="navbar   bg-light_navbar">
+                <div id="mySidebar" className="sidebar" >
+                    <p className="closebtn" >×</p>
+                    <a href="/">About</a>
+                    <a href="/">Services</a>
+                    <a href="/">Clients</a>
+                    <a href="/">Contact</a>
+                </div>
 
-                        </ul> */}
-                                <div className="navbar-nav   col-2 d-flex justify-content-around">
-                                    <Stack direction="row" spacing={0}>
-                                        <Avatar sx={{bgcolor:"#FFFFFF"}}><CiUser color='#AEAEAE'/></Avatar>
-                                    </Stack>
-                                   
-
-                                </div>
-                                <div className='col-4 vendor_head '>
-                                <h7>Hello, Mr</h7>
-                                    <h5>My Nice Guys</h5>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div className="col-6 my-auto" style={{ display: "flex ", justifyContent: "end", gap: "50px" }}>
-
-
-                            <BsChat size={30} style={{ color: "#FFFFFF" }}></BsChat>
-                            <RiShutDownLine size={30} style={{ color: "#FFFFFF" }}></RiShutDownLine>
-                            <BiBell size={30} style={{ color: "#FFFFFF" }}></BiBell>
-                        </div>
-
-                    </div>
-                    {/* main row */}
-
-
-
-
+                <div id="main">
+                    <button className="openbtn " onClick={openNav}>☰</button>
                 </div>
             </nav>
+
+
+
 
         </>
     )
