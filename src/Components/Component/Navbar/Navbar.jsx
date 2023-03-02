@@ -38,6 +38,7 @@ const Navbar = () => {
                                 <div className='col-4 vendor_head '>
                                 <h7>Hello, Mr</h7>
                                     <h5>My Nice Guys</h5>
+                                    <h5>My Nice Guys</h5>
                                 </div>
 
                             </div>
