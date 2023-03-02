@@ -75,6 +75,9 @@
 .signup_Display{
   display: flex;
 }
+
+
+
 @media screen and (max-width: 580px) {
   .signup_Display{
     display:block;
@@ -90,6 +93,11 @@
     letter-spacing: 1px;
   
   }
+ .Fullwidth{
+  min-width: 100%;
+ }
+
+
  
 }
 @media (min-width: 992px){
@@ -160,3 +168,28 @@ font-size: 70px;
 }
 
 
+/* Category */
+.Cotegory_table{
+  height: 100px;
+  background-color: #E1FFED;
+}
+.Cotegory_table_show{
+  height: 100px;
+}
+
+
+.gap{
+  gap: 12px;
+}
+
+.Subcategory_hide{
+  display: none;
+}
+.Subcategory_show{
+  display:flex;
+}
+
+.table_set{
+  display: inline-flex;
+}
+/* end */
