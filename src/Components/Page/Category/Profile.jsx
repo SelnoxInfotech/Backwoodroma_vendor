@@ -16,7 +16,7 @@ import TextField from '@mui/material/TextField';
 import styles from "../../../../src/Style"
 const Profile = () => {
     return (
-        <div className="container Border mt-4">
+        <div className="container Border my-2">
             <div className="row">
                 <div className="col-12 d-flex  justify-content-end my-4">
 
