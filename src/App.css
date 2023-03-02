@@ -147,4 +147,16 @@ font-size: 70px;
   cursor: pointer; 
 } */
 
+/* 1feb */
+.vendor_navbar{
+  background-color: #31B665;
+  height: 10vh;
+}
+.vendor_head h5{
+    color:#FFFFFF;
+}
+.vendor_head h7{
+  color:#FFFFFF;
+}
+
 
