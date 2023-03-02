@@ -250,3 +250,15 @@ justify-content: start;
 .profile_btn{
   border: #C3C3C3;
 }
+.profile_img{
+  position: relative;
+  margin-left: 30px;
+}
+.profile_img h6{
+  margin-top: 10px;
+}
+.profile_edit{
+  color: #595959;
+  font: normal normal bold 50px/31px Open Sans;
+  letter-spacing: 1px;
+}
