@@ -22,6 +22,10 @@
   display: grid;
   gap: 13px;
 }
+
+
+
+
 .name_style {
   display: flex;
   justify-items: left;
