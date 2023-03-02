@@ -4,6 +4,7 @@ import SignUp from '../../Components/Page/Signup/SignUp';
 import Login from "../../Components/Page/Login/Login"
 import StoreAdd from '../../Components/Page/Store/StoreAdd/StoreAdd';
 import Dashboard from "../../Components/Page/Dashboard/Dashboard";
+import Category from '../../Components/Page/Category/Category';
 
 export default function Router() {
  
@@ -17,6 +18,7 @@ export default function Router() {
          <Route path="/Login" element={<Login></Login>}/>
          <Route path="/StoreAdd" element={<StoreAdd></StoreAdd>} />
          <Route path='/Dashboard' element={<Dashboard/>}/>
+         <Route path='/Category' element={<Category/>}/>
         </Routes>
       </BrowserRouter>
       
