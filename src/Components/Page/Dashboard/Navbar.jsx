@@ -13,8 +13,8 @@ const Navbar = () => {
                 <div className="container-fluid ">
                     {/* main row */}
                     <div className="row w-100 ">
-                        <div className="col-6">
-                            <button className="navbar-toggler pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <div className="col">
+                            <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,20 +28,23 @@ const Navbar = () => {
 
 
                         </ul> */}
-                                <div style={{display:"flex",gap:"10px"}}>
-                                    <Stack direction="row" spacing={2}>
-                                        <Avatar><CiUser /></Avatar>
+                                <div className="navbar-nav   col-2 d-flex justify-content-around">
+                                    <Stack direction="row" spacing={0}>
+                                        <Avatar sx={{bgcolor:"#FFFFFF"}}><CiUser color='#AEAEAE'/></Avatar>
                                     </Stack>
-                                    <p>Hello, Mr</p>
-                                    <p>My Admin Panel</p>
+                                   
 
+                                </div>
+                                <div className='col-4 vendor_head '>
+                                <h7>Hello, Mr</h7>
+                                    <h5>My Nice Guys</h5>
                                 </div>
 
                             </div>
                         </div>
 
 
-                        <div className="col-6 " style={{ display: "flex ", justifyContent: "end", gap: "50px" }}>
+                        <div className="col-6 my-auto" style={{ display: "flex ", justifyContent: "end", gap: "50px" }}>
 
 
                             <BsChat size={30} style={{ color: "#FFFFFF" }}></BsChat>
