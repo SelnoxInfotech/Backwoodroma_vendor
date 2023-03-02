@@ -25,6 +25,8 @@ const Profile = () => {
                 <div className="col-md-6">
                     <div className="d-block">
                         <p>Profile</p>
+                        <p>Profile</p>
+
                         <LoadingButton >Upload</LoadingButton>
                     </div>
 
