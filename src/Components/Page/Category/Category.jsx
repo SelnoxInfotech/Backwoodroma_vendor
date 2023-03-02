@@ -9,38 +9,47 @@ export default function Category() {
     function handlechnage(e) {
         Setshow(true)
     }
+    const itemsData = [{ name: "flower", value: 100 }, { name: "edible", value: 200 }]
+    const secItemData = [{ name: "Bud", value: 100 }, { name: "Infused flower", value: 200 }]
+
 
     return (
-        <div className=" center col-12 signup_Display gap">
+        <div className=" center col-12 signup_Display gap mt-4">
             <div className="col-4 Fullwidth ">
                 <table style={{ width: "100%" }}>
                     <tr className="Cotegory_table">
-                        <th>Category</th>
+                        <th className="th1">Category</th>
                         <th>Total</th>
 
                     </tr>
-                    <tr>
-                        <td onClick={handlechnage}>
+                    <tbody className="cat_table_body">
 
-                            <div className="col-8 table_set gap">
-                                <div className="col-2">
+                    {itemsData.map((val) => {
+                        return (
+                            <tr className="cateory_left_tr" key="val">
+                                <td onClick={handlechnage}>
 
-                                    <span className="icon"><MdGames></MdGames></span>
-                                </div>
+                                    <div className="col-8 table_set gap">
+                                        <div className="col-2">
 
-                                <div className="col-6">
+                                            <span className="icon"><MdGames size={20} ></MdGames></span>
+                                        </div>
 
+                                        <div className="col-6">
+                                            {val.name}
 
-                                    Alfreds Futterkiste
-                                </div>
-                            </div>
-                        </td>
-                        <td> Alfreds Futterkiste</td>
-                    </tr>
-                    <tr>
-                        <td><span ><MdGames></MdGames></span> Centro comercial Moctezuma</td>
-                        <td>Alfreds Futterkiste</td>
-                    </tr>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{val.value}</td>
+                            </tr>
+                         
+
+                        )
+                    })}
+                    </tbody>
+
+            
                 </table>
             </div>
             <div className={"col-4  Fullwidth Subcategory_hide " + (show && "Subcategory_show")} >
@@ -50,14 +59,32 @@ export default function Category() {
                         <th></th>
 
                     </tr>
-                    <tr> 
-                    <td>Alfreds Futterkiste</td>    
-                        <td>Alfreds Futterkiste</td>
-                    </tr>
-                    <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Alfreds Futterkiste</td>
-                    </tr>
+                    <tbody className="secItemData_table">
+                    {secItemData.map((ele) => {
+                        return (
+                            <tr key="ele">
+
+                                <td>
+
+                                    <div className="col-8 table_set gap">
+                                        <div className="col-2">
+
+                                            <span className="icon"><MdGames size={20}></MdGames></span>
+                                        </div>
+
+                                        <div className="col-6">
+                                            {ele.name}
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{ele.value}</td>
+                            </tr>
+
+                        )
+                    })}
+                    
+                    </tbody>
                 </table>
             </div>
         </div>

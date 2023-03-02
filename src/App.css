@@ -62,8 +62,8 @@
 }
 .icon {
 
-  font-size: larger;
-  margin-inline: 20px;
+  /* font-size: larger; */
+  margin-inline: 40px;
   color: #747474 ;
 }
 .signup_field{
@@ -173,6 +173,9 @@ font-size: 70px;
   height: 100px;
   background-color: #E1FFED;
 }
+.Cotegory_table .th1{
+text-align: center;
+}
 .Cotegory_table_show{
   height: 100px;
 }
@@ -193,3 +196,32 @@ font-size: 70px;
   display: inline-flex;
 }
 /* end */
+
+.cat_table_body{
+  background-color: #FAFAFA;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.reactIcon{
+color:#C3C3C3;
+background-color:white;
+}
+.secItemData_table{
+  background-color: #FAFAFA;
+  height: 300px;
+  overflow-y: scroll;
+}
+@media(max-width:768px){
+  .userProfile{
+display: flex;
+justify-content: start;
+  }
+}
+.profile_border{
+  border-radius: 33px;
+  border: 1px solid #31B665;
+}
+.profile_btn{
+  border: #C3C3C3;
+}

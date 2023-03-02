@@ -5,7 +5,7 @@ import Login from "../../Components/Page/Login/Login"
 import StoreAdd from '../../Components/Page/Store/StoreAdd/StoreAdd';
 import Dashboard from "../../Components/Page/Dashboard/Dashboard";
 import Category from '../../Components/Page/Category/Category';
-
+import Profile from "../../Components/Page/Category/Profile"
 export default function Router() {
  
 
@@ -19,6 +19,8 @@ export default function Router() {
          <Route path="/StoreAdd" element={<StoreAdd></StoreAdd>} />
          <Route path='/Dashboard' element={<Dashboard/>}/>
          <Route path='/Category' element={<Category/>}/>
+         <Route path='/Profile' element={<Profile/>}/>
+
         </Routes>
       </BrowserRouter>
       
