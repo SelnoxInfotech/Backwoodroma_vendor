@@ -18,6 +18,7 @@ export default function Router() {
          <Route path="/StoreAdd" element={<StoreAdd></StoreAdd>} />
          <Route path='/Dashboard' element={<Dashboard/>}/>
         </Routes>
+        
       </BrowserRouter>
       
   
