@@ -6,6 +6,7 @@ import { CiUser } from "react-icons/ci"
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import SideNavbar from "./Sidebar/SideNavbar";
 const Navbar = () => {
     return (
         <>
@@ -37,7 +38,6 @@ const Navbar = () => {
                                 </div>
                                 <div className='col-4 vendor_head '>
                                 <h7>Hello, Mr</h7>
-                                    <h5>My Nice Guys</h5>
                                     <h5>My Nice Guys</h5>
                                 </div>
 
