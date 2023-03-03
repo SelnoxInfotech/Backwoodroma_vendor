@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useRef} from 'react'
 import { FaUser } from "react-icons/fa"
 import { BiMobile } from "react-icons/bi"
 import { AiOutlineMail } from "react-icons/ai"
@@ -17,9 +17,12 @@ import DateFnsUtils from "@date-io/date-fns";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Otp from "../../Component/OTP/OTP"
+import Otp from "../../Component/OTP/Otp"
+import MuiPhoneNumber from 'material-ui-phone-number';
+import styles from "../../../../src/Style"
 
-export default function SignUp() {
+export default function SignUp() {  
+    const Mobile = useRef(null);
     const { register, handleSubmit, errors, control, reset } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
@@ -29,6 +32,7 @@ export default function SignUp() {
     const [Otppopup, Setotppopup] = React.useState(true)
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    
     const onSubmit = (data) => {
 
     
@@ -82,7 +86,7 @@ export default function SignUp() {
                                                 type="text"
                                                 fullWidth
                                                 // size='small'
-                                                name="username"
+                                                name="Name"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
                                                     required: "Name is required*.",
@@ -96,8 +100,8 @@ export default function SignUp() {
                                                     }
                                                 }
                                                 )}
-                                                helperText={errors.username?.message || dulicate?.username}
-                                                error={Boolean(errors?.username) || Boolean(dulicate?.username)}
+                                                helperText={errors.Name?.message || dulicate?.Name}
+                                                error={Boolean(errors?.Name) || Boolean(dulicate?.Name)}
                                             />
                                         </div>
                                     </div>
@@ -111,7 +115,44 @@ export default function SignUp() {
                                             </div>
 
                                             <div className='col-sm-6 '>
-                                                <TextField
+                                            <Controller
+                                                        
+                                                        render={({ name, onChange, value }) => (
+                                                            <MuiPhoneNumber
+                                                                name={name}
+                                                                value={value}
+                                                                // inputRef={ref}
+                                                                onChange={onChange}
+                                                                id="Mobile"
+                                                                defaultCountry={"in"}
+                                                                style={{ width: "100%" }}
+                                                                label="Contact  "
+                                                                variant="filled"
+                                                                margin="normal"
+                                                                error={Boolean(errors?.Mobile )}
+                                                                helperText={errors.Mobile?.message }
+                                                            />
+                                                        )}
+                                                        name="Mobile"
+                                                        control={control}
+                                                        defaultValue=""
+                                                        ref={Mobile}
+                                                        rules={
+                                                            {
+                                                                required: "Enter valid phone number",
+                                                                minLength: {
+                                                                    value: 8,
+                                                                    message: "Please enter minimum 10 digits"
+                                                                },
+                                                                maxLength: {
+                                                                    value: 15,
+                                                                    message: "Please enter valid mobile number"
+                                                                }
+                                                            }
+                                                        }
+                                                      
+                                                    />
+                                                {/* <TextField
                                                     label="Mobile"
                                                     variant="filled"
                                                     type="number"
@@ -131,7 +172,7 @@ export default function SignUp() {
                                                     })}
                                                     helperText={errors.mobile?.message}
                                                     error={Boolean(errors?.mobile)}
-                                                />
+                                                /> */}
                                             </div>
                                         </div>
 
@@ -230,7 +271,7 @@ export default function SignUp() {
                                                             format="MM/dd/yyyy"
                                                             margin="normal"
                                                             label="Date of Birth"
-                                                            // value={props.value}
+                                                            value={props.value}
                                                             onChange={props.onChange}
                                                             fullWidth
                                                             error={Boolean(errors.DateOfBirth)}
@@ -301,7 +342,7 @@ export default function SignUp() {
                                                 // onClick={handleClick}
                                                 loading={loading}
                                                 variant="outlined"
-
+                                                sx={styles.profileBtn}
                                             >
                                                 <span>SIGN UP</span>
                                             </LoadingButton>

@@ -10,7 +10,7 @@ import { AiFillEye } from "react-icons/ai"
 import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
 import axios from "axios"
-import Otp from "../../Component/OTP/OTP"
+import Otp from "../../Component/OTP/Otp"
 
 function Login() {
 
@@ -26,7 +26,7 @@ function Login() {
     };
 
     const onSubmit = (data) => {
-        axios.post('http://34.201.114.126:8000/VendorPanel/register/',
+        axios.post('http://34.201.114.126:8000/VendorPanel/Login/',
             data,
             setLoading(true),
 

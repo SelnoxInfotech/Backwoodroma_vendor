@@ -5,7 +5,12 @@ const styles = {
       boxShadow: 'none',
       paddingTop: '25px',
       color: '#FFFFFF'
-    }
+    },
+    profileBtn:{
+      backgroundColor:"#31B665 !important",
+      color:"#FFFFFF !important"
+    },
+   
   };
   
 
