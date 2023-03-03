@@ -263,3 +263,6 @@ justify-content: start;
   font: normal normal bold 50px/31px Open Sans;
   letter-spacing: 1px;
 }
+.profile_cont{
+  overflow-x: hidden;
+}

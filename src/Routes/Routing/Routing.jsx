@@ -6,6 +6,7 @@ import StoreAdd from '../../Components/Page/Store/StoreAdd/StoreAdd';
 import Dashboard from "../../Components/Page/Dashboard/Dashboard";
 import Category from '../../Components/Page/Category/Category';
 import Profile from "../../Components/Page/Category/Profile"
+import Product from "../../Components/Page/Product/Product"
 export default function Router() {
  
 
@@ -20,6 +21,7 @@ export default function Router() {
          <Route path='/Dashboard' element={<Dashboard/>}/>
          <Route path='/Category' element={<Category/>}/>
          <Route path='/Profile' element={<Profile/>}/>
+         <Route path='/Product' element={<Product/>}/>
 
         </Routes>
       </BrowserRouter>

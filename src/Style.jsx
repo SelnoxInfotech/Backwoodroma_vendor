@@ -10,6 +10,9 @@ const styles = {
       backgroundColor:"#31B665 !important",
       color:"#FFFFFF !important"
     },
+    radiobtn:{
+      color:"#31B665 !important",
+    }
    
   };
   
