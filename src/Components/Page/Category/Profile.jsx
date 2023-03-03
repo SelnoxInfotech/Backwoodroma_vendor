@@ -20,7 +20,7 @@ const Profile = () => {
     return (
         <div className="container Border my-2 profile_cont">
             <div className="row">
-                <div className="col-12 d-flex  justify-content-end my-4">
+                <div className="col-10 d-flex  justify-content-end my-4">
 
                     <span >Edit</span>
                     <AiTwotoneEdit color="#31B665" size={30} />
