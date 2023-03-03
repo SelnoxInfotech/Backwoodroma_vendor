@@ -12,7 +12,6 @@ export default function Status() {
 
             <div className='col-sm-8 '>
                 <FormControl
-
                 >
                     <FormLabel>Choose Your Gender</FormLabel>
                     <RadioGroup row name="Gender">
