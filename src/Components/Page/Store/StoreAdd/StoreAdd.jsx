@@ -90,43 +90,40 @@ export default function StoreAdd() {
 
 
 
-    console.log(AddStore==="",errors)
+    console.log(AddStore === "", errors)
 
     async function Store(data) {
 
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         const entries = Object.entries(data)
 
-        // entries.map(([key, value]) => (
-        //     SetStore(Store => ({ ...Store, [key]: value }))
-
-        // ))
-        var promise = new Promise(function (resolve, reject) {
-            return resolve(
+        // var promise = new Promise(function (resolve, reject) {
+        //     return resolve(
                 entries.map(([key, value]) => (
                     SetStore(Store => ({ ...Store, [key]: value }))
-        
-                ))
-            )
-            
-        //     if(AddStore===""){
 
-        //         return resolve()
+                ))
+            // )
+        // });
+    
+        console.log(AddStore)
+
+        // submitted()
+
+        // console.log(Promise.reject());
+
+
+
+
+        // promise.then(function (result) {
+        //     submitted()
+        //     if (result) {
+        //         SetDuplicateError("")
         //     }
-        //   else{
-            // return  reject(Error("Promise rejected"));
-        //   }
-        });
-        console.log( Promise.reject());
-        promise.then(function(result) {
-            submitted()
-            if(result){
-                SetDuplicateError("")
-            }
-        console.log(promise,result)
-        }, err => {
-            console.log(err); // Error: "Promise rejected"
-         });
+        //     console.log(promise, result)
+        // }, err => {
+        //     console.log(err); // Error: "Promise rejected"
+        // });
         // SetDuplicateError("")
         // submitted()
         // console.log(promise)
@@ -305,7 +302,7 @@ export default function StoreAdd() {
                                                         control={control}
                                                         defaultValue=""
                                                         rules={{
-                                                            required: "please choose your country.",
+                                                            // required: "please choose your country.",
                                                         }}
                                                     />
                                                     <FormHelperText>{errors.Country_id?.message}</FormHelperText>
@@ -399,7 +396,7 @@ export default function StoreAdd() {
                                                 </div>
                                                 <div className='col '>
                                                     <Controller
-                                                        
+
                                                         render={({ name, onChange, value }) => (
                                                             <MuiPhoneNumber
                                                                 name={name}
@@ -433,7 +430,7 @@ export default function StoreAdd() {
                                                                 }
                                                             }
                                                         }
-                                                      
+
                                                     />
 
                                                 </div>

@@ -1,13 +1,23 @@
 import Navbar from "../../Component/Navbar/Navbar"
-const Dashboard=()=>{
-    return(
-        <div>
-            <Navbar />
-           
-            <div style={{height:"500px"}}>
-            ilwaurhgjkalksajsldhiaskdbhsbjdawlfjkhweufvbnm,dfghjkltyuuyiohoipjpweoiabjcSJXLz
+import Category from "../Category/Category"
+import TopCard from "./TopCard"
+const Dashboard = () => {
+    return (
+
+        <>
+
+
+            <div className="container-fluid    ">
+                <div className="row ">
+                    <div className=' col-12  panel'  >
+                        <TopCard></TopCard>
+                    </div>
+                </div>
             </div>
-        </div>
+
+
+
+        </>
     )
 }
 export default Dashboard
