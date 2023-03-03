@@ -8,30 +8,23 @@ import Avatar from '@mui/material/Avatar';
 
 const Navbar = () => {
     const [windowSize, setWindowSize] = React.useState()
-
     React.useEffect(() => {
         const handleResize = () => {
             setWindowSize(window.innerWidth)
         }
-
         window.addEventListener('resize', handleResize)
-
-
         if (windowSize >= 993) {
             console.log(windowSize >= 993)
             document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
         }
         else{
             if (windowSize <= 993) {
                 document.getElementById("mySidebar").style.width = "0px"
-                // 
+                document.getElementById("main").style.marginLeft = "0px";
             }
-    
         }
-        
         return () => window.removeEventListener('resize', handleResize)
-   
-
     }, [windowSize])
 
 //     React.useEffect(()=>{
@@ -52,7 +45,7 @@ const Navbar = () => {
 
 function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginRight = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
     }
 
     function closeNav() {
@@ -63,7 +56,7 @@ function openNav() {
     return (
         <>
 
-            <nav className="navbar   bg-light_navbar">
+            <nav className="navbar   bg-light_navbar sticky-top">
                 <div id="mySidebar" className="sidebar" >
                     <p className="closebtn" >×</p>
                     <a href="/">About</a>
