@@ -5,9 +5,13 @@ import { BiBell } from "react-icons/bi"
 import { CiUser } from "react-icons/ci"
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
+import SideNavbar from './Sidebar/SideNavbar';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [windowSize, setWindowSize] = React.useState()
+
+    const [Hamburger, SetHamburger] = React.useState("false")
     React.useEffect(() => {
         const handleResize = () => {
             setWindowSize(window.innerWidth)
@@ -16,64 +20,67 @@ const Navbar = () => {
         if (windowSize >= 993) {
             console.log(windowSize >= 993)
             document.getElementById("mySidebar").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
+            SetHamburger(true)
         }
-        else{
+        else {
             if (windowSize <= 993) {
                 document.getElementById("mySidebar").style.width = "0px"
-                document.getElementById("main").style.marginLeft = "0px";
+                SetHamburger(false)
+
             }
         }
         return () => window.removeEventListener('resize', handleResize)
     }, [windowSize])
 
-//     React.useEffect(()=>{
-//         if (windowSize >= 993) {
-//         console.log(windowSize >= 993)
-//         document.getElementById("mySidebar").style.width = "0px";
-//     }
-//     if (windowSize <= 993) {
-//         // console.log(windowSize <=993)
-//         // document.getElementById("mySidebar").style.width = "0px";
-//     }
-// },[windowSize])
 
-
-
-
-
-
-function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
     }
-
     function closeNav() {
         document.getElementById("mySidebar").style.width = "0";
         document.getElementById("main").style.marginLeft = "0";
     }
-
     return (
         <>
+            <nav className="navbar   bg-light_navbar  ">
+                <div className='col-12 Display  '>
+                    <div className='col-4'>
+                        {
+                            Hamburger ?
 
-            <nav className="navbar   bg-light_navbar sticky-top">
-                <div id="mySidebar" className="sidebar" >
-                    <p className="closebtn" >×</p>
-                    <a href="/">About</a>
-                    <a href="/">Services</a>
-                    <a href="/">Clients</a>
-                    <a href="/">Contact</a>
-                </div>
+                                <div className='Display'>
+                                    <Link className="navbar-brand  Display" to="/">
 
-                <div id="main">
-                    <button className="openbtn " onClick={openNav}>☰</button>
+                                        <img src="/image/blank.webp" alt="" className="d-inline-block align-text-top Header_image" />
+
+                                    </Link>
+                                    <div className='col Grid_display'>
+                                        <span>hello</span>
+                                        <span>Mr. Nice Guys</span>
+                                    </div>
+                                </div>
+
+                                :
+                                <button className="openbtn " onClick={openNav}>☰</button>
+                        }
+                    </div>
+                    <div className='col-8  Display  justify'>
+                        <div className='col-2 Navbar_end_width'>
+                            <BsChat></BsChat>
+                        </div>
+                        <div className='col-2 Navbar_end_width'>
+                            <BiBell></BiBell>
+                        </div>
+                        <div className='col-2 Navbar_end_width'>
+                            <RiShutDownLine></RiShutDownLine>
+                        </div>
+                    </div>
                 </div>
             </nav>
-
-
-
-
+            <SideNavbar></SideNavbar>
         </>
     )
 }
 export default Navbar
+
+
