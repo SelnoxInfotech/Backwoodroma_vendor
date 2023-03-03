@@ -223,7 +223,6 @@ export default function StoreAdd() {
                                                 ></TextField>
                                             </div>
                                         </div>
-
                                         <div className='col-12  signup_Display center'>
                                             <div className="col-sm-4 center pading">
                                                 <div className='col-4 name_style'>

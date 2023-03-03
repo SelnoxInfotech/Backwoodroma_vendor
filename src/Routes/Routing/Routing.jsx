@@ -6,15 +6,17 @@ import StoreAdd from '../../Components/Page/Store/StoreAdd/StoreAdd';
 import Dashboard from "../../Components/Page/Dashboard/Dashboard";
 import Category from '../../Components/Page/Category/Category';
 import Profile from "../../Components/Page/Category/Profile"
-
+// import Navbar from '../../Components/Component/Navbar/Navbar';
 import Product from "../../Components/Page/Product/Product"
+import Navbar from '../../Components/Component/Navbar/Navbar';
 export default function Router() {
 
 
   return (
 
 
-      <BrowserRouter basename ="/" >
+    <BrowserRouter basename="/" >
+      <Navbar></Navbar>
         <Routes>
          <Route path="/" element={<SignUp></SignUp>}/>
          <Route path="/Login" element={<Login></Login>}/>
