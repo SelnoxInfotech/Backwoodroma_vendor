@@ -14,13 +14,17 @@ import { MdAssistantNavigation } from "react-icons/md"
 import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import {customTheme} from "../../../../src/Style"
-import { ThemeProvider } from "@mui/material/styles";
+// import {customTheme} from "../../../../src/Style"
+import { ThemeProvider ,createTheme} from "@mui/material/styles";
 
 const Profile = () => {
-    const currentTheme = customTheme();
+    // const currentTheme = customTheme();
+    const theme = createTheme({
+        
+      });
+      console.log(theme)
     return (
-        <ThemeProvider theme={currentTheme}>
+        <ThemeProvider theme={theme}>
         <div className="container Border my-2 profile_cont">
             <div className="row">
                 <div className="col-10 d-flex  justify-content-end my-4">
