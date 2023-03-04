@@ -5,15 +5,36 @@
    font-family: sans-serif;
   
  }
- * {
-  scroll-behavior: smooth;
-}
+
 .col-12 {
   padding: 0;
  
 }
+.Layout_Sider{
+
+}
+.w-100{
+  width: 75%;
+ }
+@media screen and (max-width: 993px) {
+  .Layout_Sider {
+max-width: 0px;
+  }
+  .w-100{
+   width: 100%;
+  }
+
+}
+
+.border_shadow{
+  height: 120px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
 .Display{
   display: flex;
+}
+.top{
+ margin-top: 10px;
 }
 .Grid_display{
   display: grid;
@@ -169,9 +190,9 @@ font-size: 70px;
 }
 .sidebar {
   height: 100%;
-  width: 16%;
+  width: 16vw;
   position: fixed;
-  /* z-index: 0; */
+  z-index: 1  ;
   top: 70px;
   left: 0;
   background-color: #F7F7F7;
@@ -304,6 +325,7 @@ justify-content: start;
 .product_table{
   margin-top: 100px;
 }
+<<<<<<< HEAD
 .product_head{
   display: flex;
 }
@@ -319,3 +341,33 @@ justify-content: start;
    width: 100%;
   }
 }
+=======
+
+
+/* commen_Card */
+.commen_card{
+  position: relative;
+  top: 15px;
+  height: 100px;
+  max-width: 80%;
+  align-items: center;
+  display: flex;
+
+}
+.Top_Card{
+    height: 100px;
+    border-right: 2px solid #00000029; 
+    
+}
+.Centering{
+  position: relative;
+  top: 30%;
+  left: 10%;
+}
+.Centering .col-10{
+  display: grid;
+  font-size: 13px;
+}
+
+/* end */
+>>>>>>> f9fb819841192b634cdf96ec57cd1479dcc774e8

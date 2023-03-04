@@ -19,12 +19,12 @@ const Navbar = () => {
         window.addEventListener('resize', handleResize)
         if (windowSize >= 993) {
             console.log(windowSize >= 993)
-            // document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("mySidebar").style.width = "16vw";
             SetHamburger(true)
         }
         else {
             if (windowSize <= 993) {
-                // document.getElementById("mySidebar").style.width = "0px"
+                document.getElementById("mySidebar").style.width = "0px"
                 SetHamburger(false)
 
             }
@@ -42,7 +42,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <nav className="navbar   bg-light_navbar  ">
+            <nav className="navbar   bg-light_navbar sticky-top  ">
                 <div className='col-12 Display  '>
                     <div className='col-4'>
                         {

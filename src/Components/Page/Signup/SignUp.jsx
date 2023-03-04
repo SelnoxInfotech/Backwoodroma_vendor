@@ -86,10 +86,10 @@ export default function SignUp() {
                                                 type="text"
                                                 fullWidth
                                                 
-                                                name="Name"
+                                                name="username"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
-                                                    required: "Name is required*.",
+                                                    required: "username is required*.",
                                                     minLength: {
                                                         value: 2,
                                                         message: "Please enter valid name"
@@ -100,8 +100,8 @@ export default function SignUp() {
                                                     }
                                                 }
                                                 )}
-                                                helperText={errors.Name?.message || dulicate?.Name}
-                                                error={Boolean(errors?.Name) || Boolean(dulicate?.Name)}
+                                                helperText={errors.username?.message || dulicate?.username}
+                                                error={Boolean(errors?.username) || Boolean(dulicate?.username)}
                                             />
                                         </div>
                                     </div>

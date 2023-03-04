@@ -5,11 +5,8 @@ import StoreAdd from '../Components/Page/Store/StoreAdd/StoreAdd';
 import Dashboard from "../Components/Page/Dashboard/Dashboard";
 import Category from '../Components/Page/Category/Category';
 import Profile from "../Components/Page/Category/Profile"
-
 import Product from "../Components/Page/Product/Product"
-
 import Layout from '../Layout/Layout';
-
 const routesConfig = [
     {
       path: "/",
