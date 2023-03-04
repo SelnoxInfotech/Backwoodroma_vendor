@@ -6,10 +6,10 @@ import { CiUser } from "react-icons/ci"
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import SideNavbar from './Sidebar/SideNavbar';
-// import { Link } from 'react-router-dom';
+import  {Link}  from 'react-router-dom';
 
 const Navbar = () => {
-    const [windowSize, setWindowSize] = React.useState()
+    const [windowSize, setWindowSize] = React.useState() 
 
     const [Hamburger, SetHamburger] = React.useState("false")
     React.useEffect(() => {
@@ -42,18 +42,18 @@ const Navbar = () => {
     }
     return (
         <>
-            <nav className="navbar   bg-light_navbar sticky-top  ">
+            <nav className="navbar   bg-light_navbar  ">
                 <div className='col-12 Display  '>
                     <div className='col-4'>
                         {
                             Hamburger ?
 
                                 <div className='Display'>
-                                    {/* <Link className="navbar-brand  Display" to="/"> */}
+                                    <Link className="navbar-brand  Display" to="/">
 
                                         <img src="/image/blank.webp" alt="" className="d-inline-block align-text-top Header_image" />
 
-                                    {/* </Link> */}
+                                    </Link>
                                     <div className='col Grid_display'>
                                         <span>hello</span>
                                         <span>Mr. Nice Guys</span>

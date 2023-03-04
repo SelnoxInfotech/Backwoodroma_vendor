@@ -29,10 +29,7 @@ const SideNavbar = () => {
     return (
         <>
 
-            {/* <div className="container">
-                <div className="row"> */}
-
-                    <div className='col-2 '>
+     
                         <div id="mySidebar" className="sidebar " >
                             <p className="closebtn" >×</p>
                             <a href="/">About</a>
@@ -40,12 +37,10 @@ const SideNavbar = () => {
                             <a href="/">Clients</a>
                             <a href="/">Contact</a>
 
-                        </div>
+                        
 
-
-                    {/* </div>
-
-                </div> */}
+ 
+           
                 
 </div>
         </>

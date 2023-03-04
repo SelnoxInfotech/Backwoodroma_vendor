@@ -85,7 +85,7 @@ export default function SignUp() {
                                                 variant="filled"
                                                 type="text"
                                                 fullWidth
-                                                // size='small'
+                                                
                                                 name="Name"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
@@ -171,7 +171,7 @@ export default function SignUp() {
                                                 variant="filled"
                                                 type="email"
                                                 fullWidth
-                                                // size='small'
+                                    
                                                 name="email"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
@@ -208,7 +208,7 @@ export default function SignUp() {
                                                 variant="filled"
                                                 fullWidth
                                                 label="Password"
-                                                // size='small'
+                                              
                                                 name="password"
                                                 inputRef={register({
                                                     required: "password  is required*.",

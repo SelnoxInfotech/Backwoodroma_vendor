@@ -111,8 +111,8 @@ const Product = () => {
     return (
         <>
             <div className="container-fluid">
-                <div className="row product">
-                    <div className="col-12">
+                <div className="row ">
+                    <div className="col-10 prod_main_table_col">
                         <div className='col-12 d-flex'>
                             <div className='col'>
                                 <FormControl sx={{ m: 1, minWidth: 120 ,background:"#40D57A",color:"#FFFFFF"}}>

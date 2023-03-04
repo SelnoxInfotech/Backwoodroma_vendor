@@ -1,17 +1,16 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle'
-// import 'bootstrap/dist/js/bootstrap';
-import Router from "../src/Routes/Routing/Routing"
-import SiderNavbar from "./Components/Component/Navbar/Sidebar/SideNavbar"
-import Layout from "./Layout/Layout"
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ConfigRoute from "./Routes/ConfigRoute"
 function App() {
+  
+  const router = createBrowserRouter(ConfigRoute);
+
   return (
     <>
-      {/* <SiderNavbar></SiderNavbar>
-      <Router></Router> */}
-      <Layout></Layout>
+     
+     <RouterProvider router={router} />;
     </>
   );
 }
