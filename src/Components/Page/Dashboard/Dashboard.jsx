@@ -1,6 +1,5 @@
-import Navbar from "../../Component/Navbar/Navbar"
-import Category from "../Category/Category"
-import TopCard from "./TopCard"
+
+import TopCard from "../../Component/CommenCard/TopCard"
 const Dashboard = () => {
     return (
 
@@ -9,8 +8,8 @@ const Dashboard = () => {
 
             <div className="container-fluid    ">
                 <div className="row ">
-                    <div className=' col-12  panel'  >
-                        <TopCard></TopCard>
+                    <div className=' col-12'  >
+                        
                     </div>
                 </div>
             </div>
