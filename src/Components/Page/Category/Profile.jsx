@@ -22,7 +22,6 @@ const Profile = () => {
     const theme = createTheme({
         
       });
-      console.log(theme)
     return (
         <ThemeProvider theme={theme}>
         <div className="container Border my-2 profile_cont">

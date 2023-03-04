@@ -17,41 +17,66 @@ import { ThemeProvider ,createTheme} from "@mui/material/styles";
 
 const resStatus = true;
 const columns = [
-    { field: 'id', headerName: 'id', width: 90 },
+    { field: 'id', headerName: 'id',   minWidth: 40,
+    maxWidth: 90,
+    flex:1,
+    headerAlign: 'left',
+    align: 'left',
+    editable: true, },
 
     {
         field: 'firstName',
         headerName: 'Name',
-        width: 150,
+        minWidth: 60,
+        maxWidth: 100,
+        flex:1,
+        headerAlign: 'left',
+        align: 'left',
         editable: true,
     },
     {
         field: 'category',
         headerName: 'Category',
-        width: 150,
+        minWidth: 60,
+         maxWidth: 100,
+         flex:1,
+         headerAlign: 'center',
+         align: 'center',
         editable: true,
     },
     {
         field: 'price',
         headerName: 'Price',
         type: 'number',
-        width: 110,
+        minWidth: 60,
+        maxWidth: 100,
+        headerAlign: 'center',
+        align: 'center',
+        flex:1,
         editable: true,
     },
     {
         field: 'stock',
         headerName: 'Stock',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
+    
+        sortable: true,
+        minWidth: 60,
+        maxWidth: 140,
+        headerAlign: 'center',
+        align: 'center',
+        flex:1,
 
     },
     {
         field: 'status',
         headerName: 'Status',
 
-        sortable: false,
-        width: 160,
+        sortable: true,
+        minWidth: 50,
+        maxWidth: 140,
+        headerAlign: 'left',
+        align: 'left',
+        flex:1,
         renderCell: () => {
             if (resStatus === true) {
                 return (
@@ -73,15 +98,34 @@ const columns = [
         field: 'edit',
         headerName: 'Edit',
         editable: true,
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
+  
+        sortable: true,
+        minWidth: 60,
+        maxWidth: 140,
+        headerAlign: 'left',
+        align: 'left',
+        flex:1,
         renderCell: () => {
             return (
                 <>
                     <Select
 
                         IconComponent={BsThreeDotsVertical} labelId="demo-simple-select-error-label"
+                        sx={{
+                            boxShadow: "none",
+                            ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                            "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                              {
+                                border: 0,
+                                outline:"none"
+                                
+                              },
+                            "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                              {
+                                border: 0,
+                                outline:"none"
+                              },
+                          }}
                     >
                         <MenuItem>Edit</MenuItem>
                         <MenuItem>Delete</MenuItem>
@@ -112,14 +156,15 @@ const Product = () => {
         <>
             <div className="container-fluid">
                 <div className="row ">
-                    <div className="col-12 ">
-                        <div className='col-12 d-flex'>
+                    <div className="col-12 product_Col ">
+                        <div className='col-12 product_head'>
                             <div className='col'>
-                                <FormControl sx={{ m: 1, minWidth: 120 ,background:"#40D57A",color:"#FFFFFF"}}>
+                                <FormControl sx={{ m: 1, minWidth: 120 ,background:"#31B665",color:"#FFFFFF"}}>
                                     <Select
                                         value={product}
                                         onChange={handleChange}
                                         displayEmpty
+                                        sx={{color:"#FFFFFF"}}
 
                                     >
                                         <MenuItem value="">
@@ -151,15 +196,23 @@ const Product = () => {
 
                             </div>
                             <div className='col mt-2'>
-                              <LoadingButton sx={{color:"#FFFFFF",background:"#40D57A"}}>Import/Export</LoadingButton>
+                              <LoadingButton sx={{color:"#FFFFFF",background:"#A1A1A1"}}>+Import/Export</LoadingButton>
                             </div>
-                            <div className='col text-end'>
-                                <LoadingButton>Add Product</LoadingButton>
+                            <div className='col mt-2'>
+                                <LoadingButton sx={{background:"#A1A1A1"}}>Add Product</LoadingButton>
                             </div>
                         </div>
 
                         <div className='col-12 product_table'>
-                            <Box sx={{ height: 400, width: '100%',   }}>
+                            <Box sx={{ height: 400, width: '100%', "&.MuiDataGrid-root .MuiDataGrid-columnHeader:hover":{
+                                outline:"none"
+                            } ,
+                           
+                                ".MuiDataGrid-root .MuiDataGrid-columnHeader:focus ":{
+                                    outline:"none"
+
+                            }
+                            }}>
                                 <ThemeProvider theme={theme}>
                                 <DataGrid
 
@@ -175,7 +228,13 @@ const Product = () => {
                                         width: '100%',
                                         ".MuiDataGrid-columnHeaders":{
                                             background:"#E1FFED"
-                                        }
+                                        },
+                                        '&  .MuiDataGrid-columnSeparator--sideRight': {
+                                            display: 'none',
+                                          },
+                                          '&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
+                                            outline: 'none',
+                                        },
                                       
                                       
                                     }}

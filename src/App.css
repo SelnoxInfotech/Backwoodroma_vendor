@@ -300,13 +300,22 @@ justify-content: start;
   left: 16.2%;
 }
 
-/* @media(max-width:741px){
-  .product_row{
-    position: absolute;
-    left: 0px;
-    width: 100%;
-  }
-} */
+
 .product_table{
   margin-top: 100px;
+}
+.product_head{
+  display: flex;
+}
+@media(max-width:964px){
+  .product_head{
+    display: block;
+  }
+}
+@media(max-width:993px){
+  .product_Col{
+    position: absolute;
+   left: 0px;
+   width: 100%;
+  }
 }
