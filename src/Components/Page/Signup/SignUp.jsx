@@ -19,7 +19,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Otp from "../../Component/OTP/Otp"
 import MuiPhoneNumber from 'material-ui-phone-number';
-import styles from "../../../../src/Style"
+// import styles from "../../../../src/Style"
 
 export default function SignUp() {  
     const Mobile = useRef(null);
@@ -343,7 +343,6 @@ export default function SignUp() {
                                                 // onClick={handleClick}
                                                 loading={loading}
                                                 variant="outlined"
-                                                sx={styles.profileBtn}
                                             >
                                                 <span>SIGN UP</span>
                                             </LoadingButton>

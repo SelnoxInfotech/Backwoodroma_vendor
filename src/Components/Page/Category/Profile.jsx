@@ -14,10 +14,13 @@ import { MdAssistantNavigation } from "react-icons/md"
 import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import styles from "../../../../src/Style"
+import {customTheme} from "../../../../src/Style"
+import { ThemeProvider } from "@mui/material/styles";
+
 const Profile = () => {
-    
+    const currentTheme = customTheme();
     return (
+        <ThemeProvider theme={currentTheme}>
         <div className="container Border my-2 profile_cont">
             <div className="row">
                 <div className="col-12 d-flex  justify-content-end my-4">
@@ -145,8 +148,8 @@ const Profile = () => {
                                 >
                                     <FormControlLabel    value="female" 
                                        
-                                     control={<Radio  sx={styles.radiobtn}/>} label="Female" />
-                                    <FormControlLabel     value="male" control={<Radio  sx={styles.radiobtn}/>} label="Male" />
+                                     control={<Radio />} label="Female" />
+                                    <FormControlLabel     value="male" control={<Radio/>} label="Male" />
 
                                 </RadioGroup>
                             </FormControl>
@@ -155,7 +158,7 @@ const Profile = () => {
                     </div>
                     <div className="row">
                         <div className="col-md-6 offset-md-4 center ">
-                            <LoadingButton sx={styles.profileBtn}>Edit Profile</LoadingButton>
+                            <LoadingButton className='MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root'>Edit Profile</LoadingButton>
                         </div>
 
                     </div>
@@ -164,6 +167,7 @@ const Profile = () => {
 
 
         </div>
+        </ThemeProvider>
     )
 }
 export default Profile

@@ -6,7 +6,7 @@ import { Select } from '@material-ui/core';
 import { MenuItem } from '@mui/material';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiFillEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import styles from '../../../Style';
+// import styles from '../../../Style';
 
 const resStatus=true;
 const columns = [
@@ -96,16 +96,17 @@ const Product = () => {
         <>
             <div className="container-fluid">
                 <div className="row ">
-                    <div className="col-md-2">
+                    <div className="col-10 prod_main_table_col">
+                        <div className='col-12 d-flex'>
+                            <div className='col'>
                         <h1>Product</h1>
-                    </div>
-                    <div className="col-md-8 text-end ">
-                        <LoadingButton sx={styles.profileBtn}>Add Product</LoadingButton>
-                    </div>
+                        </div>
+                        <div className='col text-end'>
+                        <LoadingButton>Add Product</LoadingButton>
+                        </div>
+                        </div>
 
-                </div>
-                <div className='row'>
-                    <div className='col-md-10'>
+                    <div className='col-12'>
                         <Box sx={{ height: 400, width: '100%' }}>
                             <DataGrid
 
@@ -126,6 +127,8 @@ const Product = () => {
                     </div>
 
                 </div>
+                </div>
+
 
             </div>
         </>
