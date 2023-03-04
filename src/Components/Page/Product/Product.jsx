@@ -14,7 +14,18 @@ import Select from '@mui/material/Select';
 import SearchBar from "material-ui-search-bar";
 import { ThemeProvider ,createTheme} from "@mui/material/styles";
 // import styles from '../../../Style';
-
+const theme = createTheme({
+    palette: {
+        primary: {
+          main: "#fffff",
+        },
+       
+       
+       
+      },
+    
+});
+console.log(theme)
 const resStatus = true;
 const columns = [
     { field: 'id', headerName: 'id',   minWidth: 40,
@@ -143,10 +154,7 @@ const rows = [
 
 ];
 const Product = () => {
-    const theme = createTheme({
-        
-    });
-    console.log(theme)
+ 
     const [product, setProduct] = React.useState('');
 
     const handleChange = (event) => {
@@ -154,6 +162,7 @@ const Product = () => {
     };
     return (
         <>
+        <ThemeProvider theme={theme}>
             <div className="container-fluid">
                 <div className="row ">
                     <div className="col-12 product_Col ">
@@ -186,12 +195,13 @@ const Product = () => {
 
                             </div>
                             <div className='col p-2'>
-                                <Box sx={{
+                                <Box >
+                            <LoadingButton  sx={{
                                 "&.MuiLoadingButton-root":{
-                                    color:"#40D57A"
+                                    color:"#FFFFFF",
+                                    background:"#31B665"
                                 },
-                                background:"",height:"85%"}}>
-                            <LoadingButton >Filter</LoadingButton>
+                                height:"85%"}} variant='outlined' >Filter</LoadingButton>
                                 </Box>
 
                             </div>
@@ -249,6 +259,7 @@ const Product = () => {
 
 
             </div>
+            </ThemeProvider>
         </>
     )
 }
