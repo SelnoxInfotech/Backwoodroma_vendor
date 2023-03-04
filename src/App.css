@@ -340,8 +340,14 @@ justify-content: start;
    left: 0px;
    width: 100%;
   }
+} */
+.product_table{
+  margin-top: 100px;
 }
-=======
+
+.product_table{
+  margin-top: 100px;
+}
 
 
 /* commen_Card */
@@ -368,6 +374,5 @@ justify-content: start;
   display: grid;
   font-size: 13px;
 }
-
 /* end */
->>>>>>> f9fb819841192b634cdf96ec57cd1479dcc774e8
+
