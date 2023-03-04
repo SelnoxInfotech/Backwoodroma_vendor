@@ -325,7 +325,6 @@ justify-content: start;
 .product_table{
   margin-top: 100px;
 }
-<<<<<<< HEAD
 .product_head{
   display: flex;
 }
@@ -341,33 +340,3 @@ justify-content: start;
    width: 100%;
   }
 }
-=======
-
-
-/* commen_Card */
-.commen_card{
-  position: relative;
-  top: 15px;
-  height: 100px;
-  max-width: 80%;
-  align-items: center;
-  display: flex;
-
-}
-.Top_Card{
-    height: 100px;
-    border-right: 2px solid #00000029; 
-    
-}
-.Centering{
-  position: relative;
-  top: 30%;
-  left: 10%;
-}
-.Centering .col-10{
-  display: grid;
-  font-size: 13px;
-}
-
-/* end */
->>>>>>> f9fb819841192b634cdf96ec57cd1479dcc774e8
