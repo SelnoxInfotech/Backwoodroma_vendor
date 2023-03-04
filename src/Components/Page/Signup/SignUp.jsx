@@ -152,27 +152,7 @@ export default function SignUp() {
                                                         }
                                                       
                                                     />
-                                                {/* <TextField
-                                                    label="Mobile"
-                                                    variant="filled"
-                                                    type="number"
-                                                    fullWidth
-                                                    // size='small'
-                                                    name="mobile"
-                                                    inputRef={register({
-                                                        required: "mobile Number is required*.",
-                                                        minLength: {
-                                                            value: 10,
-                                                            message: "Please enter minimum 10 digits"
-                                                        },
-                                                        maxLength: {
-                                                            value: 15,
-                                                            message: "Please enter valid mobile number"
-                                                        }
-                                                    })}
-                                                    helperText={errors.mobile?.message}
-                                                    error={Boolean(errors?.mobile)}
-                                                /> */}
+                                              
                                             </div>
                                         </div>
 
@@ -306,7 +286,7 @@ export default function SignUp() {
                                                 <FormLabel>Choose Your Gender</FormLabel>
                                                 <RadioGroup row name="Gender">
                                                     <FormControlLabel
-                                                    
+
                                                         value="f"
                                                         control={
                                                             <Radio

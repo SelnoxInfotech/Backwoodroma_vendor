@@ -6,7 +6,7 @@ import { CiUser } from "react-icons/ci"
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import SideNavbar from './Sidebar/SideNavbar';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [windowSize, setWindowSize] = React.useState()
@@ -19,12 +19,12 @@ const Navbar = () => {
         window.addEventListener('resize', handleResize)
         if (windowSize >= 993) {
             console.log(windowSize >= 993)
-            document.getElementById("mySidebar").style.width = "250px";
+            // document.getElementById("mySidebar").style.width = "250px";
             SetHamburger(true)
         }
         else {
             if (windowSize <= 993) {
-                document.getElementById("mySidebar").style.width = "0px"
+                // document.getElementById("mySidebar").style.width = "0px"
                 SetHamburger(false)
 
             }
@@ -42,18 +42,18 @@ const Navbar = () => {
     }
     return (
         <>
-            <nav className="navbar   bg-light_navbar  ">
+            <nav className="navbar   bg-light_navbar sticky-top  ">
                 <div className='col-12 Display  '>
                     <div className='col-4'>
                         {
                             Hamburger ?
 
                                 <div className='Display'>
-                                    <Link className="navbar-brand  Display" to="/">
+                                    {/* <Link className="navbar-brand  Display" to="/"> */}
 
                                         <img src="/image/blank.webp" alt="" className="d-inline-block align-text-top Header_image" />
 
-                                    </Link>
+                                    {/* </Link> */}
                                     <div className='col Grid_display'>
                                         <span>hello</span>
                                         <span>Mr. Nice Guys</span>
@@ -77,7 +77,8 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-            <SideNavbar></SideNavbar>
+           
+        
         </>
     )
 }
