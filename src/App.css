@@ -150,9 +150,7 @@ font-size: 70px;
 .bg-light_navbar{
   background-color: #31B665;
 }
-#mySidebar{
-  /* width: 250px; */
-}
+
 @media screen and (max-width: 993px) {
 
   #mySidebar{
@@ -171,7 +169,7 @@ font-size: 70px;
 }
 .sidebar {
   height: 100%;
-  /* width: 0px; */
+  width: 16%;
   position: fixed;
   /* z-index: 0; */
   top: 70px;
@@ -301,6 +299,7 @@ justify-content: start;
   position: relative;
   left: 16.2%;
 }
+
 /* @media(max-width:741px){
   .product_row{
     position: absolute;
