@@ -23,7 +23,21 @@ export default function TopCard() {
       
                 pauseOnHover:true,
               }
-            }
+            },
+            {
+                breakpoint: 1042,
+                settings: {
+                  slidesToShow: 2,
+        
+                }
+              },
+              {
+                breakpoint: 696,
+                settings: {
+                  slidesToShow: 1,
+        
+                }
+              }
         ]
     };
 
