@@ -11,7 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import Select from '@mui/material/Select';
-import SearchBar from "material-ui-search-bar";
+// import SearchBar from "material-ui-search-bar";
 import { ThemeProvider ,createTheme} from "@mui/material/styles";
 // import styles from '../../../Style';
 const theme = createTheme({
@@ -189,9 +189,9 @@ const Product = () => {
 
                             </div>
                             <div className='col mt-2'>
-                                <SearchBar
+                                {/* <SearchBar
                                 placeholder="search"
-                                />
+                                /> */}
 
                             </div>
                             <div className='col p-2'>

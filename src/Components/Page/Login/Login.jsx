@@ -11,14 +11,16 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
 import axios from "axios"
 import Otp from "../../Component/OTP/Otp"
+import LoginOtp from "./LoginOtp";
 
 function Login() {
 
     const [loading, setLoading] = React.useState(false);
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors,reset } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
     const [popup, SetPopup] = React.useState(false)
-
+    const [Otppopup, Setotppopup] = React.useState(true)
+    const [email, Setemail] = React.useState()
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const handleMouseDownPassword = (event) => {
@@ -33,9 +35,10 @@ function Login() {
         ).then((response) => {
             if (response.status === 200)
                 SetPopup(true)
-            // Setemail(data.email)
+            Setemail(data.email)
         }).catch((error) => {
-            // Setduplicate(error.response.data.email)
+            SetPopup(false)
+            console.log(error)
             // if (error.response.data.email) {
             //     Setduplicate(error.response.data)
             // }
@@ -152,13 +155,13 @@ return (
             </div>
 
             {
-                popup && <Otp
-                    // Otppopup={Otppopup}
-                    // Setotppopup={Setotppopup}
-                    // email={email}
-                    // setLoading={setLoading}
-                    // reset={reset}
-                ></Otp>
+                popup && <LoginOtp
+                    Otppopup={Otppopup}
+                    Setotppopup={Setotppopup}
+                    email={email}
+                    setLoading={setLoading}
+                    reset={reset}
+                ></LoginOtp>
             }
         </div>
     </div>

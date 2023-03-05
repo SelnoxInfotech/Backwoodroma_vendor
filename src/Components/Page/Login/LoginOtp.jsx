@@ -9,7 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios"
 import { Checkmark } from 'react-checkmark'
 import { useNavigate } from "react-router-dom";
-export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, reset }) {
+
+
+export default function LoginOtp({ Otppopup, Setotppopup, email, setLoading, reset }) {
     const navigate = useNavigate();
     const [OTP, Setotp] = React.useState()
     const [successCheck, SetSccessCheck] = React.useState(false)
@@ -21,10 +23,10 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
     const handleChange = (Otp) => {
         Setotp(Otp);
     }
-    
+
     const onSubmit = (data) => {
 
-        axios.post('http://34.201.114.126:8000/VendorPanel/OTPverificationForRegisterAPI/',
+        axios.post('http://34.201.114.126:8000/VendorPanel/VerifyOtpLogin/',
             { OTP, email }
         ).then((response) => {
 
@@ -32,7 +34,7 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
                 Setotppopup(false)
                 setLoading(false)
                 reset()
-                navigate('/')
+                navigate('/StoreAdd')
             }, 3000);
             SetSccessCheck(true)
 
