@@ -32,7 +32,14 @@ export default function TopCard() {
                 }
               },
               {
-                breakpoint: 696,
+                breakpoint: 696 ,
+                settings: {
+                  slidesToShow: 2,
+        
+                }
+              },
+              {
+                breakpoint: 500,
                 settings: {
                   slidesToShow: 1,
         
@@ -111,54 +118,54 @@ export default function TopCard() {
 
   
         <div className=" col commen_card  Top_Card" style={{display:"flex" , alignItems:"center"}}>
-                    <div className="col Display Centering  ">
-                        <div className="col-2 ">
-                            <div className="">
-                                <CircularProgress variant="determinate" value={75} color="secondary" />
+                    <div className="col Display Centering  center ">
+                        <div className="col-4 circule">
+                            <div className=" ">
+                                <CircularProgress variant="determinate" value={75} color="success" />
                             </div>
                         </div>
-                        <div className="col-10">
-                            <span>Item Shipped Today 5335</span>
-                            <span>Yesterday was 2423</span>
+                        <div className="col-8 circule">
+                            <p>New Order Today 32423</p>
+                            <span className="card_text">Yesterday was 2423</span>
                         </div>
                     </div>
                 </div>
                 <div className=" col commen_card  Top_Card" style={{display:"flex" , alignItems:"center"}}>
-                    <div className="col Display Centering  ">
-                        <div className="col-2 ">
+                    <div className="col Display Centering center">
+                        <div className="col-4 circule">
                             <div className="">
-                                <CircularProgress variant="determinate" value={75} color="secondary" />
+                                <CircularProgress variant="determinate" value={75} color="primary" />
                             </div>
                         </div>
-                        <div className="col-10">
-                            <span>Item Shipped Today 5335</span>
-                            <span>Yesterday was 2423</span>
+                        <div className="col-8 circule">
+                            <p>New Order Today 32423</p>
+                            <span className="card_text">Yesterday was 2423</span>
                         </div>
                     </div>
                 </div>
                 <div className=" col commen_card  Top_Card" style={{display:"flex" , alignItems:"center"}}>
-                    <div className="col Display Centering  ">
-                        <div className="col-2 ">
+                    <div className="col Display Centering  center">
+                        <div className="col-4 circule">
                             <div className="">
-                                <CircularProgress variant="determinate" value={75} color="secondary" />
+                                <CircularProgress variant="determinate" value={75} color="success" />
                             </div>
                         </div>
-                        <div className="col-10">
-                            <span>Item Shipped Today 5335</span>
-                            <span>Yesterday was 2423</span>
+                        <div className="col-8 circule">
+                        <p>New Order Today 32423</p>
+                            <span className="card_text">Yesterday was 2423</span>
                         </div>
                     </div>
                 </div>
-                <div className=" col commen_card  Top_Card" style={{display:"flex" , alignItems:"center"}}>
-                    <div className="col Display Centering  ">
-                        <div className="col-2 ">
+                <div className=" col commen_card  Top_Card_last" style={{display:"flex" , alignItems:"center"}}>
+                    <div className="col Display Centering center ">
+                        <div className="col-4 circule ">
                             <div className="">
                                 <CircularProgress variant="determinate" value={75} color="secondary" />
                             </div>
                         </div>
-                        <div className="col-10">
-                            <span>Item Shipped Today 5335</span>
-                            <span>Yesterday was 2423</span>
+                        <div className="col-8 circule" >
+                        <p>New Order Today 32423</p>
+                            <span className="card_text">Yesterday was 2423</span>
                         </div>
                     </div>
                 </div>

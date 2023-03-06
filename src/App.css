@@ -353,7 +353,7 @@ justify-content: start;
   position: relative;
   top: 15px;
   height: 100px;
-  max-width: 80%;
+  max-width: 100%;
   align-items: center;
   display: flex;
 
@@ -365,14 +365,69 @@ justify-content: start;
 }
 .Centering{
   position: relative;
-  top: 30%;
-  left: 10%;
+  /* top: 15%; */
+  /* left: 10%; */
 }
 .Centering .col-10{
   display: grid;
   font-size: 13px;
 }
+<<<<<<< HEAD
 /* end */
+=======
+.Top_Card_last{
+  height: 100px;
+}
+.circule{
+  display: grid;
+  align-items: center;
+}
+.card_text{
+  color: #96A5B8;
+  
+}
+/* end */
+
+/* card */
+/* .Card_{
+  min-width: 300px;
+} */
+.card_rate{
+  display: flex;
+  align-items: center;
+ 
+}
+.card_rate span{
+  color: #222B45;
+  font-size: 30px;
+  font-weight: 600;
+}
+.card_span{
+  width: fit-content;
+  background-color: #00E096;
+}
+.card_border{
+  border: 1px solid #A5FFC8;
+}
+
+/* end */
+
+
+
+/* Dashboard */
+@media(max-width:993px){
+  .dashboard{
+   display: flex;
+
+  }
+}
+.dashboard{
+  display:contents;
+
+ }
+/* end */
+
+>>>>>>> 1789b3ef8f02498941ed99a63a3cc8c90fe4bc79
 .TopSelling_head p{
   color:#8B8B8B;
   font-size: large;
@@ -395,8 +450,11 @@ justify-content: start;
     width:100%;
   }
 }
+<<<<<<< HEAD
 .product_weight_row{
   background-color: #FAFAFA;
   margin: 1px;
 }
+=======
+>>>>>>> 1789b3ef8f02498941ed99a63a3cc8c90fe4bc79
 
