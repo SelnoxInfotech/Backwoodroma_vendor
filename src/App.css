@@ -446,4 +446,13 @@ justify-content: start;
     width:100%;
   }
 }
-
+.product_weight_row{
+  background-color: #FAFAFA;
+}
+.strain_btn{
+  width: 90px;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid #FFFFFF;
+  border-color: #FFFFFF;
+}

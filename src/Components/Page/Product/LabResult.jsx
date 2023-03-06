@@ -1,7 +1,12 @@
+
+import TextField from '@mui/material/TextField';
 const LabResult=()=>{
     return(
         <>
-        <h1>Lab Result</h1>
+        <div className="row">
+            
+
+        </div>
         </>
     )
 }
