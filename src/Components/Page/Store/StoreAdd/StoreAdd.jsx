@@ -19,6 +19,7 @@ import States from "../StoreComponent/StoreState"
 import StoreCity from "../StoreComponent/StoreCity"
 import MuiPhoneNumber from 'material-ui-phone-number';
 import DateFnsUtils from "@date-io/date-fns";
+import { useNavigate } from "react-router-dom";
 import {
     InputLabel,
     Select,
@@ -31,6 +32,7 @@ import { FormControl, FormHelperText, } from "@material-ui/core";
 import Box from '@mui/material/Box';
 import axios from "axios";
 export default function StoreAdd() {
+    const navigate = useNavigate();
     const storeImage = useRef(null);
     const License_Doc = useRef(null);
     const mobile = useRef(null);
@@ -108,7 +110,7 @@ export default function StoreAdd() {
     
         console.log(AddStore)
 
-        // submitted()
+        submitted()
 
         // console.log(Promise.reject());
 
@@ -153,12 +155,16 @@ export default function StoreAdd() {
         axios.post(
             'http://34.201.114.126:8000/VendorPanel/Add-Stores/',
             formdata,
-            // Setloading(true)
+            Setloading(true)
         ).then((response) => {
+            setTimeout(() => {
+                navigate('/Dashboard')
+            }, 2500);
             SetSuccessFull(true);
-        }).catch(
-            function (error) {
-
+            Setloading(false)
+            window.scrollTo(0, 0)
+        }).catch( function (error) {
+            Setloading(false)
                 if (error.response.data.error.LicenceNo) {
                     SetDuplicateError(prevState => ({
                         ...prevState,
