@@ -372,9 +372,6 @@ justify-content: start;
   display: grid;
   font-size: 13px;
 }
-<<<<<<< HEAD
-/* end */
-=======
 .Top_Card_last{
   height: 100px;
 }
@@ -427,7 +424,6 @@ justify-content: start;
  }
 /* end */
 
->>>>>>> 1789b3ef8f02498941ed99a63a3cc8c90fe4bc79
 .TopSelling_head p{
   color:#8B8B8B;
   font-size: large;
@@ -450,11 +446,4 @@ justify-content: start;
     width:100%;
   }
 }
-<<<<<<< HEAD
-.product_weight_row{
-  background-color: #FAFAFA;
-  margin: 1px;
-}
-=======
->>>>>>> 1789b3ef8f02498941ed99a63a3cc8c90fe4bc79
 
