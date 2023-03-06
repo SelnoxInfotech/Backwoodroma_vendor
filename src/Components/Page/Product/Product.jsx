@@ -11,16 +11,15 @@ import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import Select from '@mui/material/Select';
-<<<<<<< HEAD
+
 import SearchBar from "material-ui-search-bar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Tooltip from '@mui/material/Tooltip';
 import AddProduct from "./AddProduct"
 // import TopSellingProduct from "./TopSellingProduct"
-=======
 // import SearchBar from "material-ui-search-bar";
-import { ThemeProvider ,createTheme} from "@mui/material/styles";
->>>>>>> 75a54ee960dad6dc6e243644f324e4696962eed7
+// import { ThemeProvider ,createTheme} from "@mui/material/styles";
+
 // import styles from '../../../Style';
 const theme = createTheme({
     palette: {
@@ -266,13 +265,10 @@ const Product = () => {
                                         <AddProduct></AddProduct>
                                 </div>
                             </div>
-<<<<<<< HEAD
-=======
                             <div className='col mt-2'>
                                 {/* <SearchBar
                                 placeholder="search"
                                 /> */}
->>>>>>> 75a54ee960dad6dc6e243644f324e4696962eed7
 
                             <div className='col-12 product_table'>
                                 <Box sx={{
@@ -320,7 +316,7 @@ const Product = () => {
 
                         </div>
                     </div>
-
+</div>
 
                 </div>
             </ThemeProvider>
