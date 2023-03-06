@@ -345,12 +345,7 @@ justify-content: start;
   margin-top: 100px;
 }
 
-.product_table{
-  margin-top: 100px;
-}
-.product_table{
-  margin-top: 100px;
-}
+
 
 
 /* commen_Card */
@@ -377,6 +372,27 @@ justify-content: start;
   display: grid;
   font-size: 13px;
 }
+.TopSelling_head p{
+  color:#8B8B8B;
+  font-size: large;
+}
 
+.product_title{
+  color: #000000;
+  font-size: 25px;
+  font-weight: 700;
+}
+.Add_prod{
+  display: flex;
+}
+@media(max-width:767px){
+  .Add_prod{
+    display: block;
+
+  }
+  .add_prod_left_col{
+    width:100%;
+  }
+}
 /* end */
 

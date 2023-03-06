@@ -7,6 +7,7 @@ import Category from '../Components/Page/Category/Category';
 import Profile from "../Components/Page/Category/Profile"
 import Product from "../Components/Page/Product/Product"
 import Layout from '../Layout/Layout';
+import TopSellingProduct from '../Components/Page/Product/TopSellingProduct';
 const routesConfig = [
     {
       path: "/",
@@ -39,6 +40,10 @@ const routesConfig = [
           path: "/Product",
           element: <Product />,
         },
+        {
+          path:"/TopSellingProduct",
+          element:<TopSellingProduct/>
+        }
       ],
     },
   ];
