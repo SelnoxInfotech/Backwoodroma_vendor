@@ -2,8 +2,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-// import { Select } from '@material-ui/core';
-// import { MenuItem } from '@mui/material';
+
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiFillEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import InputLabel from '@mui/material/InputLabel';
@@ -16,11 +15,7 @@ import SearchBar from "material-ui-search-bar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Tooltip from '@mui/material/Tooltip';
 import AddProduct from "./AddProduct"
-// import TopSellingProduct from "./TopSellingProduct"
-// import SearchBar from "material-ui-search-bar";
-// import { ThemeProvider ,createTheme} from "@mui/material/styles";
 
-// import styles from '../../../Style';
 const theme = createTheme({
     palette: {
         primary: {

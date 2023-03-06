@@ -1,94 +1,73 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import Select from '@mui/material/Select';
+import * as React from 'react';
 import SearchBar from "material-ui-search-bar";
-import LoadingButton from '@mui/lab/LoadingButton';
-
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { DataGrid } from '@mui/x-data-grid';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#fffff",
-        },
-
-
-
-    },
 
 });
 const columns = [
     {
-        field: 'id', headerName: 'ID',
+        field: 'id',
+        headerName: 'ID',
         minWidth: 60,
-        maxWidth: 100,
+        maxWidth: 140,
+        headerAlign: 'center',
+        align: 'center',
         flex: 1,
-        headerAlign: 'left',
-        align: 'left',
     },
     {
-        field: 'productName',
-        headerName: 'Product Name',
+        field: 'image',
+        headerName: 'Image',
         minWidth: 60,
-        maxWidth: 100,
+        maxWidth: 140,
+        headerAlign: 'center',
+        align: 'center',
         flex: 1,
-        headerAlign: 'left',
-        align: 'left',
         editable: true,
     },
     {
-        field: 'date',
-        headerName: 'Date',
+        field: 'name',
+        headerName: 'Name',
         minWidth: 60,
-        maxWidth: 100,
+        maxWidth: 140,
+        headerAlign: 'center',
+        align: 'center',
         flex: 1,
-        headerAlign: 'left',
-        align: 'left',
         editable: true,
     },
     {
-        field: 'price',
-        headerName: 'Price',
+        field: 'category',
+        headerName: 'Category',
         minWidth: 60,
-        maxWidth: 100,
+        maxWidth: 140,
+        headerAlign: 'center',
+        align: 'center',
         flex: 1,
-        headerAlign: 'left',
-        align: 'left',
         editable: true,
     },
     {
-        field: 'quantity',
-        headerName: 'Quantity',
+        field: 'inventory',
+        headerName: 'Inventory',
         minWidth: 60,
-        maxWidth: 100,
+        maxWidth: 140,
+        headerAlign: 'center',
+        align: 'center',
         flex: 1,
-        headerAlign: 'left',
-        align: 'left',
-        editable: true,
-    },
-    {
-        field: 'amount',
-        headerName: 'Amount',
-        minWidth: 60,
-        maxWidth: 100,
-        flex: 1,
-        headerAlign: 'left',
-        align: 'left',
         editable: true,
     },
 
 
 ];
 const rows = [
-    { id: 1, productName: "soap", date: new Date().toJSON().slice(0, 10), price: 10, quantity: 1, amount: 100 },
-    { id: 2, productName: "apple", date: new Date().toJSON().slice(0, 10), price: 60, quantity: 2, amount: 200 },
-
-];
-
-const TopSellingProduct = () => {
+    { id: 1, image: 'Snow', name: 'Jon', category: "Flower", inventory: "In stock" },
+    { id: 2, image: 'Lannister', name: 'Cersei', category: "Flower", inventory: "out stock" },
+]
+const Inventory = () => {
     const [product, setProduct] = React.useState('');
 
     const handleChange = (event) => {
@@ -97,7 +76,6 @@ const TopSellingProduct = () => {
     return (
         <>
             <ThemeProvider theme={theme}>
-
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12 product_Col">
@@ -108,12 +86,12 @@ const TopSellingProduct = () => {
                                             value={product}
                                             onChange={handleChange}
                                             displayEmpty
-                                            size='large'
                                             sx={{
                                                 color: "#FFFFFF",
                                                 "& .MuiSvgIcon-root": {
                                                     color: "#FFFFFF",
                                                 },
+
 
                                             }}
 
@@ -128,55 +106,64 @@ const TopSellingProduct = () => {
                                         </Select>
 
                                     </FormControl>
+
                                 </div>
-                                <div className="col p-2">
-                                <Box sx={{
-                                        ".MuiSvgIcon-root":{
-                                            color:"#31B665"
+                                <div className='col m-2'>
+                                    <Box sx={{
+                                        ".MuiSvgIcon-root": {
+                                            color: "#31B665"
                                         }
                                     }}>
-                                    <SearchBar
-                                        placeholder="search"
+                                        <SearchBar
+                                            placeholder="search"
 
-                                    />
+                                        />
                                     </Box>
                                 </div>
-                                <div className='col p-2'>
-                                    <Box >
-                                        <LoadingButton sx={{
-                                            "&.MuiLoadingButton-root": {
+                                <div className='col m-2'>
+                                    <Button
+                                        size='large'
+                                        sx={{
+                                            "&.MuiButtonBase-root": {
                                                 color: "#FFFFFF",
                                                 background: "#31B665"
-                                            },
-                                        }} size="large" variant='outlined' >Filter</LoadingButton>
-                                    </Box>
+                                            }
 
+                                        }}
+                                        variant="outlined" >
+                                        Filter
+                                    </Button>
                                 </div>
+
                             </div>
-
-                            <div className="col-12 TopSelling_head product_table">
-
-                                <Box sx={{ height: 455, width: '100%', background: "#FFFFFF", boxShadow: 1, padding: 1 }}>
-                                    <p >Top selling Products</p>
+                            <div className='col-12'>
+                                <Box sx={{ height: 400, width: '100%' ,"&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
+                                                outline: "none",
+                                             },}}>
                                     <DataGrid
                                         rows={rows}
                                         columns={columns}
-                                        pageSize={5}
-                                        rowsPerPageOptions={[5]}
-                                        checkboxSelection
-                                        disableSelectionOnClick
-                                        experimentalFeatures={{ newEditingApi: true }}
-                                        sx={{
-                                            height: 400,
-                                            width: '100%',
-                                            "&.Mui-selected": {
-                                                backgroundColor: "#31B665"
+                                        initialState={{
+                                            pagination: {
+                                                paginationModel: {
+                                                    pageSize: 5,
+                                                },
                                             },
+                                        }}
+                                        pageSizeOptions={[5]}
+                                        checkboxSelection
+                                        disableRowSelectionOnClick
+                                        sx={{
                                             ".MuiDataGrid-columnHeaders": {
                                                 background: "#E1FFED"
                                             },
-                                            '&  .MuiDataGrid-columnSeparator--sideRight': {
+                                            ' .MuiDataGrid-columnSeparator--sideRight ': {
                                                 display: 'none',
+                                            },
+
+
+                                            '&.MuiDataGrid-root .MuiDataGrid-cell:focus-within': {
+                                                outline: 'none',
                                             },
                                             '&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
                                                 outline: 'none',
@@ -184,10 +171,20 @@ const TopSellingProduct = () => {
                                             "&.MuiDataGrid-root .MuiDataGrid-row:hover": {
                                                 backgroundColor: "#FFFFFF"
                                             },
+                                            "&.MuiDataGrid-root .MuiDataGrid-columnHeader:hover": {
+                                                outline: "none"
+                                            },
+                                            "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus": {
+                                                outline: "none"
+                                            },
+                                            "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within": {
+                                                outline: "none",
+                                             },
 
                                         }}
                                     />
                                 </Box>
+
                             </div>
 
                         </div>
@@ -199,4 +196,4 @@ const TopSellingProduct = () => {
         </>
     )
 }
-export default TopSellingProduct;
+export default Inventory

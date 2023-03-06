@@ -8,6 +8,8 @@ import Profile from "../Components/Page/Category/Profile"
 import Product from "../Components/Page/Product/Product"
 import Layout from '../Layout/Layout';
 import TopSellingProduct from '../Components/Page/Product/TopSellingProduct';
+import Inventory from "../Components/Page/Product/Inventory"
+
 const routesConfig = [
     {
       path: "/",
@@ -43,6 +45,10 @@ const routesConfig = [
         {
           path:"/TopSellingProduct",
           element:<TopSellingProduct/>
+        },
+        {
+          path:"/Inventory",
+          element:<Inventory/>
         }
       ],
     },
