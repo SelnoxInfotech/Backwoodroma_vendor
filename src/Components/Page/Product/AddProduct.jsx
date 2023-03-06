@@ -111,7 +111,7 @@ const AddProduct = () => {
                                  </div>
                                 </div>
                                 <div className='col-sm-5 border p-2 '>
-                                    <h1>ekoek</h1>
+                                    <h1>Show in online</h1>
                                 </div>
                             </div>
 
