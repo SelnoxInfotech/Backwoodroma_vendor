@@ -20,6 +20,8 @@ import Select from '@mui/material/Select';
 import LabResult from "./LabResult"
 import StockCheckBox from "./StockCheckbox"
 import Strain from "./Strain"
+import ToggleButton from "./ToggleButton"
+import ProductGiftVoucher from "./ProductGiftVoucher"
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
@@ -71,7 +73,7 @@ const AddProduct = () => {
     const [tax, setTax] = React.useState("")
     const [Weight, setWeight] = React.useState("")
     const [flavour, setFlavour] = React.useState("")
-    const [store,setStore]=React.useState("")
+    const [store, setStore] = React.useState("")
     const handleChange = (event) => {
         setDiscount(event.target.value);
     };
@@ -85,9 +87,10 @@ const AddProduct = () => {
     const handleChangeFlavour = (event) => {
         setFlavour(event.target.value)
     }
-    const handleChangeStore=(event)=>{
+    const handleChangeStore = (event) => {
         setStore(event.target.value)
     }
+
     return (
         <>
             <Button
@@ -169,7 +172,10 @@ const AddProduct = () => {
                                         <label>Product Image</label>
                                     </div>
                                     <div className='col-md-8'>
-                                        <div>Image</div>
+                                        <div className='AddProduct_img'>
+                                        <input className='addProd_image_input' type="file" id="file" variant="outlined" />
+
+                                        </div>
                                     </div>
 
                                 </div>
@@ -319,7 +325,8 @@ const AddProduct = () => {
                                     </div>
                                     <div className='col-lg-4'>
                                         <span>Labresults</span>
-
+                                        <LabResult/>
+                                           
                                     </div>
                                     {/* <div className='col-lg-10'>
                                         <LabResult/>
@@ -329,10 +336,10 @@ const AddProduct = () => {
                                 <div className='row product_weight_row mt-2 mb-2  pt-4 pb-4'>
                                     <p className='product_title'>Store Details</p>
                                     <div className='col-lg-2'>
-                                     <label>Store Name</label>
+                                        <label>Store Name</label>
                                     </div>
                                     <div className='col-lg-3'>
-                                    <FormControl sx={{ minWidth: 120 }}>
+                                        <FormControl sx={{ minWidth: 120 }}>
                                             <Select
                                                 value={store}
                                                 onChange={handleChangeStore}
@@ -353,10 +360,10 @@ const AddProduct = () => {
                                 </div>
                                 <div className='row'>
                                     <div className='col-lg-2'>
-                                      <label>Stock</label>
+                                        <label>Stock</label>
                                     </div>
                                     <div className='col-lg-6'>
-                                        <StockCheckBox/>
+                                        <StockCheckBox />
 
                                     </div>
 
@@ -365,31 +372,80 @@ const AddProduct = () => {
 
                             </div>
                             <div className='col-md-4 border'>
-                                <div className='row mt-2'>
+                                <div className='row mt-2 mb-2'>
                                     <div className='col-lg-6'>
-                                    <label>Show in Online Store</label>
+                                        <label>Show in Online Store</label>
                                     </div>
                                     <div className='col-lg-6'>
-                                      <Button>Show</Button>
+                                        <ToggleButton></ToggleButton>
                                     </div>
 
                                 </div>
-                                <div className='row product_weight_row pt-4 pb-4'>
+                                <div className='row product_weight_row pt-4 pb-4 center'>
 
-                                    <p className='product_title'>Strain</p>
+                                    <p className='product_title center'>Strain</p>
+                                    {/* <div className='col-lg-12 '> */}
+                                    <Strain />
+
+                                    {/* </div> */}
+
+                                </div>
+                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4'>
+                                    <p className='product_title '>Category</p>
                                     <div className='col-lg-10 '>
-                                    <Strain/>
 
                                     </div>
 
                                 </div>
-                                <div className='row'>
-                                    <div className='col-lg-10'>
-                                 
+                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4'>
+                                    <p className='product_title '>Brand</p>
+                                    <div className='col-lg-12 center'>
+                                        <FormControl sx={{ minWidth: 120 }}>
+                                            <Select
+                                                // value={brand}
+                                                // onChange={handleChangeBrand}
+                                                displayEmpty
+                                                inputProps={{ 'aria-label': 'Without label' }}
+                                                size="small"
+                                            >
+                                                <MenuItem value="">
+                                                    <em>None</em>
+                                                </MenuItem>
+                                                <MenuItem value={"Brand"}>Brand</MenuItem>
+
+                                            </Select>
+
+                                        </FormControl>
                                     </div>
 
                                 </div>
+                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4'>
+                                    <p className='product_title '>Gift Voucher / Coupon</p>
+
+                                    <div className='col-lg-12'>
+                                        <ProductGiftVoucher />
+
+                                    </div>
+                                    {/* <div className='col-lg-12 center'> */}
+
+                                    {/* </div> */}
+
+                                </div>
+
                             </div>
+                        </div>
+                        <div className='row center my-3'>
+                            <div className='col-lg-12'>
+                                <Button sx={{
+                                    "&.MuiButtonBase-root": {
+                                        backgroundColor: "#31B665",
+                                        color: "#FFFFFF"
+                                    }
+
+                                }}>Add Product</Button>
+
+                            </div>
+
                         </div>
 
 
