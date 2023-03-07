@@ -10,9 +10,7 @@
   padding: 0;
  
 }
-.Layout_Sider{
 
-}
 .w-100{
   width: 75%;
  }
@@ -358,6 +356,7 @@ justify-content: start;
   display: flex;
 
 }
+
 .Top_Card{
     height: 100px;
     border-right: 2px solid #00000029; 
@@ -365,9 +364,9 @@ justify-content: start;
 }
 .Centering{
   position: relative;
-  /* top: 15%; */
-  /* left: 10%; */
+ 
 }
+
 .Centering .col-10{
   display: grid;
   font-size: 13px;
@@ -422,6 +421,39 @@ justify-content: start;
   display:contents;
 
  }
+
+.OrderTrack{
+  
+  display: flex;
+}
+.OrderTrack .Hedding{
+  font-size: 35px;
+  font-weight: 600;
+}
+.AllButton {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+}
+@media(max-width:500px){
+  .OrderTrack .Hedding{
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+.OrderTrack_detaile{
+  height: 100%;
+  padding: 20px;
+}
+
+.Right_border{
+  font-size: 21px;
+    font-weight: 600;
+  border-right: 1px solid #B9B9B9;
+}
+.Price_color{
+  color: #1BA779;
+}
 /* end */
 
 .TopSelling_head p{
@@ -446,6 +478,7 @@ justify-content: start;
     width:100%;
   }
 }
+
 .product_weight_row{
   background-color: #FAFAFA;
 
@@ -541,4 +574,13 @@ justify-content: start;
  
 
 }
-  
+
+
+
+
+/* Stepper */
+.Stepper{
+  height: 100%;
+}
+/* end */
+

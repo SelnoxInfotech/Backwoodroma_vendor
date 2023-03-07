@@ -22,7 +22,6 @@ import MuiPhoneNumber from 'material-ui-phone-number';
 // import styles from "../../../../src/Style"
 
 export default function SignUp() {  
-    const Mobile = useRef(null);
     const { register, handleSubmit, errors, control, reset } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
@@ -121,7 +120,7 @@ export default function SignUp() {
                                                             <MuiPhoneNumber
                                                                 name={name}
                                                                 value={value}
-                                                                // inputRef={ref}
+                                                              size="small"
                                                                 onChange={onChange}
                                                                 id="Mobile"
                                                                 defaultCountry={"in"}
@@ -136,7 +135,7 @@ export default function SignUp() {
                                                         name="Mobile"
                                                         control={control}
                                                         defaultValue=""
-                                                        ref={Mobile}
+                                                      fullWidth
                                                         rules={
                                                             {
                                                                 required: "Enter valid phone number",
@@ -171,7 +170,7 @@ export default function SignUp() {
                                                 variant="filled"
                                                 type="email"
                                                 fullWidth
-                                    
+                                                size="small"
                                                 name="email"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
@@ -208,7 +207,7 @@ export default function SignUp() {
                                                 variant="filled"
                                                 fullWidth
                                                 label="Password"
-                                              
+                                                size="small"
                                                 name="password"
                                                 inputRef={register({
                                                     required: "password  is required*.",
@@ -246,7 +245,7 @@ export default function SignUp() {
                                                 <Controller
                                                     render={(props) => (
                                                         <DatePicker
-
+                                                        size="small"
                                                             variant="inline"
                                                             format="MM/dd/yyyy"
                                                             margin="normal"

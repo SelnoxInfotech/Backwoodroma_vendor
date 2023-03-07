@@ -9,9 +9,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios"
 import { Checkmark } from 'react-checkmark'
 import { useNavigate } from "react-router-dom";
-
+import Cookies from 'universal-cookie';
 
 export default function LoginOtp({ Otppopup, Setotppopup, email, setLoading, reset }) {
+    const cookies = new Cookies();
     const navigate = useNavigate();
     const [OTP, Setotp] = React.useState()
     const [successCheck, SetSccessCheck] = React.useState(false)
@@ -35,9 +36,12 @@ export default function LoginOtp({ Otppopup, Setotppopup, email, setLoading, res
                 setLoading(false)
                 reset()
                 navigate('/StoreAdd')
-            }, 3000);
+            }, 2000);
             SetSccessCheck(true)
-
+            let date = new Date();
+            date.setTime(date.getTime() + (60 * 60 * 8000))
+            cookies.set('Token_access', response.data.tokens.access, { expires: date })
+            navigate("/");
         }).catch((error) => {
             if (error.response.status === 400) {
 
