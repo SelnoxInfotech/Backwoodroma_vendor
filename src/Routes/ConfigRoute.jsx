@@ -9,7 +9,9 @@ import Product from "../Components/Page/Product/Product"
 import Layout from '../Layout/Layout';
 import TopSellingProduct from '../Components/Page/Product/TopSellingProduct';
 import Inventory from "../Components/Page/Product/Inventory"
+import Protected from "./ProtectedRouting"
 
+import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper"
 const routesConfig = [
     {
       path: "/",
@@ -24,11 +26,15 @@ const routesConfig = [
       element: <SignUp />,
     },
     {
+      path:"/Stepper",
+      element:<HorizontalStepperWithError/>
+    },
+    {
       element: <Layout />,
       children: [
         {
           path: "/Dashboard",
-          element: <Dashboard />,
+          element: <Protected Component={Dashboard} />,
         },
         {
           path: "/Categoy",
