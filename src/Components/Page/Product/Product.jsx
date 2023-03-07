@@ -97,25 +97,25 @@ const columns = [
                     <>
                         <Tooltip title="Active" enterDelay={300} leaveDelay={200} arrow placement="right-start">
 
-                        <p
-                            style={{ color: "#31B665 ", fontSize: 25, cursor: "pointer" }}
+                            <p
+                                style={{ color: "#31B665 ", fontSize: 25, cursor: "pointer" }}
 
-                        >
-                            <AiFillEye/>
-                        </p>
+                            >
+                                <AiFillEye />
+                            </p>
                         </Tooltip>
                     </>
                 )
             }
             return (
                 <>
-                        <Tooltip title="Hide" enterDelay={300} leaveDelay={200} arrow placement="right-start">
-                
-                    <p
-                        style={{ color: "red ", fontSize: 25, cursor: "pointer" }}>
-                    <AiOutlineEyeInvisible/>
+                    <Tooltip title="Hide" enterDelay={300} leaveDelay={200} arrow placement="right-start">
 
-                    </p>
+                        <p
+                            style={{ color: "red ", fontSize: 25, cursor: "pointer" }}>
+                            <AiOutlineEyeInvisible />
+
+                        </p>
                     </Tooltip>
                 </>
             )
@@ -192,18 +192,19 @@ const Product = () => {
                         <div className="col-12 product_Col ">
                             <div className='col-12 product_head'>
                                 <div className='col'>
-                                    <FormControl sx={{ m: 1, minWidth: 120, background: "#31B665", }}>
+                                    {/* <FormControl sx={{ m: 1, minWidth: 120, background: "#31B665", }}> */}
                                         <Select
                                             value={product}
                                             onChange={handleChange}
                                             displayEmpty
-                                            sx={{
-                                                color: "#FFFFFF",
-                                                "& .MuiSvgIcon-root": {
-                                                  color: "#FFFFFF",
-                                                },
-                                        
-                                        }}
+                                            name='productfilter'
+                                                // sx={{
+                                                //     color: "#FFFFFF",
+                                                //     "& .MuiSvgIcon-root": {
+                                                //         color: "#FFFFFF",
+                                                //     },
+
+                                                // }}
 
                                         >
                                             <MenuItem value="">
@@ -215,19 +216,19 @@ const Product = () => {
                                             <MenuItem value={"Inventory"}>Inventory</MenuItem>
                                         </Select>
 
-                                    </FormControl>
+                                    {/* </FormControl> */}
 
                                 </div>
                                 <div className='col mt-2'>
                                     <Box sx={{
-                                        ".MuiSvgIcon-root":{
-                                            color:"#31B665"
+                                        ".MuiSvgIcon-root": {
+                                            color: "#31B665"
                                         }
                                     }}>
-                                    <SearchBar
-                                        placeholder="search"
-                                        
-                                    />
+                                        <SearchBar
+                                            placeholder="search"
+
+                                        />
                                     </Box>
 
                                 </div>
@@ -244,10 +245,12 @@ const Product = () => {
 
                                 </div>
                                 <div className='col mt-2'>
-                                    <LoadingButton sx={{ "&.MuiLoadingButton-root": {
-                                                // color: "#FFFFFF",
-                                                background: "#EBEBEB"
-                                            } }}>+Import/Export</LoadingButton>
+                                    <LoadingButton sx={{
+                                        "&.MuiLoadingButton-root": {
+                                            // color: "#FFFFFF",
+                                            background: "#EBEBEB"
+                                        }
+                                    }}>+Import/Export</LoadingButton>
                                 </div>
                                 <div className='col mt-2'>
                                     {/* <LoadingButton sx={{
@@ -257,7 +260,7 @@ const Product = () => {
                                         },
                                         background: "" }}>Add Product</LoadingButton> */}
 
-                                        <AddProduct></AddProduct>
+                                    <AddProduct></AddProduct>
                                 </div>
                             </div>
                             <div className='col mt-2'>
@@ -265,53 +268,53 @@ const Product = () => {
                                 placeholder="search"
                                 /> */}
 
-                            <div className='col-12 product_table'>
-                                <Box sx={{
-                                    height: 400, width: '100%', "&.MuiDataGrid-root .MuiDataGrid-columnHeader:hover": {
-                                        outline: "none"
-                                    },
+                                <div className='col-12 product_table'>
+                                    <Box sx={{
+                                        height: 400, width: '100%', "&.MuiDataGrid-root .MuiDataGrid-columnHeader:hover": {
+                                            outline: "none"
+                                        },
 
-                                    ".MuiDataGrid-root .MuiDataGrid-columnHeader:focus ": {
-                                        outline: "none"
+                                        ".MuiDataGrid-root .MuiDataGrid-columnHeader:focus ": {
+                                            outline: "none"
 
-                                    }
-                                }}>
-                                    <ThemeProvider theme={theme}>
-                                        <DataGrid
+                                        }
+                                    }}>
+                                        <ThemeProvider theme={theme}>
+                                            <DataGrid
 
-                                            rows={rows}
-                                            columns={columns}
-                                            pageSize={5}
-                                            rowsPerPageOptions={[5]}
-                                            checkboxSelection
-                                            disableSelectionOnClick
-                                            experimentalFeatures={{ newEditingApi: true }}
-                                            sx={{
-                                                height: 400,
-                                                width: '100%',
-                                                ".MuiDataGrid-columnHeaders": {
-                                                    background: "#E1FFED"
-                                                },
-                                                '&  .MuiDataGrid-columnSeparator--sideRight': {
-                                                    display: 'none',
-                                                },
-                                                '&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
-                                                    outline: 'none',
-                                                },
-                                                "&.MuiDataGrid-root .MuiDataGrid-row:hover": {
-                                                    backgroundColor: "#FFFFFF"
-                                                },
+                                                rows={rows}
+                                                columns={columns}
+                                                pageSize={5}
+                                                rowsPerPageOptions={[5]}
+                                                checkboxSelection
+                                                disableSelectionOnClick
+                                                experimentalFeatures={{ newEditingApi: true }}
+                                                sx={{
+                                                    height: 400,
+                                                    width: '100%',
+                                                    ".MuiDataGrid-columnHeaders": {
+                                                        background: "#E1FFED"
+                                                    },
+                                                    '&  .MuiDataGrid-columnSeparator--sideRight': {
+                                                        display: 'none',
+                                                    },
+                                                    '&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
+                                                        outline: 'none',
+                                                    },
+                                                    "&.MuiDataGrid-root .MuiDataGrid-row:hover": {
+                                                        backgroundColor: "#FFFFFF"
+                                                    },
 
-                                            }}
-                                        />
-                                    </ThemeProvider>
-                                </Box>
+                                                }}
+                                            />
+                                        </ThemeProvider>
+                                    </Box>
+
+                                </div>
 
                             </div>
-
                         </div>
                     </div>
-</div>
 
                 </div>
             </ThemeProvider>
