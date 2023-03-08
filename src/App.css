@@ -593,10 +593,15 @@ hr{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FAFAFA;
+  /* background-color: #FAFAFA; */
 }
 .addProd_image_input{
   opacity: 0.2;
 
 
+}
+.Add_pro_background{
+  background-color: #FAFAFA;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

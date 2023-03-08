@@ -167,7 +167,7 @@ const AddProduct = () => {
                                     </div>
 
                                 </div>
-                                <div className='row'>
+                                <div className='row Add_pro_background'>
                                     <div className='col-lg-2'>
                                         <label>Product Image</label>
                                     </div>
@@ -179,7 +179,7 @@ const AddProduct = () => {
                                     </div>
 
                                 </div>
-                                <div className='row  pt-4 pb-4 product_weight_row'>
+                                <div className='row  mt-4 mb-4 pt-4 pb-4 product_weight_row Add_pro_background'>
                                     <div className=' col-lg-2 '>
                                         <label>SKU</label>
                                     </div>
@@ -195,7 +195,7 @@ const AddProduct = () => {
                                     </div>
 
                                 </div>
-                                <div className='row'>
+                                <div className='row Add_pro_background'>
                                     <p className='product_title'>Pricing</p>
                                     <div className=' col-lg-2'>
                                         <label>Prices</label>
@@ -248,7 +248,7 @@ const AddProduct = () => {
                                     </div>
 
                                 </div>
-                                <div className='row pt-4 pb-4 mt-2 product_weight_row '>
+                                <div className='row pt-4 pb-4 mt-2 product_weight_row Add_pro_background'>
                                     <p className='product_title mt-2'>Product weight / Flavour</p>
                                     <div className='col-lg-2'>
                                         <label>Weight Type:</label>
@@ -293,7 +293,7 @@ const AddProduct = () => {
                                     </div>
 
                                 </div>
-                                <div className='row product_weight_row mt-2 pt-4 pb-4'>
+                                <div className='row product_weight_row mt-2 pt-4 pb-4 Add_pro_background'>
                                     <div className='col-lg-2'>
                                         <label>Quantity</label>
                                     </div>
@@ -303,7 +303,7 @@ const AddProduct = () => {
                                     </div>
 
                                 </div>
-                                <div className='row mt-2 product_weight_row'>
+                                <div className='row mt-2 product_weight_row Add_pro_background'>
                                     <p>Lab Result</p>
                                     <div className='col-lg-2'>
 
@@ -333,7 +333,7 @@ const AddProduct = () => {
                                     </div> */}
 
                                 </div>
-                                <div className='row product_weight_row mt-2 mb-2  pt-4 pb-4'>
+                                <div className='row product_weight_row mt-2 mb-2  pt-4 pb-4 Add_pro_background'>
                                     <p className='product_title'>Store Details</p>
                                     <div className='col-lg-2'>
                                         <label>Store Name</label>
@@ -390,14 +390,14 @@ const AddProduct = () => {
                                     {/* </div> */}
 
                                 </div>
-                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4'>
+                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4 Add_pro_background'>
                                     <p className='product_title '>Category</p>
                                     <div className='col-lg-10 '>
 
                                     </div>
 
                                 </div>
-                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4'>
+                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4 Add_pro_background'>
                                     <p className='product_title '>Brand</p>
                                     <div className='col-lg-12 center'>
                                         <FormControl sx={{ minWidth: 120 }}>
@@ -419,7 +419,7 @@ const AddProduct = () => {
                                     </div>
 
                                 </div>
-                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4'>
+                                <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4 Add_pro_background'>
                                     <p className='product_title '>Gift Voucher / Coupon</p>
 
                                     <div className='col-lg-12'>
