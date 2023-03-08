@@ -587,7 +587,7 @@ hr{
   opacity: 0.5;
 }
 .AddProduct_img{
-  border: 1px solid gray;
+  border: 1px solid #DDDDDD;
   width: 100px;
   height: 100px;
   display: flex;

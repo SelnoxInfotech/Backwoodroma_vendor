@@ -23,6 +23,8 @@ import Strain from "./Strain"
 import ToggleButton from "./ToggleButton"
 import ProductGiftVoucher from "./ProductGiftVoucher"
 import ProductCategory from './ProductCategory';
+import Box from '@mui/material/Box';
+
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
@@ -159,12 +161,22 @@ const AddProduct = () => {
                                         <label>Product Description</label>
                                     </div>
                                     <div className=' col-lg-6 p-2'>
+                                        <Box sx={{
+                                            ".rdw-editor-main":{
+                                                border: "1px solid #DDDDDD",
+                                                paddingLeft:"2px"
+                                            }
+                                    
+                                    }}>
+
                                         <Editor
                                             toolbarClassName="toolbarClassName"
                                             wrapperClassName="wrapperClassName"
                                             editorClassName="editorClassName"
 
                                         />
+                                        </Box>
+
                                     </div>
 
                                 </div>
@@ -453,7 +465,12 @@ const AddProduct = () => {
                     </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
+                    <Button
+                    sx={{
+                        "&.MuiButtonBase-root": {
+                        color: "#31B665"
+                    }}}
+                    autoFocus onClick={handleClose}>
                         Exit
                     </Button>
                 </DialogActions>
