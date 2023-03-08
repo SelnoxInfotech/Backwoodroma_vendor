@@ -15,7 +15,6 @@ import SearchBar from "material-ui-search-bar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Tooltip from '@mui/material/Tooltip';
 import AddProduct from "./AddProduct"
-
 const theme = createTheme({
     palette: {
         primary: {
@@ -191,20 +190,23 @@ const Product = () => {
                     <div className="row ">
                         <div className="col-12 product_Col ">
                             <div className='col-12 product_head'>
-                                <div className='col'>
+                                <div className='col mt-2'>
                                     {/* <FormControl sx={{ m: 1, minWidth: 120, background: "#31B665", }}> */}
                                         <Select
                                             value={product}
                                             onChange={handleChange}
                                             displayEmpty
                                             name='productfilter'
-                                                // sx={{
-                                                //     color: "#FFFFFF",
-                                                //     "& .MuiSvgIcon-root": {
-                                                //         color: "#FFFFFF",
-                                                //     },
+                                            size='small'
+                                                sx={{
+                                                    background:"#31B665",
+                                                    color: "#FFFFFF",
+                                                    "& .MuiSvgIcon-root": {
+                                                        color: "#FFFFFF",
+                                                    },
+                                                    
 
-                                                // }}
+                                                }}
 
                                         >
                                             <MenuItem value="">
@@ -222,12 +224,17 @@ const Product = () => {
                                 <div className='col mt-2'>
                                     <Box sx={{
                                         ".MuiSvgIcon-root": {
-                                            color: "#31B665"
+                                            color: "#31B665",
+                                            
+                                        },
+                                        ".ForwardRef-root-1":{
+                                            height:"40px"
                                         }
                                     }}>
+                                        
                                         <SearchBar
                                             placeholder="search"
-
+                                            // style={{height:"40px"}}
                                         />
                                     </Box>
 

@@ -22,6 +22,7 @@ import StockCheckBox from "./StockCheckbox"
 import Strain from "./Strain"
 import ToggleButton from "./ToggleButton"
 import ProductGiftVoucher from "./ProductGiftVoucher"
+import ProductCategory from './ProductCategory';
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
@@ -393,7 +394,7 @@ const AddProduct = () => {
                                 <div className='row product_weight_row pt-4 pb-4 mt-4 mb-4 Add_pro_background'>
                                     <p className='product_title '>Category</p>
                                     <div className='col-lg-10 '>
-
+                                          <ProductCategory/>
                                     </div>
 
                                 </div>

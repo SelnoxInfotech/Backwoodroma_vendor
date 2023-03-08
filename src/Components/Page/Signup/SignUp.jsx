@@ -284,6 +284,9 @@ export default function SignUp() {
                                             >
                                                 <FormLabel>Choose Your Gender</FormLabel>
                                                 <RadioGroup row name="Gender">
+                                                    <Box sx={{".MuiSvgIcon-root":{
+                                                                    color:"#31B665"
+                                                                }}}>
                                                     <FormControlLabel
 
                                                         value="f"
@@ -292,6 +295,7 @@ export default function SignUp() {
                                                                 inputRef={register({
                                                                     required: "Choose your gender*",
                                                                 })}
+                                                                
                                                             />
                                                         }
                                                         label="Female"
@@ -307,6 +311,7 @@ export default function SignUp() {
                                                         }
                                                         label="Male"
                                                     />
+                                                    </Box>
 
                                                 </RadioGroup>
                                                 <FormHelperText>{errors.Gender?.message}</FormHelperText>
@@ -322,6 +327,13 @@ export default function SignUp() {
                                                 // onClick={handleClick}
                                                 loading={loading}
                                                 variant="outlined"
+                                                sx={{
+                                                    "&.MuiLoadingButton-root": {
+                                                        color: "#FFFFFF",
+                                                        background: "#31B665",
+        
+                                                    },
+                                                }}
                                             >
                                                 <span>SIGN UP</span>
                                             </LoadingButton>
