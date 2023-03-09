@@ -1,7 +1,7 @@
 // import React from "react";
 import Button from '@mui/material/Button';
 import { TbArrowsUpDown } from "react-icons/tb"
-import * as React from 'react';
+
 import Box from '@mui/material/Box';
 import { DataGridPro, GridRow, GridColumnHeaders } from '@mui/x-data-grid-pro';
 import { useDemoData } from '@mui/x-data-grid-generator';
