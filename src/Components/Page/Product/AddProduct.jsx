@@ -173,7 +173,9 @@ const AddProduct = () => {
                                             toolbarClassName="toolbarClassName"
                                             wrapperClassName="wrapperClassName"
                                             editorClassName="editorClassName"
-
+                                            toolbar={
+                                                {options: ['inline', 'blockType', 'fontSize']}
+                                              }
                                         />
                                         </Box>
 
