@@ -136,8 +136,8 @@ const columns = [
     },
 ];
 const rows = [
-    { id: 1, userName: 'Jack', date: '1/2', payment: "paid", fullFillMent: "Pending", deliveryType: "curbside", total: 100 },
-    { id: 2, userName: 'Jack Thomas', date: '1/23', payment: "unpaid", fullFillMent: "not", deliveryType: "curbside", total: 200 },
+    { id: 1, userName: 'Jack', date: new Date().toJSON().slice(0, 10), payment: "paid", fullFillMent: "Pending", deliveryType: "curbside", total: 100 },
+    { id: 2, userName: 'Jack Thomas', date: new Date().toJSON().slice(0, 10), payment: "unpaid", fullFillMent: "not", deliveryType: "curbside", total: 200 },
 
 ];
 const OrderList = () => {

@@ -11,6 +11,7 @@ import TopSellingProduct from '../Components/Page/Product/TopSellingProduct';
 import Inventory from "../Components/Page/Product/Inventory"
 import Protected from "./ProtectedRouting"
 import OrderList from "../Components/Page/Order/OrderList"
+import AllOrder from '../Components/Page/Order/AllOrder';
 import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper"
 const routesConfig = [
     {
@@ -59,6 +60,10 @@ const routesConfig = [
         {
           path:"/OrderList",
           element:<OrderList/>
+        },
+        {
+          path:"/AllOrder",
+          element:<AllOrder/>
         }
       ],
     },

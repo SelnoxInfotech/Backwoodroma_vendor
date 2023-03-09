@@ -80,13 +80,15 @@ const Inventory = () => {
                     <div className="row">
                         <div className="col-12 product_Col">
                             <div className="col-12 product_head">
-                                <div className="col">
-                                    <FormControl sx={{ m: 1, minWidth: 120, background: "#31B665", }}>
+                                <div className="col mt-2">
+                                    {/* <FormControl sx={{ m: 1, minWidth: 120, background: "#31B665", }}> */}
                                         <Select
                                             value={product}
                                             onChange={handleChange}
                                             displayEmpty
+                                            size='small'
                                             sx={{
+                                                background:"#31B665",
                                                 color: "#FFFFFF",
                                                 "& .MuiSvgIcon-root": {
                                                     color: "#FFFFFF",
@@ -105,7 +107,7 @@ const Inventory = () => {
                                             <MenuItem value={"Inventory"}>Inventory</MenuItem>
                                         </Select>
 
-                                    </FormControl>
+                                    {/* </FormControl> */}
 
                                 </div>
                                 <div className='col m-2'>

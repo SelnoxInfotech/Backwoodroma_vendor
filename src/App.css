@@ -605,3 +605,19 @@ hr{
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+/* AllOrder */
+.all_order_card{
+  border-radius: 4px;
+  padding: 4px;
+  /* display: flex; */
+  /* justify-content: space-around; */
+}
+.all_order_card_head{
+  display: flex;
+  justify-content: space-between;
+}
+.all_order_span{
+  color: #9E9E9E;
+  margin-left: 10px;
+}
