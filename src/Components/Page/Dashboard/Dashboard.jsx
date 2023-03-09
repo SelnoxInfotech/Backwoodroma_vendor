@@ -4,6 +4,7 @@ import Card from "./DashboardComponent/Card"
 import IncomeChart from "./DashboardComponent/LineChart"
 import Order from "./DashboardComponent/Order"
 import OrderTrack from "./DashboardComponent/OrderTrack"
+import RecentOrder from "./DashboardComponent/RecentOrder"
 const Dashboard = () => {
     return (
 
@@ -19,6 +20,7 @@ const Dashboard = () => {
                         <div class="col-12 col-md-8 ">
                        
                        <OrderTrack></OrderTrack>
+                       <RecentOrder></RecentOrder>
                         </div>
                         <div class="col-12 col-md-4">
                             <div className="col card_border top">

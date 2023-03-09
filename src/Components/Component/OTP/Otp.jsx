@@ -32,7 +32,7 @@ export default function Otppopup({ Otppopup, Setotppopup, email, setLoading, res
                 Setotppopup(false)
                 setLoading(false)
                 reset()
-                navigate('/')
+                navigate('/StoreAdd')
             }, 3000);
             SetSccessCheck(true)
 

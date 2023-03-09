@@ -38,7 +38,7 @@ const routesConfig = [
           element: <Protected Component={Dashboard} />,
         },
         {
-          path: "/Categoy",
+          path: "/Category",
           element: <Category />,
         },
         {

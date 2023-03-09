@@ -31,17 +31,22 @@ export default function LoginOtp({ Otppopup, Setotppopup, email, setLoading, res
             { OTP, email }
         ).then((response) => {
 
-            setTimeout(() => {
-                Setotppopup(false)
-                setLoading(false)
-                reset()
-                navigate('/StoreAdd')
-            }, 2000);
-            SetSccessCheck(true)
-            let date = new Date();
-            date.setTime(date.getTime() + (60 * 60 * 8000))
-            cookies.set('Token_access', response.data.tokens.access, { expires: date })
-            navigate("/");
+            if (response.status===202) {
+                console.log(response)
+            }
+            else {
+                setTimeout(() => {
+                    Setotppopup(false)
+                    setLoading(false)
+                    reset()
+                    navigate("/Dashboard");
+                }, 2000);
+                SetSccessCheck(true)
+                let date = new Date();
+                date.setTime(date.getTime() + (60 * 60 * 8000))
+                cookies.set('Token_access', response.data.tokens.access, { expires: date })
+
+            }
         }).catch((error) => {
             if (error.response.status === 400) {
 
