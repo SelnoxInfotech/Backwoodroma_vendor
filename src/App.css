@@ -735,3 +735,91 @@ a {
   text-decoration: none;
 }
 /* End */
+
+
+/* Product Category */
+.Product_subCategory {
+  /* display: flex; */
+  /* justify-content: end; */
+  gap: 5px;
+  display: inline-flex;
+}
+
+  .product_category{
+   font-size: 22px;
+   font-weight: 500;
+  }
+
+.Product_Checkbox{
+
+  gap: 20px;
+  display: grid;
+
+}
+.form-group-checkboxdev{
+  background: #F5F5F5;
+  font-size: 20px;
+  justify-content: left;
+    display: flex;
+    gap: 10px;
+
+}.product_category {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.Product_Checkbox {
+
+  gap: 20px;
+  display: grid;
+
+}
+
+.form-group-checkboxdev {
+  background: #F5F5F5;
+  font-size: 20px;
+  justify-content: left;
+  display: flex;
+  gap: 10px;
+
+}
+.Add_Category {
+  display: flex;
+
+}
+.justify {
+  justify-content: space-around;
+}
+@media (max-width: 570px) {
+  .background {
+
+    display: block;
+  }
+
+  .Add_Category_pop {
+    display: block;
+  }
+}
+.background {
+
+  background-color: #FAFAFA;
+}
+    .product_category {
+      font-size: 22px;
+      font-weight: 500;
+    }
+    
+#checkBoxes {
+    display: none;
+    border: 1px #8DF5E4 solid;
+}
+
+#checkBoxes label {
+    display: block;
+}
+
+#checkBoxes label:hover {
+    background-color: #4F615E;
+}
+
+/* end */

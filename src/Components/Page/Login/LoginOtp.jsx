@@ -33,6 +33,7 @@ export default function LoginOtp({ Otppopup, Setotppopup, email, setLoading, res
 
             if (response.status===202) {
                 console.log(response)
+                navigate("/User-Stepper")
             }
             else {
                 setTimeout(() => {
@@ -45,6 +46,7 @@ export default function LoginOtp({ Otppopup, Setotppopup, email, setLoading, res
                 let date = new Date();
                 date.setTime(date.getTime() + (60 * 60 * 8000))
                 cookies.set('Token_access', response.data.tokens.access, { expires: date })
+        
 
             }
         }).catch((error) => {

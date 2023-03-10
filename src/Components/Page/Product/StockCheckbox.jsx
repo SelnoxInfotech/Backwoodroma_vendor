@@ -6,7 +6,18 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
 
-const StockCheckBox = () => {
+const StockCheckBox = ({Product ,SetProduct}) => {
+  const handleChange = (event) => {
+
+    var value = event.target.value;
+    SetProduct({
+      ...Product, [event.target.name]: value
+    });
+    console.log(event.target)
+
+
+  }
+
   return (
     <>
       <FormControl>
@@ -20,8 +31,8 @@ const StockCheckBox = () => {
               color: "#31B665"
             }
           }}>
-            <FormControlLabel value="Instock" control={<Radio />} label="Instock" />
-            <FormControlLabel value="Stock" control={<Radio />} label="Stock" />
+            <FormControlLabel name="Stock" value={"In Stock"}  onChange={handleChange}control={<Radio />} label="Instock" />
+            <FormControlLabel name="Stock" value={"Out of Stock"} onChange={handleChange} control={<Radio />} label="Out of Stock" />
           </Box>
 
         </RadioGroup>

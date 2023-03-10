@@ -1,8 +1,53 @@
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
+import React from "react"
 import Select from '@mui/material/Select';
-const ProductGiftVoucher = () => {
+import axios from "axios"
+import Cookies from 'universal-cookie';
+const ProductGiftVoucher = ({ Product, SetProduct }) => {
+    const [GiftVocher, SetGiftVocher] = React.useState([])
+    const [Coupoun, SetCoupoun] = React.useState([])
+    const cookies = new Cookies();
+    const token_data = cookies.get('Token_access')
+
+    React.useEffect(() => {
+        axios("http://34.201.114.126:8000/AdminPanel/GiftVoucherViewSet/", {
+
+            headers: {
+                'Authorization': `Bearer ${token_data}`
+            }
+
+        }).then(response => {
+            SetGiftVocher(response.data)
+            if (Product.GiftVoucher === "")
+                SetProduct(Product => ({ ...Product, GiftVoucher: response.data[0].id }))
+
+        })
+        axios("http://34.201.114.126:8000/AdminPanel/CouponViewSet/", {
+
+            headers: {
+                'Authorization': `Bearer ${token_data}`
+            }
+
+        }).then(response => {
+            SetCoupoun(response.data)
+            if (Product.Claimed_Coupoun === "")
+                SetProduct(Product => ({ ...Product, Claimed_Coupoun: response.data[0].id }))
+
+        })
+
+
+    }, [SetProduct, token_data, Product.Claimed_Coupoun, Product.GiftVoucher])
+
+    const handleChange = (event) => {
+        const value = event.target.value;
+        SetProduct({
+            ...Product, [event.target.name]: value
+        });
+
+
+
+    };
     return (
 
         <>
@@ -12,8 +57,9 @@ const ProductGiftVoucher = () => {
                 <div className="col-lg-12 center ">
                     <FormControl sx={{ minWidth: 120 }}>
                         <Select
-                            // value={brand}
-                            // onChange={handleChangeBrand}
+                            name='GiftVoucher'
+                            onChange={handleChange}
+                            value={Product.GiftVoucher}
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
                             size="small"
@@ -21,8 +67,12 @@ const ProductGiftVoucher = () => {
                             <MenuItem value="">
                                 <em>None</em>
                             </MenuItem>
-                            <MenuItem value={"Gift"}>Gift</MenuItem>
 
+                            {
+                                GiftVocher.map((data, index) => {
+                                    return (<MenuItem value={data.id} style={{ fontSize: 15 }} key={index}>{data.code}</MenuItem>)
+                                })
+                            }
                         </Select>
 
                     </FormControl>
@@ -35,8 +85,9 @@ const ProductGiftVoucher = () => {
                 <div className='col-lg-12 center '>
                 <FormControl sx={{ minWidth: 120 }}>
                         <Select
-                            // value={brand}
-                            // onChange={handleChangeBrand}
+                            name='Claimed_Coupoun'
+                            onChange={handleChange}
+                            value={Product.Claimed_Coupoun}
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
                             size="small"
@@ -44,8 +95,11 @@ const ProductGiftVoucher = () => {
                             <MenuItem value="">
                                 <em>None</em>
                             </MenuItem>
-                            <MenuItem value={"Coupan"}>Coupan</MenuItem>
-
+                            {
+                                    Coupoun.map((data, index) => {
+                                        return (<MenuItem value={data.id} style={{ fontSize: 15 }} key={index}>{data.code}</MenuItem>)
+                                    })
+                                }
                         </Select>
 
                     </FormControl>

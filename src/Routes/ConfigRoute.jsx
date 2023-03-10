@@ -27,7 +27,7 @@ const routesConfig = [
       element: <SignUp />,
     },
     {
-      path:"/Stepper",
+      path:"/User-Stepper",
       element:<HorizontalStepperWithError/>
     },
     {

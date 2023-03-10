@@ -14,11 +14,11 @@ export default function ToggleButton({ Product, SetProduct }) {
 
 
 
-    //   const handleChange = (event) =>{
-    //     SetProduct({
-    //         ...Product, [event.target.name]: event.target.value
-    //     })
-    //   }
+      const handleChange = (event) =>{
+        SetProduct({
+            ...Product, [event.target.name]: event.target.value
+        })
+      }
 
     return (
 
@@ -27,9 +27,9 @@ export default function ToggleButton({ Product, SetProduct }) {
                 <Box
                     color="success"
                     className="mask"
-                    // style={{
-                    //     transform: `translateX(${Product.Status === "Active" ? 0 : "100px"})`
-                    // }}
+                    style={{
+                        transform: `translateX(${Product.Status === "Active" ? 0 : "63px"})`
+                    }}
                 />
                 <Button
                     classes={classes}
@@ -38,9 +38,8 @@ export default function ToggleButton({ Product, SetProduct }) {
                     name="Status"
                     value="Active"
                     sx={{
-                        // color: Product.Status === "Active" ? "#ffffff" : "#5316AE"
-                    }}
-                    // onClick={handleChange}
+                        color: Product.Status === "Active" ? "#ffffff" : "#5316AE"}}
+                    onClick={handleChange}
                 >
                     Active
                 </Button>
@@ -49,8 +48,8 @@ export default function ToggleButton({ Product, SetProduct }) {
                     variant="text"
                     name="Status"
                     value="Hide"
-                    // sx={{ color: Product.Status === "Hide" ? "#ffffff" : "#5316AE" }}
-                    //   onClick={handleChange} 
+                    sx={{ color: Product.Status === "Hide" ? "#ffffff" : "#5316AE" }}
+                      onClick={handleChange} 
                 >
                     Hide
                 </Button>
