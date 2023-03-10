@@ -1,7 +1,6 @@
 import React from "react";
 import Button from '@mui/material/Button';
 import { TbArrowsUpDown } from "react-icons/tb"
-
 import Box from '@mui/material/Box';
 import { DataGridPro, GridRow, GridColumnHeaders } from '@mui/x-data-grid-pro';
 import { useDemoData } from '@mui/x-data-grid-generator';
@@ -12,7 +11,7 @@ const MemoizedColumnHeaders = React.memo(GridColumnHeaders);
 export default function OrderTrack() {
     const { data } = useDemoData({
         dataSet: 'Commodity',
-        rowLength: 100000,
+        rowLength: 2,
         editable: true,
     });
     return (

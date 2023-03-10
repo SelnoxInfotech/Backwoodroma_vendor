@@ -47,8 +47,7 @@ max-width: 0px;
 .center{
   text-align: center;
   justify-content: center;
-   
-    display: flex;
+   display: flex;
 }
 .display{
   display: grid;
@@ -125,13 +124,6 @@ max-width: 0px;
     }
 /* End */
 /* Login */
-.login_width .container{
-  width: 83%;
-}
-.login_Title {
-  position: relative;
-  left: 10%;
-}
 /* otp */
 .otp_input input{
   position: relative;

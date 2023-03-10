@@ -26,15 +26,14 @@ import {
     MenuItem,
 } from "@material-ui/core";
 import { MuiPickersUtilsProvider, DatePicker, } from "@material-ui/pickers";
-import License from "../StoreComponent/StoreImage"
 import { convertToHTML } from 'draft-convert';
 import { FormControl, FormHelperText, } from "@material-ui/core";
 import Box from '@mui/material/Box';
 import axios from "axios";
+import LicenseImage from "../StoreComponent/LicenseDetail/LicenseImage"
 export default function StoreAdd() {
     const navigate = useNavigate();
     const storeImage = useRef(null);
-    const License_Doc = useRef(null);
     const mobile = useRef(null);
     const { register, handleSubmit, errors, control, reset } = useForm();
     const [loading, Setloading] = React.useState(false)
@@ -46,6 +45,7 @@ export default function StoreAdd() {
         LicenceNo: "",
         Stores_MobileNo: "",
     })
+
     const [AddStore, SetStore] = React.useState({
         Store_Name: "",
 
@@ -594,13 +594,17 @@ export default function StoreAdd() {
                                             ></StoreStatus>
 
                                         </div>
-                                        <License
+                                        {/* <License
                                             Title="LicenseDoc"
                                             Name={"LicenseDoc"}
                                             SetStore={SetStore}
                                             value={AddStore.LicenseDoc}
                                             refernce={License_Doc}
-                                        ></License>
+                                        ></License> */}
+                                        <LicenseImage
+                                            SetStore={SetStore}
+                                            value={AddStore.LicenseDoc}
+                                        ></LicenseImage>
 
                                     </div>
                                 </div>

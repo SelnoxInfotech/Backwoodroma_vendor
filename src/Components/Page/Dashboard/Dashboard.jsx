@@ -5,6 +5,7 @@ import IncomeChart from "./DashboardComponent/LineChart"
 import Order from "./DashboardComponent/Order"
 import OrderTrack from "./DashboardComponent/OrderTrack"
 import RecentOrder from "./DashboardComponent/RecentOrder"
+// import SalesLineChart from "./DashboardComponent/SalesLineCharts"
 const Dashboard = () => {
     return (
 
@@ -29,7 +30,7 @@ const Dashboard = () => {
                             <div className="col card_border top">
                                 <IncomeChart></IncomeChart>
                             </div>
-
+                        
                         </div>
                     </div>
                 </div>

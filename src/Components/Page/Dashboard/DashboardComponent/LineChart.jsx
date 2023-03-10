@@ -11,7 +11,7 @@ export default function IncomeChart (){
         options: {
           chart: {
             height: 350,
-            type: 'area',
+            type: 'line',
             
           },
           xaxis: {
