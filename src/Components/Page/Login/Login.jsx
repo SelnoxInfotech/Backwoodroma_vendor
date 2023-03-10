@@ -60,10 +60,7 @@ function Login() {
 
     return (
         <div className='container Border pading'>
-            <div className='row   '>
-
-
-
+            <div className='row'>
                 <div className="col-12 login_width  signup_field"   >
                     <div className="container">
                         <div className=" row gap center">
@@ -73,7 +70,7 @@ function Login() {
 
                             </div>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className='col-12   center'>
+                                <div className='col-12'>
                                     <div className="col-12 center Display pading">
                                         <div className='col-2 name_style'>
                                             <span className='icon'> <AiOutlineMail></AiOutlineMail></span>
