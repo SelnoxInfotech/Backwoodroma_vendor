@@ -36,19 +36,11 @@ const AllOrder = () => {
                                     <div className='all_order_card_head'>
 
                                         <div className='all_order_card'>
-                                            <Box sx={{ 
-                                                "&.svg":{
-                                                 color:"green"
-                                                }
-                                            }
-                                            }
+                                        
                                                 
-                                                >
-                                                
-                                            <IoRadioButtonOnSharp />
+                                            <IoRadioButtonOnSharp   />
 
                                             <span className='all_order_span'>{ele.location}</span>
-                                            </Box>
 
                                             </div>
                                         <p className='all_order_span'>{ele.date}</p>
@@ -56,7 +48,7 @@ const AllOrder = () => {
                                     <div className='all_order_card_head'>
 
                                         <div className='all_order_card'>
-                                            <IoRadioButtonOnSharp />
+                                            <IoRadioButtonOnSharp style={{ fill: '#31B665' }}/>
                                             <span className='all_order_span'>{ele.to}</span>
                                             </div>
                                         <p className='all_order_span'>{ele.rec_date}</p>
