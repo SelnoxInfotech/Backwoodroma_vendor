@@ -196,14 +196,19 @@ const Product = () => {
                                             name='productfilter'
                                             size='small'
                                                 sx={{
-                                                    background:"#31B665",
-                                                    color: "#FFFFFF",
+                                                    "&.MuiInputBase-root":{
+                                                        background:"#31B665",
+                                                        color: "#FFFFFF",
+                                                    },
+                                                    // background:"#31B665",
+                                                    // color: "#FFFFFF",
                                                     "& .MuiSvgIcon-root": {
                                                         color: "#FFFFFF",
                                                     },
                                                     
 
                                                 }}
+
 
                                         >
                                             <MenuItem value="">
