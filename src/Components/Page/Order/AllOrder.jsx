@@ -38,7 +38,7 @@ const AllOrder = () => {
                                         <div className='all_order_card'>
                                         
                                                 
-                                            <IoRadioButtonOnSharp   />
+                                            <IoRadioButtonOnSharp  style={{fill:"#9E9E9E"}} />
 
                                             <span className='all_order_span'>{ele.location}</span>
 

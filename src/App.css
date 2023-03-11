@@ -823,3 +823,17 @@ a {
 }
 
 /* end */
+/* flavour */
+.Flav_main_col{
+  display: flex;
+  margin-top: 10px;
+}
+.Flav_main_col p{
+  font-weight: 700;
+  font-size: 27px;
+  color: #8B8B8B;
+}
+.add_flav_btn{
+  display: flex;
+  justify-content: flex-end;
+}

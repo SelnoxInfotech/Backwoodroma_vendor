@@ -12,6 +12,7 @@ import Inventory from "../Components/Page/Product/Inventory"
 import Protected from "./ProtectedRouting"
 import OrderList from "../Components/Page/Order/OrderList"
 import AllOrder from '../Components/Page/Order/AllOrder';
+import Flavour from '../Components/Page/Preset/Flavour/Flavour';
 import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper"
 const routesConfig = [
     {
@@ -64,6 +65,10 @@ const routesConfig = [
         {
           path:"/AllOrder",
           element:<AllOrder/>
+        },
+        {
+          path:"/Flavour",
+          element:<Flavour/>
         }
       ],
     },
