@@ -30,7 +30,7 @@ const AllOrder = () => {
                                     <div className="all_order_card_head">
                                         <div className="d-flex "> <p>{ele.id}</p><span className="all_order_span">{ele.order_num}</span></div>
                                         <Stack direction="row" spacing={1}>
-                                            <Chip label={ele.delivery} variant="outlined" icon={<IoRadioButtonOnSharp />} />
+                                            <Chip label={ele.delivery} variant="outlined" icon={<IoRadioButtonOnSharp style={{ fill: '#31B665' }}/>} />
                                         </Stack>
                                     </div>
                                     <div className='all_order_card_head'>
