@@ -4,6 +4,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { CiUser } from "react-icons/ci"
 import { CiLock } from "react-icons/ci"
 import Button from '@material-ui/core/Button';
+import Box from '@mui/material/Box';
+
 const NewLoginPage = () => {
     return (
         <>
@@ -52,6 +54,8 @@ const NewLoginPage = () => {
                                     fullWidth
                                     sx={{
                                         '.MuiInputBase-input': { fontSize: '.7rem' },
+                                        
+
                                     }}
                                     InputProps={{
                                         // style:{fontSize:13},
@@ -68,18 +72,28 @@ const NewLoginPage = () => {
                         </div>
                         <div className='row'>
                             <div className='col-lg-12 text-end'>
-                            <Button>
+                                
+                            <Button >
                                     Forgot Password
                                 </Button>
                             </div>
                                
 
                         </div>
-                        <div className='row'>
-                            <div className='col-lg-12 center'>
-                            <Button style={{width:"100%"}}>
+                        <div className='row mt-4'>
+                            <div className='col-lg-12 center '>
+                            <Box className=" mt-4 mb-4 " style={{width:"90%",backgroundColor:"#70c5e1"}} sx={{".MuiButton-root":{
+                                    // background:"red",
+                                    // width:"100%"
+
+                                }}}>
+                            <Button
+                            
+                            >
                                     Login
                                 </Button>
+                                </Box>
+
                             </div>
                                
 
