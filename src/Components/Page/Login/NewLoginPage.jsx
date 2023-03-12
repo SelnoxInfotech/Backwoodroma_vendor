@@ -15,7 +15,7 @@ const NewLoginPage = () => {
 
                         <div className="row center">
                             <div className="col-lg-12">
-                                <h6>Login</h6>
+                                <h6 className='login_title'>Login</h6>
 
                             </div>
 
