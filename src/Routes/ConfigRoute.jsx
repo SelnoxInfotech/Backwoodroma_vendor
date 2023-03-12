@@ -13,6 +13,7 @@ import Protected from "./ProtectedRouting"
 import OrderList from "../Components/Page/Order/OrderList"
 import AllOrder from '../Components/Page/Order/AllOrder';
 import Flavour from '../Components/Page/Preset/Flavour/Flavour';
+import NewLoginPage from "../Components/Page/Login/NewLoginPage"
 import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper"
 const routesConfig = [
     {
@@ -69,6 +70,10 @@ const routesConfig = [
         {
           path:"/Flavour",
           element:<Flavour/>
+        },
+        {
+          path:"/NewLoginPage",
+          element:<NewLoginPage/>
         }
       ],
     },

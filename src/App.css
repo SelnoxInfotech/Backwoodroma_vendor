@@ -837,3 +837,24 @@ a {
   display: flex;
   justify-content: flex-end;
 }
+
+/* newLogin */
+
+.Newlogin_main_div{
+width: 30%;
+margin-top: 100px;
+
+}
+@media(max-width:500px){
+  .Newlogin_main_div{
+    width: 100%;
+    margin-top: 100px;
+    
+    }
+}
+.newLogin_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
