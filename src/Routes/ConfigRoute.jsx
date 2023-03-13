@@ -13,12 +13,17 @@ import Protected from "./ProtectedRouting"
 import OrderList from "../Components/Page/Order/OrderList"
 import AllOrder from '../Components/Page/Order/AllOrder';
 import Flavour from '../Components/Page/Preset/Flavour/Flavour';
-import NewLoginPage from "../Components/Page/Login/NewLoginPage"
-import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper"
+import NewLoginPage from "../Components/Page/Login/NewLoginPage";
+import NewSignUp from "../Components/Page/Signup/NewSignUp"
+import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper";
 const routesConfig = [
     {
       path: "/",
       element: <Login />,
+    },
+    {
+      path:"/NewLoginPage",
+      element:<NewLoginPage/>
     },
     {
       path: "/StoreAdd",
@@ -72,9 +77,10 @@ const routesConfig = [
           element:<Flavour/>
         },
         {
-          path:"/NewLoginPage",
-          element:<NewLoginPage/>
-        }
+          path:"/NewSignUp",
+          element:<NewSignUp/>
+        },
+      
       ],
     },
   ];

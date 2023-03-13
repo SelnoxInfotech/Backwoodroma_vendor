@@ -11,7 +11,7 @@ const NewLoginPage = () => {
         <>
             <div className="container-fluid newLogin_container">
                 <div className=' Newlogin_main_div'>
-                    <Paper sx={{ "&.MuiPaper-root ": { height: "50vh" } }} elevation={3}>
+                    <Paper sx={{ "&.MuiPaper-root ": { height: "70%" } }} elevation={3}>
 
                         <div className="row center">
                             <div className="col-lg-12">
@@ -70,18 +70,20 @@ const NewLoginPage = () => {
                             </div>
 
                         </div>
-                        <div className='row'>
-                            <div className='col-lg-12 text-end'>
-                            <Box className=" mt-4 mb-4" sx={{
+                        <div className='row mx-2'>
+                            <div className='col-lg-12 text-end newLogin_label '>
+                                <h6>Forgot Password ?</h6>
+                            {/* <Box className=" mt-4 mb-4" sx={{
                                   
                                     ".MuiButton-text":{
-                                        fontSize:"12px"
+                                        fontSize:".7rem",
+                                        textTransform: "none"
                                     }
                                 }}>
                                 <Button >
                                     Forgot Password ?
                                 </Button>
-                                </Box>
+                                </Box> */}
                             </div>
 
 
@@ -89,13 +91,10 @@ const NewLoginPage = () => {
                         <div className='row mt-4'>
                             <div className='col-lg-12 center '>
                                 <Box className=" mt-4 mb-4 newLogin_btn_paper" sx={{
-                                    ".MuiButton-root": {
-                                        color: "white"
-                                      
-
-                                    },
+                                   
                                     ".MuiButton-text":{
-                                        fontSize:"12px"
+                                        color:"white",
+                                        fontSize:".7rem"
                                     }
                                 }}>
                                     <Button
@@ -112,7 +111,7 @@ const NewLoginPage = () => {
                         <div className='row'>
                             <div className='col-lg-12 center'>
 
-                                <Button >
+                                <Button>
                                    Sign up
                                 </Button>
                             </div>
