@@ -11,7 +11,7 @@ const NewLoginPage = () => {
         <>
             <div className="container-fluid newLogin_container">
                 <div className=' Newlogin_main_div'>
-                    <Paper elevation={3}>
+                    <Paper sx={{ "&.MuiPaper-root ": { height: "50vh" } }} elevation={3}>
 
                         <div className="row center">
                             <div className="col-lg-12">
@@ -21,8 +21,8 @@ const NewLoginPage = () => {
 
                         </div>
 
-                        <div className="row  m-2">
-                            <h8>User Name</h8>
+                        <div className="row newLogin_label m-2">
+                            <h6>User Name</h6>
 
                             <div className="col-lg-12">
 
@@ -45,8 +45,8 @@ const NewLoginPage = () => {
 
                         </div>
 
-                        <div className="row  m-2">
-                            <h8>Password</h8>
+                        <div className="row newLogin_label m-2">
+                            <h6>Password</h6>
 
                             <div className="col-lg-12">
 
@@ -54,7 +54,7 @@ const NewLoginPage = () => {
                                     fullWidth
                                     sx={{
                                         '.MuiInputBase-input': { fontSize: '.7rem' },
-                                        
+
 
                                     }}
                                     InputProps={{
@@ -72,30 +72,51 @@ const NewLoginPage = () => {
                         </div>
                         <div className='row'>
                             <div className='col-lg-12 text-end'>
-                                
-                            <Button >
-                                    Forgot Password
+                            <Box className=" mt-4 mb-4" sx={{
+                                  
+                                    ".MuiButton-text":{
+                                        fontSize:"12px"
+                                    }
+                                }}>
+                                <Button >
+                                    Forgot Password ?
                                 </Button>
+                                </Box>
                             </div>
-                               
+
 
                         </div>
                         <div className='row mt-4'>
                             <div className='col-lg-12 center '>
-                            <Box className=" mt-4 mb-4 " style={{width:"90%",backgroundColor:"#70c5e1"}} sx={{".MuiButton-root":{
-                                    // background:"red",
-                                    // width:"100%"
+                                <Box className=" mt-4 mb-4 newLogin_btn_paper" sx={{
+                                    ".MuiButton-root": {
+                                        color: "white"
+                                      
 
-                                }}}>
-                            <Button
-                            
-                            >
-                                    Login
-                                </Button>
+                                    },
+                                    ".MuiButton-text":{
+                                        fontSize:"12px"
+                                    }
+                                }}>
+                                    <Button
+
+                                    >
+                                        Login
+                                    </Button>
                                 </Box>
 
                             </div>
-                               
+
+
+                        </div>
+                        <div className='row'>
+                            <div className='col-lg-12 center'>
+
+                                <Button >
+                                   Sign up
+                                </Button>
+                            </div>
+
 
                         </div>
                     </Paper>
