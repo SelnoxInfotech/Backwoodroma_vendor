@@ -17,7 +17,7 @@ import { AiOutlineMail } from "react-icons/ai"
 const NewSignUp = () => {
     return (
         <>
-          <div className="container-fluid newLogin_container">
+            <div className="container-fluid newLogin_container">
                 <div className=' Newlogin_main_div'>
                     <Paper sx={{ "&.MuiPaper-root ": { height: "70%" } }} elevation={3}>
 
@@ -57,21 +57,20 @@ const NewSignUp = () => {
                             <h6>Mobile</h6>
 
                             <div className="col-lg-12">
-                            <MuiPhoneNumber
-                                    defaultCountry={"in"}
-                                    style={{ width: "100%" }}
-                                  
-                                
-                                    margin="normal"
-                                    // InputProps={{
-                                    //     startAdornment: (
-                                    //         <InputAdornment position="start">
-                                    //             <BiMobile className='newSignup_icon'/>
-                                    //         </InputAdornment>
-                                    //     ),
-                                    // }}
-                                />
+                                <Box sx={{
+                                    ".css-1rv3ei8-MuiFormControl-root-MuiTextField-root": {
+                                        marginTop: "0px"
+                                    }
+                                }}>
+                                    <MuiPhoneNumber
+                                        defaultCountry={"in"}
+                                        style={{ width: "100%" }}
 
+
+                                        margin="normal"
+
+                                    />
+                                </Box>
 
                             </div>
 
@@ -128,33 +127,39 @@ const NewSignUp = () => {
                             <h6>Date Of Birth</h6>
 
                             <div className="col-lg-12">
-
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <Box 
+                                sx={{
+                                    ".MuiFormControl-marginNormal":{
+                                        marginTop:"0px"
+                                    }
+                                    
+                                    }}>
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <DatePicker
 
                                         variant="inline"
                                         format="MM/dd/yyyy"
                                         margin="normal"
-                                      
+
                                         fullWidth
                                         InputProps={{
                                             // style:{fontSize:13},
                                             startAdornment: (
                                                 <InputAdornment position="start">
-                                                    <FaBirthdayCake  className='newSignup_icon' />
+                                                    <FaBirthdayCake className='newSignup_icon' />
                                                 </InputAdornment>
                                             ),
                                         }}
                                     />
                                 </MuiPickersUtilsProvider>
-
+                                </Box>
                             </div>
 
                         </div>
                         <div className='row newLogin_label m-2'>
                             <h6>Gender</h6>
                             <div className='col-lg-12'>
-                            <FormControl>
+                                <FormControl>
                                     {/* <FormLabel  id="demo-row-radio-buttons-group-label">Choose Your Gender</FormLabel> */}
                                     <RadioGroup
                                         row
@@ -166,10 +171,10 @@ const NewSignUp = () => {
                                         <Box sx={{
                                             ".MuiSvgIcon-root": {
                                                 color: "#31B665",
-                                                fontSize:"1rem"
+                                                fontSize: "1rem"
                                             },
-                                            ".MuiTypography-body1":{
-                                                fontSize:".7rem"
+                                            ".MuiTypography-body1": {
+                                                fontSize: ".7rem"
                                             }
                                         }}>
                                             <FormControlLabel value="female"
@@ -183,20 +188,20 @@ const NewSignUp = () => {
                             </div>
 
                         </div>
-                      
+
                         <div className='row mt-2'>
                             <div className='col-lg-12 center '>
                                 <Box className=" mt-4 mb-4 newLogin_btn_paper" sx={{
-                                   
-                                    ".MuiButton-text":{
-                                        color:"white",
-                                        fontSize:".7rem"
+
+                                    ".MuiButton-text": {
+                                        color: "white",
+                                        fontSize: ".7rem"
                                     }
                                 }}>
                                     <Button
 
                                     >
-                                          Sign up
+                                        Sign up
                                     </Button>
                                 </Box>
 
@@ -205,12 +210,12 @@ const NewSignUp = () => {
 
                         </div>
                         <div className='row'>
-                        <div className='col-lg-12  newSingup_label center mb-4 '>
-                               <h5>Already Have an Account</h5> <span className='signup_Span'>Login</span>
+                            <div className='col-lg-12  newSingup_label center mb-4 '>
+                                <h5>Already Have an Account</h5> <span className='signup_Span'>Login</span>
                             </div>
 
                         </div>
-                      
+
                     </Paper>
                 </div>
             </div>
