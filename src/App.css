@@ -887,9 +887,19 @@ margin-top: 100px;
 }
 .newLogin_label h6{
   font-size:.7rem;
+  margin-top: 10px;
 }
 
 /* newSignup */
 .newSignup_icon{
   color: #747474 ;
+}
+.signup_Span{
+  font-size: .7rem;
+  /* margin-left: 10px; */
+  margin-inline: 20px;
+  color:#31B665;
+}
+.newSingup_label h5{
+  font-size: .7rem;
 }

@@ -63,13 +63,13 @@ const NewSignUp = () => {
                                   
                                 
                                     margin="normal"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <BiMobile className='newSignup_icon'/>
-                                            </InputAdornment>
-                                        ),
-                                    }}
+                                    // InputProps={{
+                                    //     startAdornment: (
+                                    //         <InputAdornment position="start">
+                                    //             <BiMobile className='newSignup_icon'/>
+                                    //         </InputAdornment>
+                                    //     ),
+                                    // }}
                                 />
 
 
@@ -165,7 +165,8 @@ const NewSignUp = () => {
                                     >
                                         <Box sx={{
                                             ".MuiSvgIcon-root": {
-                                                color: "#31B665"
+                                                color: "#31B665",
+                                                fontSize:"1rem"
                                             },
                                             ".MuiTypography-body1":{
                                                 fontSize:".7rem"
@@ -183,7 +184,7 @@ const NewSignUp = () => {
 
                         </div>
                       
-                        <div className='row mt-4'>
+                        <div className='row mt-2'>
                             <div className='col-lg-12 center '>
                                 <Box className=" mt-4 mb-4 newLogin_btn_paper" sx={{
                                    
@@ -201,6 +202,12 @@ const NewSignUp = () => {
 
                             </div>
 
+
+                        </div>
+                        <div className='row'>
+                        <div className='col-lg-12  newSingup_label center mb-4 '>
+                               <h5>Already Have an Account</h5> <span className='signup_Span'>Login</span>
+                            </div>
 
                         </div>
                       
