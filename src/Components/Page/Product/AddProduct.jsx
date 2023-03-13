@@ -30,6 +30,9 @@ import { useForm } from "react-hook-form";
 import { convertToHTML } from 'draft-convert';
 import Cookies from 'universal-cookie';
 import Axios from "axios"
+import ProductImage from './ProductImage';
+import { useState } from 'react';
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -72,14 +75,15 @@ BootstrapDialogTitle.propTypes = {
 const AddProduct = () => {
     const [convertedContent, setConvertedContent] = React.useState(null);
     const [net_weight, SetNet_Weight] = React.useState([])
-    const { register, handleSubmit, errors, reset,control } = useForm();
+    const { register, handleSubmit, errors, reset, control, getValues } = useForm();
     const [open, setOpen] = React.useState(false);
     const [discount, SetDiscount] = React.useState([])
     const [Flavours, SetFlavours] = React.useState([])
     const [Taxs, SetTaxs] = React.useState([])
     const [store, Setstore] = React.useState([])
     const [Brand, SetBrand] = React.useState([])
-      const cookies = new Cookies();
+    const cookies = new Cookies();
+    const [Image, SetImage] = React.useState([])
     const token_data = cookies.get('Token_access')
     const handleClickOpen = () => {
         setOpen(true);
@@ -87,48 +91,47 @@ const AddProduct = () => {
     const handleClose = () => {
         setOpen(false);
     };
-    
- 
-        const [Product, SetProduct] = React.useState({
-            Product_Name: "",
-            Product_Description: "",
-            quantity: "",
-            prices: "",
-            discount: "",
-            tax: "",
 
-            Brand_id: "",
-            Multiple_Image: "",
-            Product_Video: "",
-            SKU: "",
-            UPC: "",
-            net_weight: "",
-            strain: "N",
-            Sub_Category: "",
-            flavour_id: "",
-            THC: "",
-            CBD: "",
-            CBN: "",
-            lab_Result: "percentage",
-            Stock: "In Stock",
-            Status: "Active",
-            Store_id: "",
-            tag: "",
-            DiscountedAmount: "",
-            Product_Image: "",
-            Allow_tax: "",
-            Allow_discount: "",
-            Additional_Description: "",
-            taxedAmount: "",
-            Alt_Text: "",
-            Link: "",
-            After_Coupoun_Price: "",
-            After_GiftVoucher: "",
-            SubTotal: "",
-            Sub_Category_id: "",
-            Claimed_Coupoun: "",
-            GiftVoucher: "",
-        })
+
+    const [Product, SetProduct] = React.useState({
+        Product_Name: "",
+        Product_Description: "",
+        quantity: "",
+        prices: "",
+        discount: "",
+        tax: "",
+
+        Brand_id: "",
+        Product_Video: "",
+        SKU: "",
+        UPC: "",
+        net_weight: "",
+        strain: "N",
+        Sub_Category: "",
+        flavour_id: "",
+        THC: "",
+        CBD: "",
+        CBN: "",
+        lab_Result: "percentage",
+        Stock: "In Stock",
+        Status: "Active",
+        Store_id: "",
+        tag: "",
+        DiscountedAmount: "",
+        Product_Image: "",
+        Allow_tax: "",
+        Allow_discount: "",
+        Additional_Description: "",
+        taxedAmount: "",
+        Alt_Text: "",
+        Link: "",
+        After_Coupoun_Price: "",
+        After_GiftVoucher: "",
+        SubTotal: "",
+        Sub_Category_id: "",
+        Claimed_Coupoun: "",
+        GiftVoucher: "",
+    })
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty()
     );
@@ -142,7 +145,7 @@ const AddProduct = () => {
 
     const handleChange = (event) => {
         var value = event.target.value;
-          SetProduct({
+        SetProduct({
             ...Product, [event.target.name]: value
         });
     }
@@ -159,7 +162,12 @@ const AddProduct = () => {
             SetProduct(Product => ({ ...Product, discount: response.data.data[0].id }))
 
 
-        })
+        }).catch(
+            function (error) {
+
+                SetProduct(Product => ({ ...Product, discount: "None" }))
+            })
+
         Axios("http://34.201.114.126:8000/AdminPanel/ActiveTax/", {
 
             headers: {
@@ -170,7 +178,13 @@ const AddProduct = () => {
             SetTaxs(response.data.data)
             SetProduct(Product => ({ ...Product, tax: response.data.data[0].id }))
 
-        })
+        }).catch(
+            function (error) {
+
+
+                SetProduct(Product => ({ ...Product, tax: "None" }))
+            })
+
         Axios("http://34.201.114.126:8000/AdminPanel/ActiveStores/", {
 
             headers: {
@@ -178,14 +192,16 @@ const AddProduct = () => {
             }
 
         }).then(response => {
-            try {
-                Setstore(response.data.data)
 
-                SetProduct(Product => ({ ...Product, Store_id: response.data.data[0].id }))
-            } catch (error) {
-                console.trace(error)
-            }
-        })
+            Setstore(response.data.data)
+            SetProduct(Product => ({ ...Product, Store_id: response.data.data[0].id }))
+
+        }).catch(
+            function (error) {
+
+                SetProduct(Product => ({ ...Product, Store_id: "None" }))
+            })
+
 
 
 
@@ -201,7 +217,12 @@ const AddProduct = () => {
             SetProduct(Product => ({ ...Product, flavour_id: response.data[0].id }))
 
 
-        })
+        }).catch(
+            function (error) {
+
+                SetProduct(Product => ({ ...Product, flavour_id: "None" }))
+            })
+
         Axios("http://34.201.114.126:8000/AdminPanel/ActiveNetWeight/", {
 
             headers: {
@@ -210,11 +231,16 @@ const AddProduct = () => {
 
         }).then(response => {
             SetNet_Weight(response.data.data)
-          
-            
-            
+
+
+
             SetProduct(Product => ({ ...Product, net_weight: response.data.data[0].id }))
-        })
+        }).catch(
+            function (error) {
+
+                SetProduct(Product => ({ ...Product, net_weight: "None" }))
+            })
+
         Axios("http://34.201.114.126:8000/AdminPanel/ActiveBrand/", {
 
             headers: {
@@ -223,13 +249,19 @@ const AddProduct = () => {
 
         }).then(response => {
             SetBrand(response.data.data)
-                SetProduct(Product => ({ ...Product, Brand_id: response.data.data[0].id }))
+            SetProduct(Product => ({ ...Product, Brand_id: response.data.data[0].id }))
 
-        })
+        }).catch(
+            function (error) {
+
+                SetProduct(Product => ({ ...Product, Brand_id: "None" }))
+
+            })
+
 
     }, [token_data])
 
-
+    let i = 0;
     const formdata = new FormData();
     formdata.append('Product_Name', Product.Product_Name);
     formdata.append('Product_Description', convertedContent);
@@ -239,7 +271,10 @@ const AddProduct = () => {
     formdata.append('GiftVoucher', Product.GiftVoucher);
     formdata.append('quantity', Product.quantity);
     formdata.append('prices', Product.prices);
-    formdata.append('Multiple_Image', "");
+
+    for (i = 0; i < Image.length; i++) {
+        formdata.append('Multiple_Image', Image[i]);
+    }
     // formdata.append('Product_Video', video);
     formdata.append('SKU', Product.SKU);
     formdata.append('UPC', Product.UPC);
@@ -269,7 +304,7 @@ const AddProduct = () => {
     formdata.append('Sub_Category_id', Product.Sub_Category_id)
     formdata.append('Brand_id', Product.Brand_id)
 
-    const onSubmit = (data) => { 
+    const onSubmit = (data) => {
         console.log(data)
         const entries = Object.entries(data)
 
@@ -286,11 +321,18 @@ const AddProduct = () => {
 
         Axios.post(
             'http://34.201.114.126:8000/AdminPanel/Add-Product/',
-    
+
             formdata,
-            config
+            config,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            }
         ).then(() => {
             setOpen(false);
+
+
         }).catch(
             // function (error) {
             //     for (const [key, value] of Object.entries(error.response.data)) {
@@ -319,8 +361,27 @@ const AddProduct = () => {
         )
     };
 
+    const [percentage, SetPercentage] = useState(false)
+    const validateEmail = (e) => {
+
+        if (Product.lab_Result === "percentage") { // read the checkbox value
 
 
+            if (e.target.value < 0) {
+                control.log("fs")
+                SetPercentage(true)
+                e.preventDefault();
+            }
+            if (e.target.value > 99) {
+                SetPercentage(true)
+                e.preventDefault();
+            }
+        }
+        else (
+            SetPercentage(false)
+        )
+        // return true;
+    };
 
 
 
@@ -410,20 +471,20 @@ const AddProduct = () => {
                                                 }
 
                                             }}>
-                                        
-                                                    
-                                                        <Editor
+
+
+                                                <Editor
                                                     editorState={editorState}
                                                     onEditorStateChange={setEditorState}
-                                                            toolbarClassName="toolbarClassName"
-                                                            wrapperClassName="wrapperClassName"
-                                                            editorClassName="editorClassName"
-                                                            toolbar={
-                                                                { options: ['inline', 'blockType', 'fontSize'] }
-                                                            }
+                                                    toolbarClassName="toolbarClassName"
+                                                    wrapperClassName="wrapperClassName"
+                                                    editorClassName="editorClassName"
+                                                    toolbar={
+                                                        { options: ['inline', 'blockType', 'fontSize'] }
+                                                    }
                                                 />
-                                                    
-                                               
+
+
                                             </Box>
 
                                         </div>
@@ -434,9 +495,11 @@ const AddProduct = () => {
                                             <label>Product Image</label>
                                         </div>
                                         <div className='col-md-8'>
-                                            <div className='AddProduct_img'>
-                                                <input className='addProd_image_input' type="file" id="file" variant="outlined" />
-
+                                            <div className=''>
+                                                <ProductImage
+                                                    Image={Image}
+                                                    SetImage={SetImage}
+                                                ></ProductImage>
                                             </div>
                                         </div>
 
@@ -555,9 +618,9 @@ const AddProduct = () => {
                                         <div className='col-lg-3'>
                                             <FormControl sx={{ minWidth: 120 }}>
                                                 <Select
-                                                     value={Product.net_weight}
-                    name='net_weight'
-                    onChange={handleChange}
+                                                    value={Product.net_weight}
+                                                    name='net_weight'
+                                                    onChange={handleChange}
                                                     inputProps={{ 'aria-label': 'Without label' }}
                                                 >
                                                     <MenuItem value="">
@@ -628,6 +691,7 @@ const AddProduct = () => {
                                         <div className="col-lg-2">
                                             <p>THC</p>
                                             <TextField type="number"
+
                                                 id="filled"
                                                 name='THC'
                                                 label='THC'
@@ -656,27 +720,33 @@ const AddProduct = () => {
                                         <div className="col-lg-2">
                                             <p>CBN</p>
                                             <TextField type="number"
+
                                                 id="filled"
                                                 name='CBN'
                                                 label='CBN'
-                                                inputRef={
-                                                 
-                                                        register({
-                                                            required: "CBN is required*.",
-                                                            // minLength: {
-                                                                
-                                                            //     value: 1,
-                                                            //     message: "1-99"
-                                                            // },
-                                                            // maxLength: {
-                                                            //     value: 2,
-                                                            //     message: "0-99"
-                                                            // }
-                                                        }) 
-                                                      
-                                            }
+                                                // ref={register({
+                                                //     validate: value => value.length > 3
+
+                                                //   })}
+                                                // inputRef={register({
+
+                                                //     minLength: {
+                                                //         value: 1,
+                                                //         message: 'more than 4 characters'
+                                                //     },
+                                                //     maxLength: {
+                                                //         value: 2,
+                                                //         message: 'less than 20 characters'
+                                                //     },
+                                                // })}
+
+                                                // inputRef={register({
+                                                //     validateEmail
+                                                //   })}
+                                                onChange={validateEmail}
+
                                                 helperText={errors.CBN?.message}
-                                                error={Boolean(errors?.CBN)}
+                                                error={percentage}
                                             />
 
                                         </div>
@@ -728,7 +798,7 @@ const AddProduct = () => {
                                             <label>Stock</label>
                                         </div>
                                         <div className='col-lg-6'>
-                                            <StockCheckBox 
+                                            <StockCheckBox
                                                 Product={Product}
                                                 SetProduct={SetProduct}
                                             />
@@ -756,10 +826,10 @@ const AddProduct = () => {
 
                                         <p className='product_title center'>Strain</p>
                                         <div className='col-lg-12 center '>
-                                        <Strain
-                                            Product={Product}
-                                            SetProduct={SetProduct}
-                                        />
+                                            <Strain
+                                                Product={Product}
+                                                SetProduct={SetProduct}
+                                            />
 
                                         </div>
 
@@ -810,7 +880,7 @@ const AddProduct = () => {
                                             />
 
                                         </div>
-                                       
+
                                     </div>
 
                                 </div>
@@ -834,10 +904,10 @@ const AddProduct = () => {
 
                         </div>
                     </form>
-                      
 
-                    
-                
+
+
+
                 </DialogContent>
                 <DialogActions>
                     <Button
@@ -853,7 +923,7 @@ const AddProduct = () => {
             </BootstrapDialog>
 
         </>
-)
-                    
+    )
+
 }
 export default AddProduct
