@@ -841,7 +841,7 @@ a {
 /* newLogin */
 
 .Newlogin_main_div{
-width: 16%;
+width: 18%;
 
 margin-top: 100px;
 
@@ -853,13 +853,21 @@ margin-top: 100px;
     
     }
 }
-@media(max-width:820px){
+@media only screen and (min-width: 601px) and (max-width: 820px)  {
   .Newlogin_main_div{
-    /* width: 40%; */
+    width: 40% !important;
     margin-top: 100px;
     
     }
 }
+@media only screen and (min-width: 820px) and (max-width: 1127px)  {
+  .Newlogin_main_div{
+    width: 40% !important;
+    margin-top: 100px;
+    
+    }
+}
+
 .newLogin_container{
   display: flex;
   justify-content: center;
@@ -879,4 +887,9 @@ margin-top: 100px;
 }
 .newLogin_label h6{
   font-size:.7rem;
+}
+
+/* newSignup */
+.newSignup_icon{
+  color: #747474 ;
 }

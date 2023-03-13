@@ -26,6 +26,10 @@ const routesConfig = [
       element:<NewLoginPage/>
     },
     {
+      path:"/NewSignUp",
+      element:<NewSignUp/>
+    },
+    {
       path: "/StoreAdd",
       element: <StoreAdd />,
     },
@@ -76,10 +80,7 @@ const routesConfig = [
           path:"/Flavour",
           element:<Flavour/>
         },
-        {
-          path:"/NewSignUp",
-          element:<NewSignUp/>
-        },
+       
       
       ],
     },
