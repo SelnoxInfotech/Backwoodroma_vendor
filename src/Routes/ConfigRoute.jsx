@@ -15,6 +15,7 @@ import AllOrder from '../Components/Page/Order/AllOrder';
 import Flavour from '../Components/Page/Preset/Flavour/Flavour';
 import NewLoginPage from "../Components/Page/Login/NewLoginPage";
 import NewSignUp from "../Components/Page/Signup/NewSignUp"
+import NewStoreAdd from "../Components/Page/Store/StoreAdd/NewStoreAdd"
 import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper";
 const routesConfig = [
     {
@@ -32,6 +33,10 @@ const routesConfig = [
     {
       path: "/StoreAdd",
       element: <StoreAdd />,
+    },
+    {
+      path: "/NewStoreAdd",
+      element: <NewStoreAdd />,
     },
     {
       path: "/SignUp",
