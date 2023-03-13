@@ -70,7 +70,7 @@ const NewStoreAdd = () => {
                                 // error={Boolean(errors.Store_Type)}
 
                                 >
-                                    <InputLabel id="demo-simple-select-label">
+                                    <InputLabel id="demo-simple-select-label" style={{fontSize:".7rem"}}>
                                         Select Your Store Type
                                     </InputLabel>
 
@@ -100,7 +100,7 @@ const NewStoreAdd = () => {
                                 // error={Boolean(errors.Store_Type)}
 
                                 >
-                                    <InputLabel id="demo-simple-select-label">
+                                    <InputLabel id="demo-simple-select-label" style={{fontSize:".7rem"}}>
                                         Select Your Country
                                     </InputLabel>
 
@@ -126,7 +126,7 @@ const NewStoreAdd = () => {
                                 // error={Boolean(errors.Store_Type)}
 
                                 >
-                                    <InputLabel id="demo-simple-select-label">
+                                    <InputLabel id="demo-simple-select-label" style={{fontSize:".7rem"}}>
                                         Select Your State
                                     </InputLabel>
 
@@ -152,7 +152,7 @@ const NewStoreAdd = () => {
                                 // error={Boolean(errors.Store_Type)}
 
                                 >
-                                    <InputLabel id="demo-simple-select-label">
+                                    <InputLabel id="demo-simple-select-label" style={{fontSize:".7rem"}}>
                                         Select Your City Type
                                     </InputLabel>
 
