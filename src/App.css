@@ -841,7 +841,8 @@ a {
 /* newLogin */
 
 .Newlogin_main_div{
-width: 30%;
+width: 20%;
+
 margin-top: 100px;
 
 }
@@ -862,4 +863,13 @@ margin-top: 100px;
   color: #000000;
   font-size: 25px;
   font-weight: 700;
+  margin-top: 30px;
+}
+.newLogin_btn_paper{
+  background-image: linear-gradient(90deg, #6e8ede, #d611ed);
+  width: 90%;
+  border-radius: 50px 50px;
+}
+.newLogin_label h6{
+  font-size: 14px;
 }
