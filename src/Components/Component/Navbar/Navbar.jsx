@@ -4,10 +4,12 @@ import { RiShutDownLine } from "react-icons/ri"
 import { BiBell } from "react-icons/bi"
 import useStyles from '../../../Style';
 import * as React from 'react';
-
+import Cookies from 'universal-cookie';
 import  {Link}  from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+    const cookies = new Cookies();
+    const navigate = useNavigate();
     const classes = useStyles();
     const [windowSize, setWindowSize] = React.useState() 
 
@@ -42,7 +44,8 @@ const Navbar = () => {
     }
      
     function Logout (){
-console.log("jhfbs")
+        cookies.remove("Token_access")
+        navigate("/");
     }
 
 

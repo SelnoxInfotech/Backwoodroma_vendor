@@ -24,15 +24,15 @@ const routesConfig = [
     // },
     {
       path:"/",
-      element:<NewLoginPage/>
+      element: <Protected Component={NewLoginPage} />
     },
     {
       path:"/SignUp",
-      element:<NewSignUp/>
+      element: <Protected Component={NewSignUp} />
     },
     {
       path: "/StoreAdd",
-      element: <StoreAdd />,
+      element:   <Protected Component={StoreAdd} />
     },
     {
       path: "/NewStoreAdd",

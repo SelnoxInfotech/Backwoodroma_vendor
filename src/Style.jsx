@@ -6,6 +6,7 @@ const useStyles = makeStyles(theme => ({
     customHoverFocus: {
       "&:hover, &.Mui-focusVisible": {   backgroundColor: '#f00' }
     },
+<<<<<<< HEAD
     papers:{
       "&.MuiPaper-root ":{
         height: "70%",
@@ -17,9 +18,15 @@ const useStyles = makeStyles(theme => ({
       "& .MuiInputBase-input":{
         fontSize: '.7rem',
     
+=======
+    loading: {
+      ".MuiLoadingButton" :{
+        color: '#f00'
+>>>>>>> a6bf795 (chnage)
       }
     }
   }));
 
 
   export default useStyles ;
+
