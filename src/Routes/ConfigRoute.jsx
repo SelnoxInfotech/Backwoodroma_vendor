@@ -1,6 +1,5 @@
 
 import SignUp from '../Components/Page/Signup/SignUp';
-import Login from "../Components/Page/Login/Login"
 import StoreAdd from '../Components/Page/Store/StoreAdd/StoreAdd';
 import Dashboard from "../Components/Page/Dashboard/Dashboard";
 import Category from '../Components/Page/Category/Category';
@@ -18,12 +17,12 @@ import NewSignUp from "../Components/Page/Signup/NewSignUp"
 import NewStoreAdd from "../Components/Page/Store/StoreAdd/NewStoreAdd"
 import HorizontalStepperWithError from "../Components/Component/Stepper/Stepper";
 const routesConfig = [
+    // {
+    //   path: "/",
+    //   element: <Login />,
+    // },
     {
-      path: "/",
-      element: <Login />,
-    },
-    {
-      path:"/NewLoginPage",
+      path:"/",
       element:<NewLoginPage/>
     },
     {
