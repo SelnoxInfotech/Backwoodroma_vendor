@@ -2,13 +2,13 @@
 import { BsChat } from 'react-icons/bs';
 import { RiShutDownLine } from "react-icons/ri"
 import { BiBell } from "react-icons/bi"
-import { CiUser } from "react-icons/ci"
+import useStyles from '../../../Style';
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import SideNavbar from './Sidebar/SideNavbar';
+
 import  {Link}  from 'react-router-dom';
 
 const Navbar = () => {
+    const classes = useStyles();
     const [windowSize, setWindowSize] = React.useState() 
 
     const [Hamburger, SetHamburger] = React.useState("false")
@@ -40,6 +40,13 @@ const Navbar = () => {
         document.getElementById("mySidebar").style.width = "0";
         document.getElementById("main").style.marginLeft = "0";
     }
+     
+    function Logout (){
+console.log("jhfbs")
+    }
+
+
+
     return (
         <>
             <nav className="navbar   bg-light_navbar sticky-top  ">
@@ -71,8 +78,8 @@ const Navbar = () => {
                         <div className='col-2 Navbar_end_width'>
                             <BiBell></BiBell>
                         </div>
-                        <div className='col-2 Navbar_end_width'>
-                            <RiShutDownLine></RiShutDownLine>
+                        <div className='col-2 Navbar_end_width '>
+                            <RiShutDownLine className={classes.customHoverFocus} onClick={Logout}></RiShutDownLine>
                         </div>
                     </div>
                 </div>

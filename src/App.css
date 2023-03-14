@@ -12,6 +12,12 @@
  
 }
 
+
+.Link_{
+  text-decoration: none;
+  color:#31B665;
+}
+
 .w-100{
   width: 75%;
  }
@@ -244,6 +250,7 @@ max-width: 0px;
   justify-content: end;
 }
 .Navbar_end_width{
+  cursor: pointer;
   max-width: 50px;
   font-size: 30px;
   color: white;
@@ -630,7 +637,7 @@ hr{
 }
 .side_penal_link {
   font-size: 16px;
-
+cursor: pointer;
   width: 50%;
   border-radius: 10px;
 }
@@ -824,9 +831,7 @@ cursor: pointer;
   display: flex;
 
 }
-.justify {
-  justify-content: space-around;
-}
+
 @media (max-width: 570px) {
   .background {
 
