@@ -1,5 +1,5 @@
 import React  ,{useRef}from "react";
-import { IoCloudUploadOutline } from "react-icons/io5"
+import { FiUpload } from "react-icons/fi"
 import { FcAddImage } from "react-icons/fc"
 import Button from '@mui/material/Button';
 
@@ -29,15 +29,14 @@ export default function StoreImage({Name,SetStore,value,Title, refernce}) {
     return (
         <div>
             <div className='col-12  signup_Display center'>
-                <div className="col-sm-4 center pading">
+                {/* <div className="col-sm-4 center pading">
                     <div className='col-4 name_style'>
-                        <span className='icon'><FcAddImage></FcAddImage></span>
-                        <span>{Title}</span>
+                   
                     </div>
-                </div>
+                </div> */}
 
-                <div className='col-sm-8  center'>
-                    <div className="col-6 image_background center">
+                <div className='col-sm-12  center'>
+                    <div className="col-6 store_image_background center">
                         <div className="col-4   StoreAdd_Image   ">
                             <input type="file"   name={Title||''} id="file" refs={refernce} className="file"onChange={handleimage} />
 
@@ -47,10 +46,10 @@ export default function StoreImage({Name,SetStore,value,Title, refernce}) {
                                     <Button color='success' onClick={resetFileInput}>Cancell </Button>
                                 </div> :
                                      <label htmlFor="file"  >
-                                    <IoCloudUploadOutline ></IoCloudUploadOutline>
+                                    <FiUpload ></FiUpload>
                                     </label>
                             }
-                            {/* <IoCloudUploadOutline></IoCloudUploadOutline> */}
+                   
                         </div>
                     </div>
                 </div>
