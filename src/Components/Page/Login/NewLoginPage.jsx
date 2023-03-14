@@ -11,31 +11,36 @@ import axios from "axios"
 import Otp from "../../Component/OTP/Otp"
 import LoginOtp from "./LoginOtp";
 import { Link } from "react-router-dom";
+import LoadingButton from '@mui/lab/LoadingButton';
+
 const NewLoginPage = () => {
     const [loading, setLoading] = React.useState(false);
     const { register, handleSubmit, errors, reset } = useForm();
-  
+    const [dulicate, Setduplicate] = React.useState([])
     const [popup, SetPopup] = React.useState(false)
     const [Otppopup, Setotppopup] = React.useState(true)
     const [email, Setemail] = React.useState()
-  
+
 
     const onSubmit = (data) => {
-        axios.post('http://34.201.114.126:8000/VendorPanel/Login/',
-            data,
-            setLoading(true),
+        try {
+            axios.post('http://34.201.114.126:8000/VendorPanel/Login/',
+                data,
+                setLoading(true),
 
-        ).then((response) => {
-            if (response.status === 200)
-                SetPopup(true)
-            Setemail(data.email)
-        }).catch((error) => {
-            SetPopup(false)
+            ).then((response) => {
+                if (response.status === 200)
+                    SetPopup(true)
+                Setemail(data.email)
+            }).catch((error) => {
+                setLoading(false)
+                if (error.response.data.non_field_errors[0]) {
+                    Setduplicate(error.response.data.non_field_errors[0])
+                }
+            })
+        } catch (error) {
             console.log(error)
-          
-            prompt(error)
-            setLoading(false)
-        })
+        }
     }
     return (
         <>
@@ -55,14 +60,14 @@ const NewLoginPage = () => {
                         <div className="row center">
                             <div className="col-lg-12">
                                 <h6 className='login_title'>Login</h6>
-
+                                <p style={{ color: "red" }}>{dulicate}</p>
                             </div>
 
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="row newLogin_label m-2">
-                                <h6>User Name</h6>
+                                <h6>Email</h6>
 
                                 <div className="col-lg-12">
 
@@ -78,6 +83,7 @@ const NewLoginPage = () => {
                                                 </InputAdornment>
                                             ),
                                         }}
+                                        type="email"
                                         name="email"
                                         inputRef={register({
                                             required: "Email is required*."
@@ -100,8 +106,6 @@ const NewLoginPage = () => {
                                         fullWidth
                                         sx={{
                                             '.MuiInputBase-input': { fontSize: '.7rem' },
-
-
                                         }}
                                         InputProps={{
                                             // style:{fontSize:13},
@@ -140,11 +144,12 @@ const NewLoginPage = () => {
                                             fontSize: ".7rem"
                                         }
                                     }}>
-                                        <Button
+                                        <LoadingButton
                                             type="submit"
+                                            loading={loading}
                                         >
                                             Login
-                                        </Button>
+                                        </LoadingButton>
                                     </Box>
 
                                 </div>
@@ -154,9 +159,9 @@ const NewLoginPage = () => {
                             <div className='row'>
                                 <div className='col-lg-12 center'>
 
-                                    <Button>
+                                    <Link className='Link_' to="/SignUp">
                                         Sign up
-                                    </Button>
+                                    </Link>
                                 </div>
 
 

@@ -1,4 +1,4 @@
-import React ,{useRef} from 'react'
+import React, { useRef } from 'react'
 import { FaUser } from "react-icons/fa"
 import { BiMobile } from "react-icons/bi"
 import { AiOutlineMail } from "react-icons/ai"
@@ -11,38 +11,42 @@ import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
 import axios from "axios";
 import Box from '@mui/material/Box';
+import dayjs from 'dayjs'
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { FormControlLabel, FormLabel, FormControl, FormHelperText, RadioGroup, Radio, } from "@material-ui/core";
-import { MuiPickersUtilsProvider, DatePicker, } from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import DateFnsUtils from "@date-io/date-fns";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Otp from "../../Component/OTP/Otp"
 import MuiPhoneNumber from 'material-ui-phone-number';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import styles from "../../../../src/Style"
-
-export default function SignUp() {  
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+export default function SignUp() {
     const { register, handleSubmit, errors, control, reset } = useForm();
     const [showPassword, setShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [popup, SetPopup] = React.useState(false)
     const [dulicate, Setduplicate] = React.useState([])
-    const [email , Setemail] = React.useState()
+    const [email, Setemail] = React.useState()
     const [Otppopup, Setotppopup] = React.useState(true)
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-    
+
     const onSubmit = (data) => {
 
-    
+
         axios.post('http://34.201.114.126:8000/VendorPanel/register/',
             data,
             setLoading(true),
-             
+
         ).then((response) => {
             if (response.status === 200)
                 SetPopup(true)
-                Setemail(data.email)
+            Setemail(data.email)
         }).catch((error) => {
             Setduplicate(error.response.data.email)
             if (error.response.data.email) {
@@ -84,7 +88,7 @@ export default function SignUp() {
                                                 variant="filled"
                                                 type="text"
                                                 fullWidth
-                                                
+
                                                 name="username"
                                                 onChange={() => Setduplicate('')}
                                                 inputRef={register({
@@ -114,44 +118,44 @@ export default function SignUp() {
                                             </div>
 
                                             <div className='col-sm-6 '>
-                                            <Controller
-                                                        
-                                                        render={({ name, onChange, value }) => (
-                                                            <MuiPhoneNumber
-                                                                name={name}
-                                                                value={value}
-                                                              size="small"
-                                                                onChange={onChange}
-                                                                id="Mobile"
-                                                                defaultCountry={"in"}
-                                                                style={{ width: "100%" }}
-                                                                label="Contact  "
-                                                                variant="filled"
-                                                                margin="normal"
-                                                                error={Boolean(errors?.Mobile )}
-                                                                helperText={errors.Mobile?.message }
-                                                            />
-                                                        )}
-                                                        name="Mobile"
-                                                        control={control}
-                                                        defaultValue=""
-                                                      fullWidth
-                                                        rules={
-                                                            {
-                                                                required: "Enter valid phone number",
-                                                                minLength: {
-                                                                    value: 8,
-                                                                    message: "Please enter minimum 10 digits"
-                                                                },
-                                                                maxLength: {
-                                                                    value: 15,
-                                                                    message: "Please enter valid mobile number"
-                                                                }
+                                                <Controller
+
+                                                    render={({ name, onChange, value }) => (
+                                                        <MuiPhoneNumber
+                                                            name={name}
+                                                            value={value}
+                                                            size="small"
+                                                            onChange={onChange}
+                                                            id="Mobile"
+                                                            defaultCountry={"in"}
+                                                            style={{ width: "100%" }}
+                                                            label="Contact  "
+                                                            variant="filled"
+                                                            margin="normal"
+                                                            error={Boolean(errors?.Mobile)}
+                                                            helperText={errors.Mobile?.message}
+                                                        />
+                                                    )}
+                                                    name="Mobile"
+                                                    control={control}
+                                                    defaultValue=""
+                                                    fullWidth
+                                                    rules={
+                                                        {
+                                                            required: "Enter valid phone number",
+                                                            minLength: {
+                                                                value: 8,
+                                                                message: "Please enter minimum 10 digits"
+                                                            },
+                                                            maxLength: {
+                                                                value: 15,
+                                                                message: "Please enter valid mobile number"
                                                             }
                                                         }
-                                                      
-                                                    />
-                                              
+                                                    }
+
+                                                />
+
                                             </div>
                                         </div>
 
@@ -219,7 +223,7 @@ export default function SignUp() {
                                                     //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{4,12}$/,
                                                     //     message:"aaaaaaaaaaaaaa"
                                                     // }
-                                                 
+
 
                                                 },
                                                 )}
@@ -240,17 +244,21 @@ export default function SignUp() {
                                         </div>
 
                                         <div className='col-sm-6 '>
-                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                                {/* 5) Date Picker */}
+                                            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                 Date Picker
                                                 <Controller
+                                                       
                                                     render={(props) => (
                                                         <DatePicker
-                                                        size="small"
+                                                          closeOnSelect={false}
+                                                        defaultValue={dayjs('2022-04-90') }
                                                             variant="inline"
                                                             format="MM/dd/yyyy"
                                                             margin="normal"
                                                             label="Date of Birth"
                                                             value={props.value}
+
+                                                           
                                                             onChange={props.onChange}
                                                             fullWidth
                                                             error={Boolean(errors.DateOfBirth)}
@@ -258,13 +266,31 @@ export default function SignUp() {
                                                         />
                                                     )}
                                                     name="DateOfBirth"
-                                                    defaultValue={null}
+                                                    
                                                     control={control}
                                                     rules={{
                                                         required: "Date of birth required.",
                                                     }}
-                                                />
-                                            </MuiPickersUtilsProvider>
+                                                /> */}
+                                               
+                                            {/* </MuiPickersUtilsProvider>  */}
+                                            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                                <DemoContainer
+                                                    components={[
+                                              
+                                                        'MobileDatePicker',
+                                                        
+                                                    ]}
+                                                >
+                                                              <MobileDatePicker defaultValue={dayjs('2022-04-17')} />
+                                                </DemoContainer>
+                                                <DateTimePicker
+                                                    autoOk
+                                                    label="Clearable"
+                                                    clearable
+                                                    disableFuture />
+                                            </LocalizationProvider> */}
+
 
                                         </div>
 
@@ -284,33 +310,35 @@ export default function SignUp() {
                                             >
                                                 <FormLabel>Choose Your Gender</FormLabel>
                                                 <RadioGroup row name="Gender">
-                                                    <Box sx={{".MuiSvgIcon-root":{
-                                                                    color:"#31B665"
-                                                                }}}>
-                                                    <FormControlLabel
+                                                    <Box sx={{
+                                                        ".MuiSvgIcon-root": {
+                                                            color: "#31B665"
+                                                        }
+                                                    }}>
+                                                        <FormControlLabel
 
-                                                        value="f"
-                                                        control={
-                                                            <Radio
-                                                                inputRef={register({
-                                                                    required: "Choose your gender*",
-                                                                })}
-                                                                
-                                                            />
-                                                        }
-                                                        label="Female"
-                                                    />
-                                                    <FormControlLabel
-                                                        value="M"
-                                                        control={
-                                                            <Radio
-                                                                inputRef={register({
-                                                                    required: "Choose your gender*",
-                                                                })}
-                                                            />
-                                                        }
-                                                        label="Male"
-                                                    />
+                                                            value="F"
+                                                            control={
+                                                                <Radio
+                                                                    inputRef={register({
+                                                                        required: "Choose your gender*",
+                                                                    })}
+
+                                                                />
+                                                            }
+                                                            label="Female"
+                                                        />
+                                                        <FormControlLabel
+                                                            value="M"
+                                                            control={
+                                                                <Radio
+                                                                    inputRef={register({
+                                                                        required: "Choose your gender*",
+                                                                    })}
+                                                                />
+                                                            }
+                                                            label="Male"
+                                                        />
                                                     </Box>
 
                                                 </RadioGroup>
@@ -331,7 +359,7 @@ export default function SignUp() {
                                                     "&.MuiLoadingButton-root": {
                                                         color: "#FFFFFF",
                                                         background: "#31B665",
-        
+
                                                     },
                                                 }}
                                             >
@@ -355,8 +383,8 @@ export default function SignUp() {
                 ></Otp>
             }
             <div>
-              
-          </div>
+
+            </div>
         </div>
     )
 }

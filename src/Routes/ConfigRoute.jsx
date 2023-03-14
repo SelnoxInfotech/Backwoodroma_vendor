@@ -26,7 +26,7 @@ const routesConfig = [
       element:<NewLoginPage/>
     },
     {
-      path:"/NewSignUp",
+      path:"/SignUp",
       element:<NewSignUp/>
     },
     {

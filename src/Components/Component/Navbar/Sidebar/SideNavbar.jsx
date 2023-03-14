@@ -51,7 +51,7 @@ const SideNavbar = () => {
                     <div className="col-2  Navbar_Icon center" style={{ fontSize: "20px" }}>
                         <IoAnalyticsOutline></IoAnalyticsOutline>
                     </div>
-                    <div className="col-10 ">
+                    <div className="col-10  side_penal_link">
                         <p>Sales/Analytic</p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const SideNavbar = () => {
                     <div className="col-2 center Navbar_Icon " style={{ fontSize: "20px" }}>
                         <MdOutlineGamepad></MdOutlineGamepad>
                     </div>
-                    <div className="col-10 ">
+                    <div className="col-10 side_penal_link ">
                         <p>Preset</p>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const SideNavbar = () => {
                     <div className="col-2 center Navbar_Icon " style={{ fontSize: "20px" }}>
                         <MdLocalActivity></MdLocalActivity>
                     </div>
-                    <div className="col-10 ">
+                    <div className="col-10  side_penal_link">
                         <p>SpecialOffer</p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ const SideNavbar = () => {
                     <div className="col-2 center Navbar_Icon " style={{ fontSize: "20px" }}>
                         <MdTurnedIn></MdTurnedIn>
                     </div>
-                    <div className="col-10 ">
+                    <div className="col-10  side_penal_link">
                         <p>Brand</p>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ const SideNavbar = () => {
                     <div className="col-2 center Navbar_Icon " style={{ fontSize: "20px" }}>
                         <MdMarkunread></MdMarkunread>
                     </div>
-                    <div className="col-10 ">
+                    <div className="col-10  side_penal_link">
                         <p>Message</p>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ const SideNavbar = () => {
                     <div className="col-2  Navbar_Icon center" style={{ fontSize: "20px" }}>
                         <AiTwotoneSetting></AiTwotoneSetting    >
                     </div>
-                    <div className="col-10 ">
+                    <div className="col-10 side_penal_link ">
                         <p>Setting</p>
                     </div>
                 </div>
