@@ -18,6 +18,13 @@ const useStyles = makeStyles(theme => ({
         fontSize: '.7rem',
     
       }
+    },
+    loadingBtnText:{
+      "& .MuiButton-text":{
+        fontSize: ".7rem",
+        color: "white",
+     
+      }
     }
   }));
 

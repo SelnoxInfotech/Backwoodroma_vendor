@@ -1050,3 +1050,15 @@ margin-top: 100px;
     font-weight: 700;
     margin-top: 20px;
   }
+  .setNewPwdBtnDiv{
+    margin-top: 20px;
+  }
+  .back_to_login{
+    margin-left: 10px;
+  }
+  .forgot_head_sec h6{
+  font-size: 14px;
+  }
+  .setNewpwd h6{
+    color: #9FA5AF;
+  }
