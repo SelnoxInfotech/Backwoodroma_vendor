@@ -1,3 +1,4 @@
+import React ,{useRef}from "react";
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -16,13 +17,80 @@ import LicenseImage from "../StoreComponent/LicenseDetail/LicenseImage"
 import LoadingButton from '@mui/lab/LoadingButton';
 import { AiOutlineGlobal } from "react-icons/ai"
 import { BsFillCreditCard2BackFill } from "react-icons/bs"
-
+import useStyles from '../../../../Style';
+import { useNavigate } from "react-router-dom";
 import {
     InputLabel,
     Select,
     MenuItem,
 } from "@material-ui/core";
+import axios from "axios";
+import { EditorState } from "draft-js";
+import { convertToHTML } from 'draft-convert';
 const NewStoreAdd = () => {
+
+    const classes = useStyles();
+
+    const navigate = useNavigate();
+    const storeImage = useRef(null);
+    const mobile = useRef(null);
+    const { register, handleSubmit, errors, control, reset } = useForm();
+    const [loading, Setloading] = React.useState(false)
+    const [SuccessFull, SetSuccessFull] = React.useState(false)
+    const [country, setCountry] = React.useState([])
+    const [selectCountry, setSelectCountry] = React.useState()
+    const [convertedContent, setConvertedContent] = React.useState(null);
+    const [DuplicateError, SetDuplicateError] = React.useState({
+        LicenceNo: "",
+        Stores_MobileNo: "",
+    })
+
+    const [AddStore, SetStore] = React.useState({
+        Store_Name: "",
+        Store_Type: "",
+        LicenceNo: "",
+        Store_Address: "",
+        Stores_Website: "",
+        Stores_MobileNo: "",
+        Status: "",
+        Country_id: "",
+        State_id: "",
+        City_id: "",
+        License_Type: "",
+        Stores_Website: "",
+        Store_Image: "",
+        LicenseDoc: "",
+        expires: ""
+        
+    });
+
+    const [editorState, setEditorState] = React.useState(() =>
+        EditorState.createEmpty()
+    );
+
+
+    React.useEffect(() => {
+        let html = convertToHTML(editorState.getCurrentContent());
+        setConvertedContent(html);
+    }, [editorState]);
+
+
+    React.useEffect(() => {
+        axios("http://34.201.114.126:8000/VendorPanel/ActiveCountry/", {
+
+
+        }).then(response => {
+
+            setCountry(response.data.data)
+            // setCountry_id(response.data[0].id)
+
+        })
+    }, [])
+
+
+
+
+
     return (
         <>
             <div className="container-fluid newAddStore_container">
@@ -370,10 +438,9 @@ const NewStoreAdd = () => {
                                      >
                                         <LoadingButton
                                             type="submit"
-                                            size="small"
-                                            // onClick={handleClick}
-                                            // loading={loading}
-                                         
+                                            // size="small"
+                                            loading={true}
+                                          classes = {classes.loading}
 
                                         >
                                             <span>SUBMIT</span>
