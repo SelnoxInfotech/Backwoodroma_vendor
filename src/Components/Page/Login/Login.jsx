@@ -59,7 +59,15 @@ function Login() {
 
 
     return (
-        <div className='container Border pading'>
+        <div className='container Border pading'>     {
+            popup && <LoginOtp
+                Otppopup={Otppopup}
+                Setotppopup={Setotppopup}
+                email={email}
+                setLoading={setLoading}
+                reset={reset}
+            ></LoginOtp>
+        }
             <div className='row'>
                 <div className="col-12 login_width  signup_field"   >
                     <div className="container">
